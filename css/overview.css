@@ -1,0 +1,162 @@
+.about-overview {
+    padding: 80px 20px;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.overview-container {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: start;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: 350px;
+}
+
+.overview-text {
+    flex: 1 1 500px;
+    max-width: 600px;
+}
+
+.overview-images {
+    flex: 1 1 400px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 250px;
+    align-items: flex-start;
+}
+
+.overview-img {
+    width: 250px;
+    height: auto;
+    min-height: 300px;
+    border-radius: 0px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.img-two {
+    margin-top: 150px;
+    /* الصورة التانية نزلت لتحت */
+}
+
+
+.section-subtitle {
+    position: relative;
+    display: inline-block;
+    inline-size: 500px;
+    color: #f26522;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f26522;
+    padding-bottom: 2px;
+    text-transform: uppercase;
+}
+
+.section-subtitle::after {
+    background-color: #ffffff00;
+}
+
+.section-title {
+    font-size: 3.5em;
+    color: #003366a8;
+    margin: 10px 0 20px;
+    padding-top: 20px;
+}
+
+.section-description {
+    font-size: 0.9em;
+    width: 70%;
+    line-height: 2.0;
+    color: #333;
+}
+
+.fade-in-text {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Responsive Design for Overview */
+@media (max-width: 768px) {
+    .overview-container {
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0 0px;
+        text-align: left;
+    }
+
+
+    .about-us-footer {
+        margin-top: 0px;
+        margin-bottom: -200px;
+
+    }
+
+    .overview-images {
+        margin-top: -100px;
+        margin-bottom: -90px
+    }
+
+    .overview-text,
+    .overview-images {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .overview-img {
+        width: 100%;
+        max-width: 150px;
+        height: auto;
+        min-height: unset;
+        margin-bottom: 0px;
+    }
+
+    .img-two {
+        margin-top: -80px;
+    }
+
+    .section-title {
+        font-size: 2em;
+        padding-top: 10px;
+    }
+
+    .section-subtitle {
+        font-size: 1.0em;
+
+    }
+
+    .about-overview .section-subtitle {
+        inline-size: 40%;
+    }
+
+    .latest-news .section-subtitle {
+        inline-size: 70%;
+    }
+
+    .projects .section-subtitle {
+        font-size: 1.1em;
+        inline-size: 35%;
+    }
+
+    .section-description {
+        width: 100%;
+        font-size: 1em;
+        line-height: 1.6;
+    }
+}

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description"
+        content="اكتشف خدمات Heaven Life في تصميم الديكور والعمارة الداخلية، حيث ندمج الإبداع مع الاحترافية لتقديم تجربة مميزة لعملائنا.">
+    <meta name="keywords"
+        content="Heaven Life, HeavenLife, Construction, Decoration, Heaven Life construction, ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد">
+    <meta name="author" content="Crafted by A² - Ahmed & Ahmed">
+    <meta name="robots" content="HeavenLife, Construction">
+    <link rel="canonical" href="https://heavenlife.construction" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heaven Life</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/news&projects.css" />
+    <link rel="stylesheet" href="../css/overview.css" />
+    <link rel="stylesheet" href="../css/projects-gallery.css" />
+    <link rel="stylesheet" href="../css/slider.css" />
+    <link rel="stylesheet" href="../css/gallery.css" />
+    <link rel="stylesheet" href="../css/services-section.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+
+<body>
+    <header class="fade-in">
+        <div class="logo">
+            <a href="home.html">
+                <img src="../assets/pic/logo.webp"
+                    alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life">
+            </a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul id="nav-links">
+                <li><a href="../html/about-us.html">About Us</a></li>
+                <li><a href="../html/latest-updates.html">Updates</a></li>
+                <li><a href="../html/projects.html">Projects</a></li>
+                <li><a href="../html/services.html">Services</a></li>
+                <li><a href="../html/contact-us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="mySlider"></div>
+    <script>
+        fetch('../html/slider.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('mySlider').innerHTML = data;
+                const script = document.createElement('script');
+                script.src = '../js/slider.js';
+                script.onload = () => {
+                    initSlider();
+                };
+                document.body.appendChild(script);
+            });
+    </script>
+    <section class="about-overview">
+        <div class="overview-container">
+            <div class="overview-text">
+                <h5 class="section-subtitle" data-aos="zoom-in" data-aos-duration="1000">WHO WE ARE</h5>
+                <h2 class="section-title" data-aos="flip-up" data-aos-duration="1000">At a Glance</h2>
+                <p id="overview-description" class="section-description" data-aos-id="typeit-trigger">
+                    Heaven Life is a leading company in construction and interior design, primarily focused on building,
+                    real estate development, and delivering the latest 3D decoration and finishing technologies. We
+                    specialize in design, renovation, and high-quality supplies.
+                </p>
+                <div class="about-us-footer">
+                    <a href="../html/about-us.html" class="explore-button">Explore</a>
+                </div>
+            </div>
+
+            <div class="overview-images">
+                <img src="../assets/pic/over3.webp" class="overview-img img-one"
+                    alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life" />
+                <img src="../assets/pic/over2.webp" class="overview-img img-two"
+                    alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life" />
+            </div>
+        </div>
+    </section>
+    <section class="latest-news">
+        <div class="background-blur"></div>
+        <div class="section">
+            <p class="section-subtitle" data-aos="zoom-in" data-aos-duration="1000">LATEST NEWS</p>
+            <h2 class="section-title" data-aos="flip-up" data-aos-duration="1000">Our Latest Updates</h2>
+        </div>
+        <div class="news-container">
+            <div class="news-cards scrollable-news" id="scrollableNews">
+                <a href="template-of-projects.html?id=1" class="news-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="news-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=8" class="news-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="news-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=3" class="news-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="news-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=4" class="news-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="news-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=11" class="news-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="news-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=10" class="news-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="news-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=7" class="news-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="news-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+            </div>
+
+
+            <div class="news-footer">
+                <a href="../html/latest-updates.html" class="news-btn">Explore Updates</a>
+            </div>
+        </div>
+    </section>
+    <section class="projects">
+        <div class="section">
+            <p class="section-subtitle" data-aos="zoom-in" data-aos-duration="1000">PROJECTS</p>
+            <h2 class="section-title" data-aos="flip-up" data-aos-duration="1000">Our Work</h2>
+        </div>
+        <div class="projects-container">
+
+            <div class="projects-cards scrollable-projects" id="scrollableProjects">
+                <a href="template-of-projects.html?id=1" class="projects-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="project-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=8" class="projects-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="project-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=3" class="projects-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="project-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=4" class="projects-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="project-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=11" class="projects-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="project-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=10" class="projects-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="project-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=7" class="projects-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="project-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=2" class="projects-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="project-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=9" class="projects-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="project-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+                <a href="template-of-projects.html?id=6" class="projects-card" draggable="false">
+
+                    <img id="main-image" src=""
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life"
+                        draggable="false">
+                    <div class="project-info">
+                        <h3></h3>
+                        <p class="date"></p>
+                    </div>
+
+                </a>
+            </div>
+            <div class="projects-footer">
+                <a href="../html/projects.html" class="projects-btn">Explore Projects</a>
+            </div>
+        </div>
+    </section>
+    <!-- ======= What We Do Section ======= -->
+    <section class="what-we-do">
+        <div class="section">
+            <p class="section-subtitle" data-aos="zoom-in" data-aos-duration="1000">WHAT WE DO</p>
+            <h2 class="section-title" data-aos="flip-up" data-aos-duration="1000">Our Services</h2>
+        </div>
+
+        <div class="services-wrapper">
+            <div class="dynamic-background active" id="dynamicBackground"
+                style="background-image: url('../assets/pic/3d.webp');"
+                alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life">
+            </div>
+            <div class="bg-image current" style="background-image: url('../assets/pic/3d.webp');"></div>
+            <div class="bg-image next"></div>
+            <div class="services-list">
+
+                <div class="service-row" data-bg="../assets/pic/3d.webp"
+                    alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life">
+                    <a href="../html/services.html" class="service-item" data-aos="zoom-in" data-aos-duration="1000">
+                        <h3>3D Technology</h3>
+                    </a>
+                    <div class="vertical-divider"></div>
+                </div>
+
+                <div class="service-row">
+                    <a href="../html/services.html" class="service-item" data-aos="zoom-in" data-aos-duration="1000"
+                        data-bg="../assets/pic/construction.webp"
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life">
+                        <h3>Construction Design</h3>
+                    </a>
+                    <div class="vertical-divider"></div>
+                </div>
+
+                <div class="service-row">
+                    <a href="../html/services.html" class="service-item wide-service" data-aos="zoom-in"
+                        data-aos-duration="1000" data-bg="../assets/pic/interiorDesign.webp">
+                        <h3>Interior Design</h3>
+                    </a>
+                    <div class="vertical-divider"></div>
+                </div>
+
+                <div class="service-row">
+                    <a href="../html/services.html" class="service-item" data-aos="zoom-in" data-aos-duration="1000"
+                        data-bg="../assets/pic/sSafety.webp"
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life">
+                        <h3>Safety & Security</h3>
+                    </a>
+                    <div class="vertical-divider"></div>
+                </div>
+
+                <div class="service-row">
+                    <a href="../html/services.html" class="service-item" data-aos="zoom-in" data-aos-duration="1000"
+                        data-bg="../assets/pic/maintenance.webp"
+                        alt="ديكور, تصميم داخلي, شركة ديكور, تصميم منازل, تصميم مكاتب, خدمات, عمارة, بناء, تجديد, صيانة, تكنولوجيا ثلاثية الأبعاد - Heaven Life">
+                        <h3>Maintenance & Renovation</h3>
+                    </a>
+                    <div class="vertical-divider"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+
+
+
+            <div class="social">
+                <a href="https://www.facebook.com/share/1CRtMhZJAm/"><img src="../assets/pic/Facebook.svg.webp"
+                        alt="HeavenLife facebook Heaven Life facebook" /></a>
+                <a href="https://www.instagram.com/heavenlife2539?igsh=MThiMnMwdzdyb3U5ag=="><img
+                        src="../assets/pic/Instagram.webp" alt="HeavenLife instagram Heaven Life instagram, " /></a>
+                <a href="https://wa.me/201000194883" target="_blank"><img src="../assets/pic/Whatsapp.webp"
+                        alt="HeavenLife Whatsapp Heaven Life Whatsapp, " style="width:30px;height:30px;"></a>
+                <a
+                    href="https://www.linkedin.com/in/heaven-life-673292365?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img
+                        src="../assets/pic/LinkedIn.webp" alt="HeavenLife LinkedIn Heaven Life LinkedIn, "
+                        style="width:33px;height:33px;" /></a>
+            </div>
+            <p>© 2025 Crafted by A². All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+
+    <script src="../js/script.js"></script>
+    <script src="../js/cards-animation.js"></script>
+    <script src="../js/scroll.js"></script>
+    <script src="../js/service-section.js"></script>
+    <script src="../js/section-updates-loader.js"></script>
+    <script src="../js/section-projects-loader.js"></script>
+    <script src="../js/updates-loader.js"></script>
+    <script src="../js/template-of-project.js"></script>
+    <script src="../js/project-details.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true
+        });
+
+        document.addEventListener("aos:in:typeit-trigger", function () {
+            new TypeIt("#overview-description", {
+                speed: 50,
+                waitUntilVisible: true,
+                cursor: false
+            }).go();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
+    <script>
+        new TypeIt("#overview-description", {
+            speed: 50,
+            waitUntilVisible: true,
+            cursor: false
+        }).go();
+    </script>
+</body>
+
+</html>
