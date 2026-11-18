@@ -1,0 +1,123 @@
+---
+title: دليل الأنماط (مؤقت) | إسناد التشييد
+robots: noindex, nofollow
+css: pages/styleguide
+scripts: styleguide
+---
+<section class="section">
+  <div class="container">
+    <p class="sg-label">Temporary page. Not linked from the site. Remove before launch.</p>
+    <h1>دليل الأنماط</h1>
+    <p class="muted">Every token, type style and component. Swatch values are read live from tokens.css.</p>
+    <span class="gold-line gold-line--wide"></span>
+  </div>
+</section>
+
+<section class="section section--sand sg-compact">
+  <div class="container">
+    <h2 class="h3">Colors</h2>
+    <p class="sg-label">Green</p>
+    <div class="sg-swatches">
+      {{> sg-swatch token="green-950"}}{{> sg-swatch token="green-900"}}{{> sg-swatch token="green-700"}}{{> sg-swatch token="green-500"}}{{> sg-swatch token="green-400"}}
+    </div>
+    <p class="sg-label">Gold</p>
+    <div class="sg-swatches">
+      {{> sg-swatch token="gold-300"}}{{> sg-swatch token="gold-500"}}{{> sg-swatch token="gold-600"}}{{> sg-swatch token="gold-800"}}
+    </div>
+    <p class="sg-label">Neutrals</p>
+    <div class="sg-swatches">
+      {{> sg-swatch token="ivory"}}{{> sg-swatch token="sand"}}{{> sg-swatch token="line"}}{{> sg-swatch token="stone"}}{{> sg-swatch token="graphite"}}{{> sg-swatch token="ink"}}{{> sg-swatch token="white"}}{{> sg-swatch token="mist"}}
+    </div>
+    <p class="sg-label">Functional</p>
+    <div class="sg-swatches">
+      {{> sg-swatch token="success"}}{{> sg-swatch token="error"}}{{> sg-swatch token="info"}}
+    </div>
+    <p class="sg-label">Gradients</p>
+    <div class="sg-swatches">
+      {{> sg-swatch token="grad-gold"}}{{> sg-swatch token="grad-gold-soft"}}{{> sg-swatch token="grad-green"}}{{> sg-swatch token="grad-hero"}}
+    </div>
+    <div class="sg-swatch"><span class="gold-line gold-line--wide"></span><code>--grad-gold-line</code></div>
+  </div>
+</section>
+
+<section class="section sg-compact">
+  <div class="container">
+    <h2 class="h3">Spacing, radius, shadow</h2>
+    <p class="sg-label">Spacing (4px base)</p>
+    <div class="sg-spacing">
+      <div class="sg-row"><span class="sg-bar" style="inline-size: var(--space-1)"></span><code>--space-1</code></div>
+      <div class="sg-row"><span class="sg-bar" style="inline-size: var(--space-2)"></span><code>--space-2</code></div>
+      <div class="sg-row"><span class="sg-bar" style="inline-size: var(--space-4)"></span><code>--space-4</code></div>
+      <div class="sg-row"><span class="sg-bar" style="inline-size: var(--space-6)"></span><code>--space-6</code></div>
+      <div class="sg-row"><span class="sg-bar" style="inline-size: var(--space-8)"></span><code>--space-8</code></div>
+      <div class="sg-row"><span class="sg-bar" style="inline-size: var(--space-12)"></span><code>--space-12</code></div>
+      <div class="sg-row"><span class="sg-bar" style="inline-size: var(--space-16)"></span><code>--space-16</code></div>
+      <div class="sg-row"><span class="sg-bar" style="inline-size: var(--space-24)"></span><code>--space-24</code></div>
+      <div class="sg-row"><span class="sg-bar" style="inline-size: var(--space-32)"></span><code>--space-32</code></div>
+    </div>
+    <p class="sg-label">Radius</p>
+    <div class="sg-cluster">
+      <div class="sg-shape" style="border-radius: var(--radius-xs)"><code>xs</code></div>
+      <div class="sg-shape" style="border-radius: var(--radius-sm)"><code>sm</code></div>
+      <div class="sg-shape" style="border-radius: var(--radius-md)"><code>md</code></div>
+      <div class="sg-shape" style="border-radius: var(--radius-lg)"><code>lg</code></div>
+      <div class="sg-shape" style="border-radius: var(--radius-xl)"><code>xl</code></div>
+      <div class="sg-shape" style="border-radius: var(--radius-full)"><code>full</code></div>
+    </div>
+    <p class="sg-label">Shadows (green-tinted)</p>
+    <div class="sg-cluster">
+      <div class="sg-shape" style="box-shadow: var(--shadow-sm)"><code>sm</code></div>
+      <div class="sg-shape" style="box-shadow: var(--shadow-md)"><code>md</code></div>
+      <div class="sg-shape" style="box-shadow: var(--shadow-lg)"><code>lg</code></div>
+      <div class="sg-shape" style="box-shadow: var(--shadow-gold)"><code>gold</code></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sand sg-compact">
+  <div class="container">
+    <h2 class="h3">Type scale (fluid)</h2>
+    <div class="sg-type">
+      <div class="h1" style="font-size: var(--text-5xl)">5xl عنوان</div><code>--text-5xl</code>
+      <div class="h1" style="font-size: var(--text-4xl)">4xl عنوان</div><code>--text-4xl</code>
+      <div class="h1" style="font-size: var(--text-3xl)">3xl عنوان</div><code>--text-3xl</code>
+      <div class="h1" style="font-size: var(--text-2xl)">2xl عنوان</div><code>--text-2xl</code>
+      <div class="h1" style="font-size: var(--text-xl)">xl عنوان</div><code>--text-xl</code>
+      <div style="font-size: var(--text-lg)">lg نص أكبر قليلا من الأساسي</div><code>--text-lg</code>
+      <div style="font-size: var(--text-base)">base نص أساسي للقراءة الطويلة</div><code>--text-base</code>
+      <div style="font-size: var(--text-sm)">sm نص صغير</div><code>--text-sm</code>
+      <div style="font-size: var(--text-xs)">xs نص أصغر</div><code>--text-xs</code>
+    </div>
+    <p class="sg-label">Containers, z-index, motion</p>
+    <div class="sg-values">
+      {{> sg-row token="container-sm"}}{{> sg-row token="container-md"}}{{> sg-row token="container-lg"}}{{> sg-row token="container-xl"}}{{> sg-row token="gutter"}}
+      {{> sg-row token="z-sticky"}}{{> sg-row token="z-header"}}{{> sg-row token="z-overlay"}}{{> sg-row token="z-modal"}}{{> sg-row token="z-toast"}}
+      {{> sg-row token="dur-fast"}}{{> sg-row token="dur"}}{{> sg-row token="dur-slow"}}{{> sg-row token="ease"}}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="on-light">
+  <div class="container">
+    <h2>On ivory</h2>
+    {{> sg-components id="light"}}
+  </div>
+</section>
+
+<section class="section section--dark" id="on-dark">
+  <div class="container">
+    <h2>On deep green</h2>
+    {{> sg-components id="dark"}}
+  </div>
+</section>
+
+<section class="section section--gradient">
+  <div class="container">
+    <h2 class="h3">Gradient band with glass card</h2>
+    <div class="card card--glass sg-narrow">
+      <h3 class="h4">اطلب عرض سعر لمشروعك</h3>
+      <p class="muted">نراجع التفاصيل ونرد بخطة وجدول زمني واضحين.</p>
+      <p><a class="btn btn--gold" href="#">اطلب عرض سعر</a></p>
+    </div>
+  </div>
+</section>

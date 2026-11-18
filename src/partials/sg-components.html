@@ -1,0 +1,83 @@
+<div class="sg-block">
+  <p class="sg-label">Headings (Noto Kufi Arabic 700)</p>
+  <div class="h1">نبني .. ونسائد المستقبل</div>
+  <div class="h2">إسناد التشييد للمقاولات</div>
+  <div class="h3">مشاريع سكنية وتجارية في المملكة</div>
+  <div class="h4">التزام بالجدول الزمني</div>
+  <div class="h5">الجودة والسلامة</div>
+  <div class="h6">شفافية في التواصل</div>
+</div>
+
+<div class="sg-block">
+  <p class="sg-label">Body, lead, muted, link (IBM Plex Sans Arabic 400/500, Inter for Latin and digits)</p>
+  <div class="prose">
+    <p class="lead">نؤمن أن المبنى الجيد يبدأ بخطة واضحة وينتهي بتسليم في موعده، وبين الاثنين فريق يعرف ما يفعله.</p>
+    <p>نعمل على مشاريع سكنية وتجارية وتعليمية في الرياض وجدة والدمام، ونلتزم بكود البناء السعودي في كل مرحلة، من الأساسات حتى التسليم. للاستفسار اتصل على <a class="ltr" href="#">+966 50 123 4567</a> أو <a href="#">اطلب عرض سعر</a>.</p>
+    <p class="muted small">نص ثانوي: آخر تحديث 2025، مساحة 1,250 م²، 12 شهرا.</p>
+    <p><strong>نص بوزن متوسط</strong> للتأكيد داخل الفقرة، دون خط عريض مصطنع.</p>
+  </div>
+</div>
+
+<div class="sg-block">
+  <p class="sg-label">Buttons</p>
+  <div class="sg-cluster">
+    <a class="btn" href="#">زر رئيسي</a>
+    <a class="btn btn--gold" href="#">اطلب عرض سعر</a>
+    <a class="btn btn--outline" href="#">اعرف المزيد</a>
+    <a class="btn btn--outline btn--sm" href="#">زر صغير</a>
+    <button class="btn" type="button" disabled>معطل</button>
+  </div>
+</div>
+
+<div class="sg-block">
+  <p class="sg-label">Cards and gold line</p>
+  <span class="gold-line gold-line--wide"></span>
+  <div class="sg-grid">
+    <div class="card">
+      <h3 class="h5">بطاقة فاتحة</h3>
+      <p class="muted">حد رفيع وظل أخضر خفيف.</p>
+    </div>
+    <a class="card" href="#">
+      <h3 class="h5">بطاقة قابلة للنقر</h3>
+      <p class="muted">ترتفع 4 بكسل عند التمرير.</p>
+    </a>
+    <div class="card card--glass">
+      <h3 class="h5">بطاقة زجاجية</h3>
+      <p class="muted">تُستخدم في الأقسام الداكنة فقط.</p>
+    </div>
+  </div>
+  <hr class="divider divider--diamond">
+</div>
+
+<div class="sg-block">
+  <p class="sg-label">Form fields (default, focus it, error)</p>
+  <form class="sg-form" novalidate>
+    <div class="field">
+      <label for="{{id}}-name">الاسم الكامل</label>
+      <input class="input" id="{{id}}-name" name="name" type="text" placeholder="محمد العتيبي" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="{{id}}-phone">رقم الجوال</label>
+      <input class="input" id="{{id}}-phone" name="phone" type="tel" placeholder="+966 5X XXX XXXX" autocomplete="tel" dir="ltr">
+      <span class="field__hint">نرد خلال يوم عمل واحد.</span>
+    </div>
+    <div class="field">
+      <label for="{{id}}-type">نوع المشروع</label>
+      <select class="select" id="{{id}}-type" name="type">
+        <option>فيلا سكنية</option>
+        <option>مبنى تجاري</option>
+        <option>تشطيب وتجهيز</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="{{id}}-email">البريد الإلكتروني</label>
+      <input class="input" id="{{id}}-email" name="email" type="email" value="غير صحيح" aria-invalid="true" aria-describedby="{{id}}-email-err" dir="ltr">
+      <span class="field__error" id="{{id}}-email-err">أدخل بريدا إلكترونيا صحيحا.</span>
+    </div>
+    <div class="field">
+      <label for="{{id}}-msg">تفاصيل المشروع</label>
+      <textarea class="textarea" id="{{id}}-msg" name="message" placeholder="المساحة، الموقع، الموعد المتوقع"></textarea>
+    </div>
+    <button class="btn btn--sm" type="button">إرسال</button>
+  </form>
+</div>
