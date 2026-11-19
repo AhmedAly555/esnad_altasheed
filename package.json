@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "node build/build.mjs",
+    "build:staging": "node build/build-staging.mjs",
     "build:dev": "node build/build.mjs --dev",
     "check": "node build/check.mjs",
     "check:html": "html-validate \"dist/**/*.html\"",
