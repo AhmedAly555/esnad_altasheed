@@ -4,15 +4,24 @@
     "nameEn": "Esnad Al-Tasheed",
     "nameLatin": "ESNAD ALTASHEED",
     "taglineAr": "نبني .. ونسائد المستقبل",
-    "descriptionAr": "إسناد التشييد شركة سعودية للمقاولات العامة والبناء والتشطيب. نعمل بجدول واضح وسلامة صارمة وتواصل شفاف من التوقيع حتى التسليم."
+    "descriptionAr": "إسناد التشييد شركة سعودية للمقاولات العامة والبناء والتشطيب. نعمل بجدول واضح وسلامة صارمة وتواصل شفاف من التوقيع حتى التسليم.",
+    "footerAr": "شركة سعودية للمقاولات العامة والبناء والتشطيب. نلتزم بجدول معلن وسلامة صارمة وتواصل واضح حتى التسليم."
   },
   "web": {
     "url": "https://esnad-demo.sa",
-    "demo": true
+    "demo": true,
+    "themeColor": "#013A1E",
+    "locale": "ar_SA"
   },
   "contact": {
-    "phone": { "display": "+966 50 123 4567", "href": "+966501234567" },
-    "whatsapp": { "display": "+966 50 123 4567", "href": "966501234567" },
+    "phone": {
+      "display": "+966 50 123 4567",
+      "href": "+966501234567"
+    },
+    "whatsapp": {
+      "display": "+966 50 123 4567",
+      "href": "966501234567"
+    },
     "email": "info@esnad-demo.sa",
     "demo": true
   },
@@ -32,8 +41,49 @@
     "demo": true
   },
   "social": [
-    { "id": "linkedin", "label": "لينكدإن", "url": "https://www.linkedin.com/company/esnad-demo", "demo": true },
-    { "id": "instagram", "label": "إنستغرام", "url": "https://www.instagram.com/esnad.demo", "demo": true },
-    { "id": "x", "label": "إكس", "url": "https://x.com/esnad_demo", "demo": true }
+    {
+      "id": "linkedin",
+      "label": "لينكدإن",
+      "url": "https://www.linkedin.com/company/esnad-demo",
+      "demo": true
+    },
+    {
+      "id": "instagram",
+      "label": "إنستغرام",
+      "url": "https://www.instagram.com/esnad.demo",
+      "demo": true
+    },
+    {
+      "id": "x",
+      "label": "إكس",
+      "url": "https://x.com/esnad_demo",
+      "demo": true
+    }
+  ],
+  "stats": [
+    {
+      "value": "12",
+      "unit": "",
+      "label": "مشروعًا منجزًا وقيد التنفيذ",
+      "demo": true
+    },
+    {
+      "value": "3",
+      "unit": "",
+      "label": "سنوات من العمل الميداني",
+      "demo": true
+    },
+    {
+      "value": "42,000",
+      "unit": "م²",
+      "label": "مساحات بناء وتشطيب",
+      "demo": true
+    },
+    {
+      "value": "4",
+      "unit": "",
+      "label": "مدن: الرياض، جدة، الدمام، الخبر",
+      "demo": true
+    }
   ]
 }

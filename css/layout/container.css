@@ -1,0 +1,8 @@
+.container {
+  inline-size: min(100% - var(--gutter) * 2, var(--container-lg));
+  margin-inline: auto;
+}
+
+.container--xl {
+  inline-size: min(100% - var(--gutter) * 2, var(--container-xl));
+}

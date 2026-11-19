@@ -1,0 +1,63 @@
+.hero {
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-block-size: min(100svh, var(--hero-max-h));
+  padding-block: calc(var(--header-h) + var(--space-16)) var(--space-16);
+  overflow: hidden;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+/* Darkens the top edge so the transparent header stays legible over any photo */
+.hero__media::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  block-size: 40%;
+  background: var(--grad-hero-nav);
+  z-index: 1;
+}
+
+.hero__media::after {
+  z-index: 1;
+}
+
+/* Slow parallax: js/behaviors/parallax.js sets --py on scroll, the scale hides the travel */
+.hero__image {
+  transform: translate3d(0, var(--py, 0px), 0) scale(var(--parallax-scale));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__image {
+    will-change: transform;
+  }
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.hero__copy {
+  max-inline-size: 42rem;
+}
+
+.hero__title {
+  margin-block-end: var(--space-6);
+}
+
+.hero__lead {
+  margin-block-end: var(--space-10);
+  color: var(--text-muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}

@@ -1,0 +1,32 @@
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
+  transition:
+    color var(--transition),
+    text-decoration-color var(--transition);
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration-color: var(--link-underline);
+}
+
+.prose a {
+  text-decoration-color: var(--border);
+}
+
+.prose a:hover {
+  text-decoration-color: var(--link-underline);
+}
+
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}

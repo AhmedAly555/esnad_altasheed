@@ -1,0 +1,26 @@
+/* Text link plus an arrow that points the way the text reads.
+   Any hovered container can nudge the arrow by setting --arrow-x. */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--weight-medium);
+}
+
+.arrow {
+  flex: none;
+  transform: translateX(var(--arrow-x, 0));
+  transition: transform var(--transition);
+}
+
+[dir="ltr"] .arrow {
+  scale: -1 1;
+}
+
+.link-arrow:hover {
+  --arrow-x: calc(var(--arrow-shift) * -1);
+}
+
+[dir="ltr"] .link-arrow:hover {
+  --arrow-x: var(--arrow-shift);
+}

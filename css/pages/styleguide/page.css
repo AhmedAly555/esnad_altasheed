@@ -1,0 +1,118 @@
+.sg-compact {
+  padding-block: var(--space-12);
+}
+.sg-narrow {
+  max-inline-size: var(--container-sm);
+}
+
+.sg-label {
+  margin-block: var(--space-8) var(--space-3);
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.sg-block {
+  margin-block-start: var(--space-10);
+}
+.sg-block > .h1,
+.sg-block > .h2,
+.sg-block > .h3,
+.sg-block > .h4,
+.sg-block > .h5,
+.sg-block > .h6 {
+  margin-block-end: var(--space-2);
+}
+
+code {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: var(--text-xs);
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.sg-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
+  gap: var(--space-4);
+}
+
+.sg-swatch {
+  display: grid;
+  gap: var(--space-1);
+  align-content: start;
+}
+
+.sg-swatch__chip {
+  display: block;
+  block-size: var(--space-16);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.sg-value {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: start;
+}
+
+.sg-spacing,
+.sg-values {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.sg-values {
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}
+
+.sg-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.sg-bar {
+  display: block;
+  block-size: var(--space-3);
+  background: var(--gold-500);
+}
+
+.sg-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.sg-shape {
+  display: grid;
+  place-items: center;
+  inline-size: var(--space-24);
+  block-size: var(--space-24);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.sg-type {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-2) var(--space-6);
+  align-items: baseline;
+}
+
+.sg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-6);
+  margin-block: var(--space-6);
+}
+
+.sg-form {
+  display: grid;
+  gap: var(--space-5);
+  max-inline-size: var(--container-sm);
+}

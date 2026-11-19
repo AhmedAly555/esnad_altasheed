@@ -1,0 +1,29 @@
+.card {
+  padding: var(--space-8);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.card--interactive:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(calc(var(--lift) * -1));
+}
+
+.card--glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .card--glass {
+    background: var(--green-900);
+  }
+}

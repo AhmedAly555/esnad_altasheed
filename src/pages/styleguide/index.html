@@ -2,7 +2,7 @@
 title: دليل الأنماط (مؤقت) | إسناد التشييد
 robots: noindex, nofollow
 css: pages/styleguide
-scripts: styleguide
+scripts: pages/styleguide
 ---
 <section class="section">
   <div class="container">
@@ -92,7 +92,19 @@ scripts: styleguide
     <div class="sg-values">
       {{> sg-row token="container-sm"}}{{> sg-row token="container-md"}}{{> sg-row token="container-lg"}}{{> sg-row token="container-xl"}}{{> sg-row token="gutter"}}
       {{> sg-row token="z-sticky"}}{{> sg-row token="z-header"}}{{> sg-row token="z-overlay"}}{{> sg-row token="z-modal"}}{{> sg-row token="z-toast"}}
-      {{> sg-row token="dur-fast"}}{{> sg-row token="dur"}}{{> sg-row token="dur-slow"}}{{> sg-row token="ease"}}
+      {{> sg-row token="dur"}}{{> sg-row token="dur-reveal"}}{{> sg-row token="dur-draw"}}{{> sg-row token="dur-zoom"}}{{> sg-row token="stagger"}}{{> sg-row token="ease"}}
+    </div>
+  </div>
+</section>
+
+<section class="section section--sand" id="fonts">
+  <div class="container container--xl">
+    <h2 class="h3">Font comparison (not applied to the site)</h2>
+    <p class="muted">Real hero headline, an H2 and body copy in three setups. Weights loaded: 700 headings, 400 body.</p>
+    <div class="sg-fonts">
+      {{> sg-font variant="a" label="A. Noto Kufi Arabic + IBM Plex Sans Arabic (current)"}}
+      {{> sg-font variant="b" label="B. Cairo only"}}
+      {{> sg-font variant="c" label="C. Cairo headings + IBM Plex Sans Arabic body"}}
     </div>
   </div>
 </section>

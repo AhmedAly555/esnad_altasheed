@@ -1,0 +1,46 @@
+.about__grid {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.about__text {
+  display: grid;
+  gap: var(--space-5);
+  align-content: start;
+}
+
+.about__paragraph {
+  max-inline-size: var(--measure);
+}
+
+.about__points {
+  display: grid;
+  margin-block: var(--space-2);
+}
+
+.about__point {
+  padding-block: var(--space-4);
+  border-block-start: 1px solid var(--line);
+  color: var(--text-strong);
+  font-weight: var(--weight-medium);
+}
+
+.about__point:last-child {
+  border-block-end: 1px solid var(--line);
+}
+
+.about__figure {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+}
+
+@media (min-width: 64em) {
+  .about__grid {
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-24);
+  }
+
+  .about__figure {
+    margin-block-start: var(--space-24);
+  }
+}

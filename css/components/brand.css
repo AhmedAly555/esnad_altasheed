@@ -1,0 +1,38 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-inline-size: 7.5rem;
+  color: var(--ivory);
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: var(--ivory);
+}
+
+.brand__mark {
+  flex: none;
+  inline-size: var(--brand-mark, var(--mark-size));
+  block-size: var(--brand-mark, var(--mark-size));
+  transition:
+    inline-size var(--dur-header) var(--ease),
+    block-size var(--dur-header) var(--ease);
+}
+
+.brand__text {
+  display: grid;
+  line-height: 1.2;
+}
+
+.brand__name {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-lg);
+}
+
+.brand__latin {
+  color: var(--gold-500);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+}

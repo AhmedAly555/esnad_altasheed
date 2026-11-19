@@ -1,8 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { CONTENT } from "./lib/paths.mjs";
 
-const CONTENT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "content");
 const FLAGS = ["demo", "imageDemo"];
 
 function scan(node, trail, hits) {
@@ -21,12 +20,7 @@ function scan(node, trail, hits) {
   }
 }
 
-let files = [];
-try {
-  files = (await fs.readdir(CONTENT)).filter((f) => f.endsWith(".json"));
-} catch {
-  /* no content folder yet */
-}
+const files = (await fs.readdir(CONTENT)).filter((f) => f.endsWith(".json"));
 
 let total = 0;
 for (const file of files) {
@@ -40,7 +34,9 @@ for (const file of files) {
 }
 
 if (total) {
-  console.error(`\ncheck:demo FAILED: ${total} demo-flagged item(s) remain. Replace them with real data before production.`);
+  console.error(
+    `\ncheck:demo FAILED: ${total} demo-flagged item(s) remain. Replace them with real data before production.`,
+  );
   process.exit(1);
 }
 console.log(`check:demo passed: no demo-flagged data in ${files.length} content file(s).`);

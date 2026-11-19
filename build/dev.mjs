@@ -1,11 +1,9 @@
 import http from "node:http";
 import { promises as fs, watch } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { build } from "./build.mjs";
+import { DIST, ROOT } from "./lib/paths.mjs";
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const DIST = path.join(ROOT, "dist");
 const PORT = Number(process.env.PORT) || 3000;
 
 const TYPES = {
@@ -29,7 +27,9 @@ function rebuild() {
   building = building.then(async () => {
     try {
       const { pages, problems } = await build();
-      console.log(`[build] ${pages.length} page(s)${problems.length ? `, ${problems.length} problem(s):\n- ${problems.join("\n- ")}` : ""}`);
+      console.log(
+        `[build] ${pages.length} page(s)${problems.length ? `, ${problems.length} problem(s):\n- ${problems.join("\n- ")}` : ""}`,
+      );
     } catch (e) {
       console.error(`[build] ${e.message}`);
     }
@@ -64,7 +64,10 @@ const server = http.createServer(async (req, res) => {
       file = path.join(file, "index.html");
     }
     const body = await fs.readFile(file);
-    res.writeHead(200, { "Content-Type": TYPES[path.extname(file)] || "application/octet-stream", "Cache-Control": "no-store" });
+    res.writeHead(200, {
+      "Content-Type": TYPES[path.extname(file)] || "application/octet-stream",
+      "Cache-Control": "no-store",
+    });
     res.end(body);
   } catch {
     console.log(`[404] ${url} (looked for ${path.relative(ROOT, file)})`);
@@ -73,7 +76,11 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.on("error", (e) => {
-  console.error(e.code === "EADDRINUSE" ? `Port ${PORT} is already in use. Stop the other server or run: PORT=3001 npm run dev` : e.message);
+  console.error(
+    e.code === "EADDRINUSE"
+      ? `Port ${PORT} is already in use. Stop the other server or run: PORT=3001 npm run dev`
+      : e.message,
+  );
   process.exit(1);
 });
 

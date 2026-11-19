@@ -1,0 +1,22 @@
+/* Title group, short lead and a link, shared by every section that lists items */
+.section-head {
+  display: grid;
+  gap: var(--space-4);
+  align-items: end;
+  margin-block-end: var(--space-12);
+}
+
+.section-head__rule {
+  margin-block-start: var(--space-4);
+}
+
+.section-head__lead {
+  max-inline-size: 40ch;
+}
+
+@media (min-width: 48em) {
+  .section-head {
+    grid-template-columns: 1fr minmax(0, 24rem) auto;
+    gap: var(--space-8);
+  }
+}

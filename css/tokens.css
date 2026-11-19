@@ -1,31 +1,31 @@
 :root {
   /* Green */
-  --green-950: #04180C;
-  --green-900: #00240F;
-  --green-700: #013A1E;
-  --green-500: #0A5A2D;
-  --green-400: #1F7A44;
+  --green-950: #04180c;
+  --green-900: #00240f;
+  --green-700: #013a1e;
+  --green-500: #0a5a2d;
+  --green-400: #1f7a44;
 
   /* Gold */
-  --gold-300: #F0C03C;
-  --gold-500: #D89C24;
-  --gold-600: #B47818;
-  --gold-800: #8A5E0C;
+  --gold-300: #f0c03c;
+  --gold-500: #d89c24;
+  --gold-600: #b47818;
+  --gold-800: #8a5e0c;
 
   /* Neutrals */
-  --ivory: #FAF7F0;
-  --sand: #F1EBDD;
-  --line: #E3DCCB;
-  --stone: #6B7168;
-  --graphite: #2B332E;
-  --ink: #0B1410;
-  --white: #FFFFFF;
-  --mist: #C9D6CD;
+  --ivory: #faf7f0;
+  --sand: #f1ebdd;
+  --line: #e3dccb;
+  --stone: #6b7168;
+  --graphite: #2b332e;
+  --ink: #0b1410;
+  --white: #ffffff;
+  --mist: #c9d6cd;
 
   /* Functional */
-  --success: #1F7A44;
-  --error: #B3261E;
-  --info: #2F5D7C;
+  --success: #1f7a44;
+  --error: #b3261e;
+  --info: #2f5d7c;
 
   /* Semantic (use these in components, not raw colors) */
   --bg: var(--ivory);
@@ -50,6 +50,12 @@
   --link-underline: var(--gold-500);
   --field-bg: var(--white);
   --field-border: var(--line);
+  --field-label: var(--graphite);
+  --field-error: var(--error);
+  --outline-edge: var(--green-700);
+  --outline-fg: var(--green-700);
+  --outline-hover-bg: var(--green-700);
+  --outline-hover-fg: var(--ivory);
 
   /* Glass (dark sections only) */
   --glass-bg: rgba(255, 255, 255, 0.06);
@@ -63,22 +69,23 @@
   --shadow-gold: 0 8px 30px rgba(216, 156, 36, 0.28);
 
   /* Gradients (gold is always 3+ stop brushed metal) */
-  --grad-gold: linear-gradient(135deg, #8A5E0C 0%, #D89C24 38%, #F0C03C 55%, #B47818 100%);
-  --grad-gold-soft: linear-gradient(135deg, #D89C24 0%, #F0C03C 100%);
-  --grad-green: linear-gradient(160deg, #0A5A2D 0%, #013A1E 45%, #00240F 100%);
-  --grad-hero: linear-gradient(180deg, rgba(4, 24, 12, .55) 0%, rgba(0, 36, 15, .92) 100%);
-  --grad-gold-line: linear-gradient(90deg, transparent, #D89C24 20%, #F0C03C 50%, #D89C24 80%, transparent);
+  --grad-gold: linear-gradient(135deg, #8a5e0c 0%, #d89c24 38%, #f0c03c 55%, #b47818 100%);
+  --grad-gold-soft: linear-gradient(135deg, #d89c24 0%, #f0c03c 100%);
+  --grad-green: linear-gradient(160deg, #0a5a2d 0%, #013a1e 45%, #00240f 100%);
+  --grad-hero: linear-gradient(180deg, rgba(4, 24, 12, 0.55) 0%, rgba(0, 36, 15, 0.92) 100%);
+  --grad-hero-nav: linear-gradient(180deg, rgba(4, 24, 12, 0.75) 0%, rgba(4, 24, 12, 0) 100%);
+  --sheen: linear-gradient(105deg, transparent 0%, rgba(250, 247, 240, 0.38) 50%, transparent 100%);
+  --grad-gold-line: linear-gradient(90deg, transparent, #d89c24 20%, #f0c03c 50%, #d89c24 80%, transparent);
 
   /* Overlays, focus, selection */
-  --photo-tint: rgba(0, 36, 15, .18);
-  --focus-ring: rgba(216, 156, 36, .55);
+  --photo-tint: rgba(0, 36, 15, 0.18);
+  --focus-ring: rgba(216, 156, 36, 0.55);
   --focus-ring-width: 3px;
   --focus-ring-offset: 3px;
   --selection-bg: var(--gold-300);
   --selection-text: var(--green-950);
 
   /* Spacing scale (4px base) */
-  --space-0: 0;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -116,22 +123,37 @@
   --text-4xl: clamp(2.25rem, 1.65rem + 3vw, 3.75rem);
   --text-5xl: clamp(2.625rem, 1.7rem + 4.6vw, 4.75rem);
 
+  --tracking-label: 0.04em;
+  --tracking-caps: 0.08em;
+  --tracking-wide: 0.12em;
+
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-bold: 700;
 
   --leading-body: 1.8;
-  --leading-heading: 1.35;
-  --leading-tight: 1.15;
+  --leading-display: 1.4;
+  --leading-heading: 1.4;
+  --leading-tight: 1.15; /* numerals and single-line figures only, never Arabic headlines */
 
   /* Containers */
   --container-sm: 40rem;
-  --container-md: 56rem;
   --container-lg: 72rem;
   --container-xl: 80rem;
   --gutter: clamp(var(--space-5), 4vw, var(--space-10));
   --measure: 62ch;
   --header-h: 4.5rem;
+  --header-h-compact: 4rem;
+  --tap-target: 2.75rem;
+  --mark-size: 2.75rem;
+  --mark-size-compact: 2.4rem;
+  --hero-max-h: 58rem;
+  --control-h: 3rem;
+  --control-h-sm: 2.5rem;
+  --border-w-strong: 1.5px;
+  --diamond-size: 0.5rem;
+  --marker-size: 0.625rem;
+  --lift: 4px;
 
   /* Z-index scale */
   --z-base: 0;
@@ -142,10 +164,39 @@
   --z-modal: 400;
   --z-toast: 500;
 
-  /* Transitions: one easing curve, all under 400ms */
-  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --dur-fast: 150ms;
+  /* Motion: one easing curve everywhere. Reveals 700-900ms, hover feedback fast, nothing loops */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --dur: 250ms;
-  --dur-slow: 400ms;
+  --dur-header: 450ms;
+  --dur-reveal: 800ms;
+  --dur-draw: 900ms;
+  --dur-zoom: 1200ms;
+  --dur-sheen: 900ms;
+  --dur-count: 1600ms;
+  --stagger: 90ms;
+  --reveal-distance: 1.25rem;
+  --zoom-hover: 1.04;
+  --arrow-shift: 6px;
+  --parallax-ratio: 0.12;
+  --parallax-scale: 1.14;
   --transition: var(--dur) var(--ease);
+}
+
+/* Reduced motion is handled here once: every duration, distance and scale below collapses,
+   so components never need their own reduced-motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur: 0.01ms;
+    --dur-header: 0.01ms;
+    --dur-reveal: 0.01ms;
+    --dur-draw: 0.01ms;
+    --dur-zoom: 0.01ms;
+    --dur-sheen: 0.01ms;
+    --stagger: 0ms;
+    --reveal-distance: 0px;
+    --zoom-hover: 1;
+    --arrow-shift: 0px;
+    --lift: 0px;
+    --parallax-scale: 1;
+  }
 }

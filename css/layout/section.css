@@ -1,0 +1,43 @@
+.section {
+  padding-block: var(--section-space);
+  background: var(--bg);
+}
+
+.section--sand {
+  background: var(--bg-alt);
+}
+
+.section--forest {
+  background: var(--primary);
+}
+
+.section--dark {
+  background: var(--bg-dark);
+}
+
+.section--gradient {
+  background: var(--grad-green);
+}
+
+/* Dark scope: re-points the semantic roles, so components never need dark variants */
+.on-dark,
+.section--forest,
+.section--dark,
+.section--gradient {
+  --text: var(--text-on-dark);
+  --text-strong: var(--text-on-dark);
+  --text-muted: var(--text-muted-on-dark);
+  --heading: var(--ivory);
+  --link: var(--gold-300);
+  --link-hover: var(--ivory);
+  --link-underline: var(--gold-300);
+  --accent-text: var(--gold-500);
+  --border: var(--glass-border);
+  --field-label: var(--text-on-dark);
+  --field-error: var(--ivory);
+  --outline-edge: var(--gold-500);
+  --outline-fg: var(--ivory);
+  --outline-hover-bg: var(--gold-500);
+  --outline-hover-fg: var(--green-950);
+  color: var(--text);
+}
