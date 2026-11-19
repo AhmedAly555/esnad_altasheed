@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Esnad Al-Tasheed corporate website: static output, zero runtime dependencies",
+  "description": "Esnad Al-Tasheed corporate website: static output, no runtime dependencies",
   "engines": {
     "node": ">=22"
   },
@@ -11,12 +11,18 @@
     "build": "node build/build.mjs",
     "build:dev": "node build/build.mjs --dev",
     "check": "node build/check.mjs",
-    "dev": "node build/dev.mjs",
+    "check:html": "html-validate \"dist/**/*.html\"",
     "check:demo": "node build/check-demo.mjs",
+    "dev": "node build/dev.mjs",
+    "build:brand": "node build/brand-assets.mjs",
+    "optimize:images": "node build/optimize-images.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "prettier": "^3.3.3"
+    "esbuild": "^0.28.2",
+    "html-validate": "^10.9.0",
+    "prettier": "^3.3.3",
+    "sharp": "^0.35.5"
   }
 }

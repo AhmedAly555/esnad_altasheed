@@ -1,7 +1,7 @@
 <li class="project-card" data-reveal>
   <a class="project-card__link" href="{{root}}projects/{{item.slug}}/">
     <span class="project-card__frame photo photo--cover" data-image-demo="{{item.imageDemo}}">
-      <img class="photo__img project-card__image" src="{{root}}{{item.mainImage}}" width="{{item.imageWidth}}" height="{{item.imageHeight}}" alt="{{item.imageAlt}}" loading="lazy" decoding="async">
+      <img class="photo__img project-card__image" src="{{root}}{{item.mainImage}}" width="{{item.imageWidth}}" height="{{item.imageHeight}}" alt="{{item.imageAlt}}" sizes="(min-width: 80em) 700px, (min-width: 48em) 58vw, 100vw" loading="{{item.loading}}" fetchpriority="{{item.priority}}" decoding="async">
     </span>
     <span class="project-card__meta">{{item.sector}} · <span class="ltr">{{item.year}}</span></span>
     <span class="project-card__title">{{item.title}}</span>

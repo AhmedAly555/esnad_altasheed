@@ -5,6 +5,9 @@ import { readText } from "./fs-utils.mjs";
 
 const keyFor = (file) => (file === "site.config.json" ? "site" : path.basename(file, ".json"));
 
+// Cards in the first screenful of the projects page load at once; everything below the fold waits
+const ABOVE_THE_FOLD_CARDS = 3;
+
 const addressLine = ({ lineAr, cityAr }) => `${lineAr}، ${cityAr}`;
 
 /** Values derived from content, so no URL-encoded Arabic or joining punctuation is ever typed into a template. */
@@ -20,7 +23,14 @@ export async function loadContent() {
   for (const file of (await fs.readdir(CONTENT)).filter((name) => name.endsWith(".json"))) {
     content[keyFor(file)] = JSON.parse(await readText(path.join(CONTENT, file)));
   }
-  content.featuredProjects = content.projects.items.filter((project) => project.featured);
+  content.projects.items.forEach((project, index) => {
+    project.loading = index < ABOVE_THE_FOLD_CARDS ? "eager" : "lazy";
+    project.priority = index === 0 ? "high" : "auto";
+  });
+  // The home teaser sits below the hero, so its cards are always lazy
+  content.featuredProjects = content.projects.items
+    .filter((project) => project.featured)
+    .map((project) => ({ ...project, loading: "lazy", priority: "auto" }));
   derive(content);
   return content;
 }

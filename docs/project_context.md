@@ -1,6 +1,6 @@
 # Esnad Al-Tasheed (إسناد التشييد) — Project Context
 
-> Current state of the repository after Tasks 1 to 5. Source of truth for colors and tokens is `docs/Esnad-color-palette.md`; engineering and design rules are in `CLAUDE.md`; the task list is `docs/TASKS.md`.
+> Current state of the repository after Tasks 1 to 7. Source of truth for colors and tokens is `docs/Esnad-color-palette.md`; engineering and design rules are in `CLAUDE.md`; the task list is `docs/TASKS.md`.
 > Last updated: 2026-11-19
 
 ## 1. What it is
@@ -11,15 +11,15 @@ The repo started as a copy of an Egyptian project (Heaven Life). Its code was re
 
 - Arabic is primary: `lang="ar" dir="rtl"`. English comes later as an `/en/` mirror (`dir="ltr"`, Task 8).
 - The company has no real projects, clients or certificates yet, so all data is **realistic demo data** flagged `"demo": true` (images: `"imageDemo": true`). The owner replaces it later with real data, a data-only job.
-- Branch: `esnad-redesign` (main branch: `main`). Task 6 (polish pass) is done and awaiting approval, not committed.
+- Branch: `esnad-redesign` (main branch: `main`). Tasks 6 (polish) and 7 (SEO, performance, accessibility, file://) are done and awaiting approval, not committed.
 
 ## 2. Tech stack
 
-Static site, no framework, **zero runtime dependencies**.
+Static site, no framework, **zero runtime dependencies** (the shipped site is plain HTML, CSS and one classic script per entry).
 
-- Node >= 22 build scripts in `build/` (zero dependencies). Only dev dependency: Prettier.
-- Vanilla JS as ES modules, no globals, no inline handlers.
-- CSS bundled by the build from `css/`; design tokens in `css/tokens.css`.
+- Node >= 22 build scripts in `build/`. Dev dependencies only: `prettier`, `esbuild` (production JS bundling, CSS minify), `sharp` (images, icons), `html-validate` (`check:html`).
+- Vanilla JS as ES modules in source, no globals, no inline handlers. Production serves them bundled as classic `defer` scripts, so the built site also opens by double-click from `file://`.
+- CSS bundled and minified by the build from `css/` (fonts are bundled into `site.css`); design tokens in `css/tokens.css`.
 - Icons: small inline SVG (no Font Awesome, AOS or TypeIt).
 - Fonts (self-hosted `.woff2`, `font-display: swap`): Noto Kufi Arabic 700 (headings), IBM Plex Sans Arabic 400/500 (body), Inter 400/500 (Latin and digits). Applied only through `--font-heading` and `--font-body` in tokens. (Decision: option A; Cairo was removed.)
 - Prettier config: 120 columns, double quotes, trailing commas, LF. `.editorconfig` present.
@@ -28,11 +28,14 @@ Static site, no framework, **zero runtime dependencies**.
 
 | Command | What it does |
 |---|---|
-| `npm run build` | **Production** build: cleans `dist/`, renders every page except the dev-only ones, bundles CSS, copies `js/` and `assets/`, then validates the output |
+| `npm run build` | **Production** build: renders every page except the dev-only ones (plus sitemap.xml, robots.txt), bundles and minifies CSS and JS, copies `assets/`, then validates the output |
 | `npm run check` | Runs the dev and production builds in turn (production last) and fails on any stale template key or validation problem. Run it before every commit |
 | `npm run build:dev` | Same plus the dev-only pages (the styleguide) |
 | `npm run dev` | Dev build plus watch plus static server (`PORT`, default 3000) |
 | `npm run check:demo` | Lists every record, image and config value still flagged demo; **exits 1 while any remain**. Also exits 1 if `dist/` holds dev-only output (a dev build). Must pass before any production deploy |
+| `npm run check:html` | `html-validate` over `dist/**/*.html` (config: `.htmlvalidate.json`) |
+| `npm run build:brand` | Regenerates `assets/brand/` (OG image, favicons) from the logo; needs Chrome or Edge (`BROWSER_PATH`) |
+| `npm run optimize:images` | Caps photos at 1600 px, writes `-800` copies, syncs width/height in `content/*.json` |
 | `npm run format` / `format:check` | Prettier write / check |
 
 ## 3. Directory structure
@@ -48,19 +51,20 @@ haven-life/
 │   └── pages/                # one file per page, composed from partials
 ├── css/
 │   ├── tokens.css            # every color, space, radius, shadow, type, motion token
-│   ├── fonts.css             # @font-face
+│   ├── fonts.css             # @font-face (bundled first into site.css)
 │   ├── base/                 # reset, typography, links, utilities
 │   ├── layout/               # container, section
 │   ├── components/           # one file per component (BEM)
 │   └── pages/<page>/*.css    # page-only blocks; bundled to dist/css/pages/<page>.css
 ├── js/
-│   ├── main.js               # loaded on every page
+│   ├── main.js               # entry loaded on every page
 │   ├── lib/                  # dom, env, ease, observe, scroll, validation
 │   ├── behaviors/            # one module per behavior, each exports init()
 │   └── pages/                # page entry scripts: styleguide, project, contact
-├── build/                    # build.mjs, dev.mjs, check-demo.mjs, lib/ (one module per step)
-├── assets/                   # fonts/, logo/, favicon.svg, pic/ (legacy), id-1..id-13/ (legacy project photos)
+├── build/                    # build.mjs, dev.mjs, check*.mjs, brand-assets.mjs, optimize-images.mjs, lib/ (one module per step)
+├── assets/                   # fonts/, logo/ (placeholder mark), brand/ (generated OG image + favicons), pic/ and id-1..id-13/ (legacy photos, each with a -800 small copy)
 ├── source/                   # originals that are not shipped (logo PNGs); see source/README.md
+├── .htmlvalidate.json        # html-validate rules for check:html
 ├── legacy/                   # old Heaven Life project, reference only, delete before launch
 └── dist/                     # build output (gitignored)
 ```
@@ -69,13 +73,18 @@ haven-life/
 
 | Module | Role |
 |---|---|
-| `build.mjs` | Orchestrates: load content, render pages, bundle CSS, copy static dirs, validate. Builds into `.dist-staging/` and swaps it into `dist/` only on success, so a failed build leaves the last good `dist/` |
+| `build.mjs` | Orchestrates: load content, render pages (plus sitemap.xml and robots.txt), bundle CSS and JS, copy assets, validate. `ESNAD_OUT=<folder>` builds somewhere else so a check run cannot collide with a running `npm run dev`. Builds into `.dist-staging/` and swaps it into `dist/` only on success, so a failed build leaves the last good `dist/` |
 | `lib/content.mjs` | Loads every `content/*.json` into a template key named after the file (`site.config.json` becomes `site`). Adds `featuredProjects` and derived values: `site.address.fullAr`, `contact.whatsappUrl` (wa.me with the prefilled Arabic message), `contact.mapUrl` |
 | `lib/pages.mjs` | Renders `src/pages/**/*.html` through `base.html`. Supports **collection pages** (see below). Computes `root` (relative path prefix), canonical `path`, `nav` with `aria-current`, per-page CSS and script tags |
 | `lib/template.mjs` | Tiny template engine (below) |
-| `lib/css-bundle.mjs` | `dist/css/site.css` = tokens, base, layout, components (alphabetical); `dist/css/fonts.css`; one `dist/css/pages/<name>.css` per page folder |
+| `lib/css-bundle.mjs` | `dist/css/site.css` = fonts, tokens, base, layout, components (alphabetical); one `dist/css/pages/<name>.css` per page folder |
+| `lib/js-bundle.mjs` | Dev: copies the ES modules. Production: esbuild bundles `main.js` and each `pages/*.js` into one minified **classic** script at the same path, so pages use `<script defer>` and run from `file://` |
+| `lib/seo.mjs` | JSON-LD (one entity typed Organization + GeneralContractor, from `site.config.json`), `sitemap.xml` (indexable pages only), `robots.txt` |
+| `lib/image-variants.mjs` | Adds `srcset` (800 w + full size) to every `<img>` that declares `sizes` and has a `-800.webp` copy; one place owns the naming |
 | `lib/dev-only.mjs` | The one list of dev-only pages (`DEV_ONLY_PAGES`, currently `styleguide`). Pages, CSS bundling and the static copy all skip them unless the build is a dev build; `check:demo` uses the same list to detect leftovers |
-| `lib/validate.mjs` | Fails the build on: duplicate ids, not exactly one `<h1>`, missing local files, **missing `#anchor` targets**, `<img>` without `alt`, missing CSS `url()` files |
+| `lib/validate.mjs` | Fails the build on: duplicate ids, not exactly one `<h1>`, missing local files, **missing `#anchor` targets**, `<img>` without `alt`, missing CSS `url()` files, and per page: missing or **duplicate** title / description, relative canonical, missing `og:image` |
+| `brand-assets.mjs` | `npm run build:brand`: renders the OG card (1200x630, via headless Chrome/Edge, set `BROWSER_PATH` if needed) and the favicon set from the logo into `assets/brand/` |
+| `optimize-images.mjs` | `npm run optimize:images`: caps photos at 1600 px, writes the `-800` copies, rewrites width/height in `content/*.json`. Idempotent |
 | `check-demo.mjs` | Demo-flag report (see section 2) |
 | `dev.mjs` | Dev server with rebuild on change |
 
@@ -97,7 +106,7 @@ All demo records carry `"demo": true`. Nothing in this folder is hard-coded in H
 
 | File | Shape and use |
 |---|---|
-| `site.config.json` | `company` (names, tagline, descriptions), `web` (url, themeColor, locale), `contact` (phone, whatsapp, email), `address`, `legal` (CR, VAT), `hours`, `social[]`, `stats[]` (home strip), `form.endpoint` (contact form action, fake Formspree URL, demo) |
+| `site.config.json` | `company` (names, tagline, descriptions), `web` (url, themeColor, locale, ogImage, ogImageAlt), `brand` (placeholder-logo flag), `contact` (phone, whatsapp, email), `address`, `legal` (CR, VAT), `hours`, `social[]`, `stats[]` (home strip), `form.endpoint` (contact form action, fake Formspree URL, demo) |
 | `ui.json` | Shared UI strings: skip link, header, footer, `contactLabels`, the shared `cta` (`title`, `text`, `label`, `href`, `phoneLabel`; home uses it as is), `lightbox` labels |
 | `nav.json` | Main navigation: key, label, href |
 | `home.json` | `meta` plus hero, about, services, projects, process, stats sections |
@@ -125,7 +134,7 @@ Home project cards link to `projects/<slug>/`; home service rows link to `servic
 
 ### Partials (`src/partials/`)
 
-`head`, `header`, `footer`, `brand`, `arrow`, `page-head` (args: eyebrow, title, lead, `tone` = dark | sand, `layout` = split | wide | compact | bridge), `cta-band` (args: `cta` = an object with title, text, label; `variant` = card | start), `project-card`, `process-section` (arg `source`), `service-section`, `lightbox`, `contact-form`, plus styleguide helpers `sg-components`, `sg-row`, `sg-swatch`.
+`head` (SEO, Open Graph, icons, font preload, JSON-LD), `header`, `footer`, `brand`, `arrow`, `page-head` (args: eyebrow, title, lead, `tone` = dark | sand, `layout` = split | wide | compact | bridge), `cta-band` (args: `cta` = an object with title, text, label; `variant` = card | start), `project-card`, `process-section` (arg `source`), `service-section`, `lightbox`, `contact-form`, plus styleguide helpers `sg-components`, `sg-row`, `sg-swatch`.
 
 ## 7. CSS architecture
 
@@ -143,24 +152,25 @@ Home project cards link to `projects/<slug>/`; home service rows link to `servic
 
 ## 8. JavaScript
 
-`main.js` (every page) initialises: menu, header state, parallax, process line, then after fonts are ready: headline line split, count-up, reveal.
+`main.js` (every page) initialises: file-links, menu, header state, parallax, process line. Headlines are split once their own heading font has loaded (not all fonts), then reveal starts; count-up waits for all fonts because it measures text width. In production each entry (`main.js`, `pages/*.js`) is bundled to a classic script at the same path.
 
 | Module | Role |
 |---|---|
+| `behaviors/file-links.js` | On `file://` only: appends `index.html` to folder links (`about/`), which would otherwise show a directory listing |
 | `behaviors/menu.js` | Mobile menu: aria-expanded, focus trap, Escape, inert page behind |
 | `behaviors/header-state.js` | Adds scrolled state via a sentinel |
 | `behaviors/reveal.js`, `headline-lines.js`, `count-up.js`, `parallax.js`, `process-line.js` | Scroll-driven motion, all off under reduced motion |
-| `behaviors/lightbox.js` | Gallery viewer on native `<dialog>`: arrow keys (direction-aware), Escape, focus return, scroll lock. Falls back to plain links |
+| `behaviors/lightbox.js` | Gallery viewer on native `<dialog>` (the `<img>` is created in JS): arrow keys (direction-aware), Escape, focus return, scroll lock. Falls back to plain links |
 | `behaviors/contact-form.js` | Inline validation with per-field messages (`aria-describedby`), posts to the form action with `fetch`, success and failure panels, `?type=` preselect |
 | `lib/validation.js` | `fieldProblem()`, Saudi mobile rule, Arabic-Indic digit normalisation |
-| `lib/dom.js`, `env.js`, `ease.js`, `observe.js`, `scroll.js` | Shared helpers |
+| `lib/dom.js`, `env.js` (incl. `whenFontLoaded`), `ease.js`, `observe.js`, `scroll.js` | Shared helpers |
 | `pages/project.js`, `pages/contact.js`, `pages/styleguide.js` | Page entries loaded through front matter `scripts:` |
 
 ## 9. Assets
 
-- `assets/logo/logo-badge.webp` (192 px square badge with dark green background, 17 KB): used in header and footer for now. **To swap in the reversed SVG later, change the `src` on line 2 of `src/partials/brand.html`.**
-- `assets/logo/logo-on-light.webp` (640 px wide, with alpha): green logo for light backgrounds; not used yet. The source art has a faint red and gold fringe around the edges that will show on ivory; ask for a clean export before using it.
-- The original PNGs (about 1 MB each) live in `source/logo/` and are never copied to `dist/`.
+- `assets/logo/logo-reversed.placeholder.svg`: the mark-only placeholder, used in header and footer beside live Arabic and Latin text. **The final-logo swap is line 2 of `src/partials/brand.html`** (the `src` of the `<img>`). Then run `npm run build:brand` to regenerate the OG image and favicons, and remove `brand` from `site.config.json` so `check:demo` passes.
+- `assets/brand/`: generated by `npm run build:brand` (og-image.png, favicon.svg, favicon-32.png, apple-touch-icon.png). Commit the output.
+- The badge and on-light PNGs live only in `source/logo/` and are never copied to `dist/`.
 - `assets/id-1..id-13/` and `assets/pic/`: legacy Heaven Life photos kept as placeholders (flagged `imageDemo`); replace before launch.
 - `assets/fonts/`: Noto Kufi Arabic (arabic and latin 700), IBM Plex Sans Arabic (400, 500), Inter (400, 500).
 
@@ -175,7 +185,7 @@ Home project cards link to `projects/<slug>/`; home service rows link to `servic
 | 4 Home page | Done |
 | 5 Inner pages: About, Services, Projects (plus detail), Contact | Done |
 | 6 Polish pass | Done, **awaiting approval and commit** |
-| 7 SEO, performance, accessibility | Not started (sitemap, robots.txt, JSON-LD, image optimisation, Lighthouse) |
+| 7 SEO, performance, accessibility, file:// | Done, **awaiting approval and commit** |
 | 8 English version | Not started |
 
 ## 11. Legacy issues from the old project: where they were fixed
@@ -196,10 +206,14 @@ Home project cards link to `projects/<slug>/`; home service rows link to `servic
 
 ## 12. Open items and debt
 
-- Replace every demo value and legacy image, then run `npm run check:demo` until it passes (currently reports about 45 items, including the team and `form.endpoint`).
+- Replace every demo value and legacy image, then run `npm run check:demo` until it passes (currently reports 46 items, including the team, `form.endpoint` and the placeholder-logo `brand` flag).
+- Delete `legacy/` (40 files, nothing references it) and the 17 unreferenced photos in `assets/pic/`, once approved.
+- Lighthouse mobile (Task 7, median of 3, noisy machine): Accessibility, Best Practices and SEO 100 on every page, CLS 0. Performance 88 to 98 on most pages; Home and Projects dipped below 95 in some runs, driven by Total Blocking Time (font-swap relayouts). Re-measure on CI or a quiet machine.
+- Extra font preloads made TBT worse (earlier first paint pulls font-swap layouts into the blocking window); only Noto Kufi 700 and Plex 400 are preloaded.
 - Set a real form endpoint in `site.config.json` (`form.endpoint`); the demo URL returns an error, which shows the failure panel.
 - Map block on the contact page is a neutral placeholder with a working "open in maps" link.
 - Projects page has no sector or city filter.
 - Delete `src/pages/styleguide/`, its partials, CSS, JS, `styleguide.json` and the `DEV_ONLY_PAGES` entry before launch, and delete `legacy/`.
 - The demo client names on projects 4 and 11 carry a visible "(اسم تجريبي)" suffix; it disappears when real clients replace them.
-- Add a sitemap, robots.txt, JSON-LD and Open Graph images (Task 7); `docs/` is not part of the build output.
+- `site.config.json` `web.url` is the demo domain: canonical URLs, sitemap, robots and JSON-LD all use it until it is replaced.
+- On `file://` the preloaded fonts log a CORS message in the console (the preload is CORS-mode); the fonts still load through the stylesheet and nothing is broken.

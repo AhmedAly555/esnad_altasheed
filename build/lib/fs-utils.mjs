@@ -21,3 +21,6 @@ export async function exists(target) {
     return false;
   }
 }
+
+/** Windows indexers and antivirus briefly hold fresh files, so removing a big folder needs a few retries. */
+export const removeTree = (target) => fs.rm(target, { recursive: true, force: true, maxRetries: 8, retryDelay: 150 });

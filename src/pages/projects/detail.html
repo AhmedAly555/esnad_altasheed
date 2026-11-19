@@ -11,7 +11,7 @@ scripts: pages/project
 <section class="section project" aria-label="{{projects.labels.facts}}">
   <div class="container container--xl">
     <figure class="project__figure photo photo--cover" data-reveal data-image-demo="{{project.imageDemo}}">
-      <img class="photo__img" src="{{root}}{{project.mainImage}}" width="{{project.imageWidth}}" height="{{project.imageHeight}}" alt="{{project.imageAlt}}" fetchpriority="high" decoding="async">
+      <img class="photo__img" src="{{root}}{{project.mainImage}}" width="{{project.imageWidth}}" height="{{project.imageHeight}}" alt="{{project.imageAlt}}" sizes="(min-width: 80em) 1200px, 100vw" fetchpriority="high" decoding="async">
     </figure>
     <dl class="facts facts--columns" data-reveal>
       <div class="facts__row"><dt class="facts__label">{{projects.labels.sector}}</dt><dd class="facts__value">{{project.sector}}</dd></div>
@@ -36,7 +36,7 @@ scripts: pages/project
     <ul class="list-reset project-gallery__grid" data-lightbox-group>
       {{#each project.gallery}}<li class="project-gallery__item" data-reveal>
         <a class="project-gallery__link photo photo--cover" href="{{root}}{{item.src}}" data-lightbox-item data-image-demo="{{project.imageDemo}}">
-          <img class="photo__img project-gallery__image" src="{{root}}{{item.src}}" width="{{item.width}}" height="{{item.height}}" alt="{{item.alt}}" loading="lazy" decoding="async">
+          <img class="photo__img project-gallery__image" src="{{root}}{{item.src}}" width="{{item.width}}" height="{{item.height}}" alt="{{item.alt}}" sizes="(min-width: 80em) 700px, (min-width: 48em) 58vw, 100vw" loading="lazy" decoding="async">
         </a>
       </li>
       {{/each}}

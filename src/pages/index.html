@@ -2,11 +2,12 @@
 data: home
 nav: home
 header: overlay
+schema: organization
 css: pages/home
 ---
 <section class="hero on-dark section--dark" aria-labelledby="hero-title">
   <div class="hero__media photo photo--hero" data-image-demo="{{home.hero.image.imageDemo}}">
-    <img class="photo__img hero__image" src="{{root}}{{home.hero.image.src}}" width="{{home.hero.image.width}}" height="{{home.hero.image.height}}" alt="{{home.hero.image.alt}}" data-parallax fetchpriority="high" decoding="async">
+    <img class="photo__img hero__image" src="{{root}}{{home.hero.image.src}}" width="{{home.hero.image.width}}" height="{{home.hero.image.height}}" alt="{{home.hero.image.alt}}" sizes="100vw" data-parallax fetchpriority="high" decoding="async">
   </div>
   <div class="container container--xl hero__inner">
     <div class="hero__copy">
@@ -36,7 +37,7 @@ css: pages/home
       <a class="link-arrow" href="{{root}}{{home.about.link.href}}">{{home.about.link.label}}{{> arrow}}</a>
     </div>
     <figure class="about__figure photo photo--cover" data-reveal data-image-demo="{{home.about.image.imageDemo}}">
-      <img class="photo__img" src="{{root}}{{home.about.image.src}}" width="{{home.about.image.width}}" height="{{home.about.image.height}}" alt="{{home.about.image.alt}}" loading="lazy" decoding="async">
+      <img class="photo__img" src="{{root}}{{home.about.image.src}}" width="{{home.about.image.width}}" height="{{home.about.image.height}}" alt="{{home.about.image.alt}}" sizes="(min-width: 64em) 40vw, 100vw" loading="lazy" decoding="async">
     </figure>
   </div>
 </section>

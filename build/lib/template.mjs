@@ -7,7 +7,7 @@ import { readText } from "./fs-utils.mjs";
 //   {{> partial a="x" b=data.key}} include src/partials/partial.html; a quoted arg is text, a bare arg is a context value
 //   {{#each list}}..{{/each}}      render the body once per item, with the item as {{ item }} / {{ item.field }}.
 //                                  The body may include partials, which also see `item`.
-const RAW_KEYS = new Set(["content", "pageCss", "pageScripts", "attrs"]);
+const RAW_KEYS = new Set(["content", "pageCss", "pageScripts", "structuredData", "attrs"]);
 const INCLUDE = /\{\{>\s*([\w-]+)((?:\s+[\w-]+=(?:"[^"]*"|[\w.-]+))*)\s*\}\}/g;
 const ARG = /([\w-]+)=(?:"([^"]*)"|([\w.-]+))/g;
 const EACH = /\{\{#each\s+([\w.-]+)\s*\}\}([\s\S]*?)\{\{\/each\}\}/g;
