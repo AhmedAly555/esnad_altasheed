@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { DIST, SRC } from "./paths.mjs";
+import { SRC } from "./paths.mjs";
 import { readText, walk } from "./fs-utils.mjs";
 import { parseFrontMatter, render } from "./template.mjs";
 import { isDevOnly } from "./dev-only.mjs";
@@ -69,7 +69,7 @@ function pageJobs(rel, meta, content) {
 }
 
 /** Renders every src/pages/**.html through the base template into dist/. Returns the written paths. */
-export async function buildPages(content, { dev = false } = {}) {
+export async function buildPages(content, outDir, { dev = false } = {}) {
   const layout = await readText(path.join(SRC, "templates", "base.html"));
   const pagesDir = path.join(SRC, "pages");
   const written = [];
@@ -82,7 +82,7 @@ export async function buildPages(content, { dev = false } = {}) {
       ctx.content = await render(body, ctx, outRel);
       const html = await render(layout, ctx, "templates/base.html");
 
-      const target = path.join(DIST, outRel);
+      const target = path.join(outDir, outRel);
       await fs.mkdir(path.dirname(target), { recursive: true });
       await fs.writeFile(target, html);
       written.push(outRel);

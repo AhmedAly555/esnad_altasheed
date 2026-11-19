@@ -1,5 +1,4 @@
 import path from "node:path";
-import { DIST } from "./paths.mjs";
 import { exists, readText, walk } from "./fs-utils.mjs";
 
 const isLocal = (url) => url && !/^([a-z][a-z0-9+.-]*:|\/\/|#)/i.test(url);
@@ -48,10 +47,10 @@ async function checkCss(file, rel, problems) {
 }
 
 /** Checks the built output: unique ids, one h1, no missing files or anchors, alt on every image. */
-export async function validate() {
+export async function validate(outDir) {
   const problems = [];
-  for (const file of await walk(DIST)) {
-    const rel = path.relative(DIST, file).replace(/\\/g, "/");
+  for (const file of await walk(outDir)) {
+    const rel = path.relative(outDir, file).replace(/\\/g, "/");
     if (file.endsWith(".html")) await checkHtml(file, rel, problems);
     else if (file.endsWith(".css")) await checkCss(file, rel, problems);
   }

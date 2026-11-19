@@ -29,6 +29,7 @@ Static site, no framework, **zero runtime dependencies**.
 | Command | What it does |
 |---|---|
 | `npm run build` | **Production** build: cleans `dist/`, renders every page except the dev-only ones, bundles CSS, copies `js/` and `assets/`, then validates the output |
+| `npm run check` | Runs the dev and production builds in turn (production last) and fails on any stale template key or validation problem. Run it before every commit |
 | `npm run build:dev` | Same plus the dev-only pages (the styleguide) |
 | `npm run dev` | Dev build plus watch plus static server (`PORT`, default 3000) |
 | `npm run check:demo` | Lists every record, image and config value still flagged demo; **exits 1 while any remain**. Also exits 1 if `dist/` holds dev-only output (a dev build). Must pass before any production deploy |
@@ -68,7 +69,7 @@ haven-life/
 
 | Module | Role |
 |---|---|
-| `build.mjs` | Orchestrates: load content, render pages, bundle CSS, copy static dirs, validate |
+| `build.mjs` | Orchestrates: load content, render pages, bundle CSS, copy static dirs, validate. Builds into `.dist-staging/` and swaps it into `dist/` only on success, so a failed build leaves the last good `dist/` |
 | `lib/content.mjs` | Loads every `content/*.json` into a template key named after the file (`site.config.json` becomes `site`). Adds `featuredProjects` and derived values: `site.address.fullAr`, `contact.whatsappUrl` (wa.me with the prefilled Arabic message), `contact.mapUrl` |
 | `lib/pages.mjs` | Renders `src/pages/**/*.html` through `base.html`. Supports **collection pages** (see below). Computes `root` (relative path prefix), canonical `path`, `nav` with `aria-current`, per-page CSS and script tags |
 | `lib/template.mjs` | Tiny template engine (below) |
