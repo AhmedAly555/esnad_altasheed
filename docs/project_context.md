@@ -166,6 +166,8 @@ Home project cards link to `projects/<slug>/`; home service rows link to `servic
 | `lib/dom.js`, `env.js` (incl. `whenFontLoaded`), `ease.js`, `observe.js`, `scroll.js` | Shared helpers |
 | `pages/project.js`, `pages/contact.js`, `pages/styleguide.js` | Page entries loaded through front matter `scripts:` |
 
+Token units after minify: esbuild rewrites `1600ms` to `1.6s` in production CSS; JS must read time tokens via `cssNumber()`, which normalises to milliseconds.
+
 ## 9. Assets
 
 - `assets/logo/logo-reversed.placeholder.svg`: the mark-only placeholder, used in header and footer beside live Arabic and Latin text. **The final-logo swap is line 2 of `src/partials/brand.html`** (the `src` of the `<img>`). Then run `npm run build:brand` to regenerate the OG image and favicons, and remove `brand` from `site.config.json` so `check:demo` passes.
