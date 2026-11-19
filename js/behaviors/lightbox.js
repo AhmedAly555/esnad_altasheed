@@ -13,7 +13,10 @@ export function init() {
   const items = $$("[data-lightbox-item]");
   if (!dialog || !items.length || typeof dialog.showModal !== "function") return;
 
-  const image = $("[data-lightbox-image]", dialog);
+  // Built here because an <img> in the markup would need a src before any photo is chosen
+  const image = document.createElement("img");
+  image.className = "lightbox__img";
+  $("[data-lightbox-figure]", dialog).prepend(image);
   const caption = $("[data-lightbox-caption]", dialog);
   const counter = $("[data-lightbox-count]", dialog);
   const isRtl = () => getComputedStyle(dialog).direction === "rtl";

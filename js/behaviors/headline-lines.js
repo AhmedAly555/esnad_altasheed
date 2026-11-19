@@ -1,5 +1,5 @@
 import { $$ } from "../lib/dom.js";
-import { prefersReducedMotion } from "../lib/env.js";
+import { prefersReducedMotion, whenFontLoaded } from "../lib/env.js";
 
 const makeSpan = (className) => {
   const span = document.createElement("span");
@@ -43,8 +43,11 @@ function splitIntoLines(heading) {
   heading.classList.add("is-split");
 }
 
-/** Prepares [data-lines] headings for the line reveal; reveal.js plays it when they scroll into view. */
-export function init() {
+/**
+ * Prepares [data-lines] headings for the line reveal; reveal.js plays it when they scroll into view.
+ * Resolves when every heading is split. It waits only for the heading font, not for every font on the page.
+ */
+export async function init() {
   const headings = $$("[data-lines]");
   if (!headings.length) return;
 
@@ -53,6 +56,7 @@ export function init() {
     return;
   }
 
+  await Promise.all(headings.map(whenFontLoaded));
   headings.forEach(splitIntoLines);
 
   // Line breaks change with the width, so split again without replaying the reveal

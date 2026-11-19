@@ -30,14 +30,12 @@ export function init() {
     const format = (n) => (finalText.includes(",") ? n.toLocaleString("en-US") : String(n));
     figure.textContent = format(0);
 
-    trigger.addEventListener(
-      "reveal",
-      () => {
-        animate(cssNumber("--dur-count", COUNT_FALLBACK_MS), (progress) => {
-          figure.textContent = format(Math.round(target * progress));
-        });
-      },
-      { once: true },
-    );
+    const play = () =>
+      animate(cssNumber("--dur-count", COUNT_FALLBACK_MS), (progress) => {
+        figure.textContent = format(Math.round(target * progress));
+      });
+    // Reveal no longer waits for every font, so a tall screen may have shown this strip already
+    if (trigger.classList.contains("is-visible")) play();
+    else trigger.addEventListener("reveal", play, { once: true });
   });
 }

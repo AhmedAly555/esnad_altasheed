@@ -4,10 +4,12 @@
       <div class="site-footer__about">
         {{> brand}}
         <p class="site-footer__line">{{site.company.footerAr}}</p>
-        <ul class="list-reset site-footer__list site-footer__list--inline" aria-label="{{ui.footer.socialLabel}}">
-          {{#each site.social}}<li><a class="site-footer__link" href="{{item.url}}" rel="noopener" target="_blank">{{item.label}}</a></li>
-          {{/each}}
-        </ul>
+        <nav aria-label="{{ui.footer.socialLabel}}">
+          <ul class="list-reset site-footer__list site-footer__list--inline">
+            {{#each site.social}}<li><a class="site-footer__link" href="{{item.url}}" rel="noopener" target="_blank">{{item.label}}</a></li>
+            {{/each}}
+          </ul>
+        </nav>
       </div>
       <nav class="site-footer__col" aria-label="{{ui.footer.quickLinks}}">
         <h2 class="site-footer__title">{{ui.footer.quickLinks}}</h2>

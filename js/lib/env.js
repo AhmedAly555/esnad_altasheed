@@ -12,3 +12,15 @@ export function cssNumber(name, fallback) {
 }
 
 export const whenFontsReady = () => (document.fonts ? document.fonts.ready : Promise.resolve());
+
+/**
+ * Resolves once the face an element is set in has loaded for the text it holds, ignoring every other font on the page.
+ * A failed download resolves too: the text then simply renders in the fallback face.
+ */
+export function whenFontLoaded(element) {
+  if (!document.fonts) return Promise.resolve();
+  const { fontStyle, fontWeight, fontSize, fontFamily } = getComputedStyle(element);
+  return document.fonts
+    .load(`${fontStyle} ${fontWeight} ${fontSize} ${fontFamily}`, element.textContent)
+    .catch(() => {});
+}

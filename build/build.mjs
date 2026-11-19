@@ -6,24 +6,15 @@ import { loadContent } from "./lib/content.mjs";
 import { buildPages } from "./lib/pages.mjs";
 import { bundleCss } from "./lib/css-bundle.mjs";
 import { validate } from "./lib/validate.mjs";
-import { isDevOnly } from "./lib/dev-only.mjs";
+import { bundleJs } from "./lib/js-bundle.mjs";
+import { removeTree } from "./lib/fs-utils.mjs";
 
-// CSS is bundled, not copied, so it is not listed here
-const STATIC_DIRS = ["js", "assets"];
-
-async function copyStatic(outDir, { dev }) {
-  const includeInDist = (source) => {
-    const relative = path.relative(path.join(ROOT, "js", "pages"), source);
-    return dev || relative.startsWith("..") || !isDevOnly(relative);
-  };
-  for (const dir of STATIC_DIRS) {
-    await fs.cp(path.join(ROOT, dir), path.join(outDir, dir), { recursive: true, filter: includeInDist });
-  }
-}
+// CSS and JS are bundled, not copied, so they are not listed here
+const copyStatic = (outDir) => fs.cp(path.join(ROOT, "assets"), path.join(outDir, "assets"), { recursive: true });
 
 /** The previous dist/ stays untouched until the new one is complete and valid. */
 async function swapIntoDist() {
-  await fs.rm(DIST, { recursive: true, force: true });
+  await removeTree(DIST);
   await fs.rename(STAGING, DIST);
 }
 
@@ -33,18 +24,19 @@ async function swapIntoDist() {
  * Returns { pages, problems, swapped }.
  */
 export async function build({ dev = false } = {}) {
-  await fs.rm(STAGING, { recursive: true, force: true });
+  await removeTree(STAGING);
   await fs.mkdir(STAGING, { recursive: true });
   try {
     const pages = await buildPages(await loadContent(), STAGING, { dev });
     await bundleCss(STAGING, { dev });
-    await copyStatic(STAGING, { dev });
+    await bundleJs(STAGING, { dev });
+    await copyStatic(STAGING);
     const problems = await validate(STAGING);
     if (problems.length) return { pages, problems, swapped: false };
     await swapIntoDist();
     return { pages, problems, swapped: true };
   } finally {
-    await fs.rm(STAGING, { recursive: true, force: true });
+    await removeTree(STAGING);
   }
 }
 

@@ -5,13 +5,16 @@
     "nameLatin": "ESNAD ALTASHEED",
     "taglineAr": "نبني .. ونسائد المستقبل",
     "descriptionAr": "إسناد التشييد شركة سعودية للمقاولات العامة والبناء والتشطيب. جدول معلن، وتقرير أسبوعي مصوّر، وسعر لا يتغير دون موافقة المالك.",
-    "footerAr": "مقاولات عامة وبناء وتشطيب في الرياض وجدة والدمام والخبر ومكة المكرمة."
+    "footerAr": "مقاولات عامة وبناء وتشطيب في الرياض وجدة والدمام والخبر ومكة المكرمة.",
+    "areaServedAr": ["الرياض", "جدة", "الدمام", "الخبر", "مكة المكرمة"]
   },
   "web": {
     "url": "https://esnad-demo.sa",
     "demo": true,
     "themeColor": "#013A1E",
-    "locale": "ar_SA"
+    "locale": "ar_SA",
+    "ogImage": "assets/brand/og-image.png",
+    "ogImageAlt": "إسناد التشييد، نبني .. ونسائد المستقبل"
   },
   "contact": {
     "phone": {
@@ -29,7 +32,9 @@
     "lineAr": "طريق الملك فهد، حي العليا",
     "cityAr": "الرياض، المملكة العربية السعودية",
     "postal": "12214",
-    "demo": true
+    "demo": true,
+    "localityAr": "الرياض",
+    "countryCode": "SA"
   },
   "legal": {
     "cr": "1010000000",
@@ -88,6 +93,10 @@
   ],
   "form": {
     "endpoint": "https://formspree.io/f/xxxxdemo",
+    "demo": true
+  },
+  "brand": {
+    "logoNote": "Placeholder logo. Replace src/partials/brand.html line 2, then run npm run build:brand.",
     "demo": true
   }
 }
