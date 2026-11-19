@@ -5,10 +5,18 @@ export const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-mo
 
 export const wideViewport = () => window.matchMedia(WIDE_QUERY);
 
-/** Reads a numeric design token (milliseconds, ratios) from :root so JS and CSS share one source. */
+/**
+ * Reads a numeric design token from :root so JS and CSS share one source.
+ * Returns milliseconds for time tokens (ms or s) and the plain number for unitless tokens.
+ * Production CSS is minified and may rewrite 1600ms as 1.6s, so the unit must be read, not assumed.
+ */
 export function cssNumber(name, fallback) {
-  const value = parseFloat(getComputedStyle(document.documentElement).getPropertyValue(name));
-  return Number.isNaN(value) ? fallback : value;
+  const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const value = parseFloat(raw);
+  if (Number.isNaN(value)) return fallback;
+  if (raw.endsWith("ms")) return value;
+  if (raw.endsWith("s")) return value * 1000;
+  return value;
 }
 
 export const whenFontsReady = () => (document.fonts ? document.fonts.ready : Promise.resolve());
