@@ -1,5 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { isStagingDeploy, stagingHeaders, stagingRobotsTxt } from "./staging-mode.mjs";
 
 // Everything search engines read besides the visible page: JSON-LD, sitemap.xml and robots.txt.
 // All values come from content/site.config.json, so the demo flags there also cover this output.
@@ -57,7 +58,13 @@ function sitemapXml(site, pages) {
 
 const robotsTxt = (site) => `User-agent: *\nAllow: /\n\nSitemap: ${site.web.url}/sitemap.xml\n`;
 
+async function writeStagingFiles(outDir) {
+  await fs.writeFile(path.join(outDir, "robots.txt"), stagingRobotsTxt);
+  await fs.writeFile(path.join(outDir, "_headers"), stagingHeaders);
+}
+
 export async function writeSeoFiles(outDir, site, pages) {
+  if (isStagingDeploy()) return writeStagingFiles(outDir);
   await fs.writeFile(path.join(outDir, "sitemap.xml"), sitemapXml(site, pages));
   await fs.writeFile(path.join(outDir, "robots.txt"), robotsTxt(site));
 }

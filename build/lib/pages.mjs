@@ -5,6 +5,7 @@ import { readText, walk } from "./fs-utils.mjs";
 import { parseFrontMatter, render } from "./template.mjs";
 import { isDevOnly } from "./dev-only.mjs";
 import { addSrcset, listSmallVariants } from "./image-variants.mjs";
+import { effectiveRobots } from "./staging-mode.mjs";
 import { ogImageUrl, organizationJsonLdTag, writeSeoFiles } from "./seo.mjs";
 
 const DEFAULTS = {
@@ -55,6 +56,7 @@ function pageContext({ meta, content, outRel, entry, dev }) {
     ...content,
     ...(entry && { [meta.as]: entry }),
     ...pageMeta({ meta, content, outRel, entry }),
+    robots: effectiveRobots(meta.robots ?? DEFAULTS.robots),
     root,
     path: "/" + outRel.replace(/index\.html$/, ""),
     year: new Date().getFullYear(),

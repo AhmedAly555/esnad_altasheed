@@ -102,6 +102,7 @@ Stop after listing files.
 
 ---
 
+
 ## Task 6 — Polish pass: "does it look human-made?"
 
 ```
