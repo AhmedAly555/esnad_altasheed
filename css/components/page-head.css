@@ -1,0 +1,33 @@
+/* Opening band of every inner page. Sits on the same green as the solid header, so the two read as one. */
+.page-head {
+  padding-block: var(--space-12) var(--space-16);
+}
+
+.page-head__inner {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.page-head__title {
+  max-inline-size: 22ch;
+}
+
+.page-head__lead {
+  color: var(--text-muted);
+}
+
+@media (min-width: 64em) {
+  .page-head {
+    padding-block: var(--space-20) var(--space-24);
+  }
+
+  .page-head__inner {
+    grid-template-columns: 7fr 4fr;
+    column-gap: var(--space-16);
+    align-items: end;
+  }
+
+  .page-head__eyebrow {
+    grid-column: 1 / -1;
+  }
+}

@@ -1,0 +1,48 @@
+---
+collection: projects.items
+as: project
+param: slug
+nav: projects
+css: pages/project
+scripts: pages/project
+---
+{{> page-head eyebrow=project.sector title=project.title lead=project.description}}
+
+<section class="section project" aria-label="{{projects.labels.facts}}">
+  <div class="container container--xl project__grid">
+    <dl class="facts project__facts" data-reveal>
+      <div class="facts__row"><dt class="facts__label">{{projects.labels.sector}}</dt><dd class="facts__value">{{project.sector}}</dd></div>
+      <div class="facts__row"><dt class="facts__label">{{projects.labels.city}}</dt><dd class="facts__value">{{project.city}}</dd></div>
+      <div class="facts__row"><dt class="facts__label">{{projects.labels.year}}</dt><dd class="facts__value ltr">{{project.year}}</dd></div>
+      <div class="facts__row"><dt class="facts__label">{{projects.labels.role}}</dt><dd class="facts__value">{{project.role}}</dd></div>
+      <div class="facts__row"><dt class="facts__label">{{projects.labels.client}}</dt><dd class="facts__value">{{project.client}}</dd></div>
+    </dl>
+    <figure class="project__figure photo photo--cover" data-reveal data-image-demo="{{project.imageDemo}}">
+      <img class="photo__img" src="{{root}}{{project.mainImage}}" width="{{project.imageWidth}}" height="{{project.imageHeight}}" alt="{{project.imageAlt}}" fetchpriority="high" decoding="async">
+    </figure>
+  </div>
+</section>
+
+<section class="section section--sand project-gallery" aria-labelledby="gallery-title">
+  <div class="container container--xl">
+    <div class="section-head" data-reveal>
+      <div>
+        <h2 id="gallery-title">{{projects.labels.gallery}}</h2>
+        <span class="gold-line gold-line--draw section-head__rule"></span>
+      </div>
+      <p class="section-head__lead muted">{{projects.labels.galleryHint}}</p>
+      <a class="link-arrow" href="{{root}}projects/">{{projects.labels.backToList}}{{> arrow}}</a>
+    </div>
+    <ul class="list-reset project-gallery__grid" data-lightbox-group>
+      {{#each project.gallery}}<li class="project-gallery__item" data-reveal>
+        <a class="project-gallery__link photo photo--cover" href="{{root}}{{item.src}}" data-lightbox-item data-image-demo="{{project.imageDemo}}">
+          <img class="photo__img project-gallery__image" src="{{root}}{{item.src}}" width="{{item.width}}" height="{{item.height}}" alt="{{item.alt}}" loading="lazy" decoding="async">
+        </a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>
+
+{{> cta-band}}
+{{> lightbox}}

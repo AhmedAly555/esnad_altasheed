@@ -1,0 +1,27 @@
+/* Alternating wide and narrow cards, whatever number of projects the data holds */
+.project-grid {
+  display: grid;
+  gap: var(--space-10) var(--space-8);
+}
+
+@media (min-width: 48em) {
+  .project-grid {
+    grid-template-columns: repeat(12, 1fr);
+    align-items: start;
+  }
+
+  .project-card:nth-child(4n + 1),
+  .project-card:nth-child(4n + 4) {
+    grid-column: span 7;
+  }
+
+  .project-card:nth-child(4n + 2),
+  .project-card:nth-child(4n + 3) {
+    grid-column: span 5;
+  }
+
+  .project-card:nth-child(4n + 2) .project-card__frame,
+  .project-card:nth-child(4n + 3) .project-card__frame {
+    aspect-ratio: 1 / 1;
+  }
+}

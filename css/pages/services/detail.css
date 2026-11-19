@@ -1,0 +1,108 @@
+/* One anchored block per service: sticky intro beside scope and working method */
+.service-detail {
+  counter-increment: service;
+  padding-block: var(--section-space);
+  border-block-end: 1px solid var(--line);
+  background: var(--bg);
+  /* Adds to the global scroll-padding so the section lands just under header plus jump bar */
+  scroll-margin-block-start: var(--space-8);
+}
+
+.service-detail__grid {
+  display: grid;
+  gap: var(--space-10);
+}
+
+.service-detail__intro {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  justify-items: start;
+}
+
+.service-detail__n::before {
+  content: counter(service, decimal-leading-zero);
+  color: var(--accent-text);
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.service-detail__lead {
+  max-inline-size: 36ch;
+  margin-block-end: var(--space-2);
+}
+
+.service-detail__body {
+  display: grid;
+  gap: var(--space-10);
+}
+
+.service-detail__heading {
+  margin-block-end: var(--space-4);
+  color: var(--accent-text);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+}
+
+.service-detail__scope {
+  border-block-start: 1px solid var(--line);
+}
+
+.service-detail__scope-item {
+  padding-block: var(--space-3);
+  border-block-end: 1px solid var(--line);
+  color: var(--text-strong);
+  font-weight: var(--weight-medium);
+}
+
+.service-detail__steps {
+  display: grid;
+  gap: var(--space-5);
+  counter-reset: step;
+}
+
+.service-detail__step {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: var(--space-8) 1fr;
+  gap: var(--space-1) var(--space-4);
+}
+
+.service-detail__step::before {
+  content: counter(step);
+  grid-row: span 2;
+  color: var(--accent-text);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.service-detail__step-title {
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+}
+
+.service-detail__step-text {
+  max-inline-size: 52ch;
+}
+
+@media (min-width: 64em) {
+  .service-detail__grid {
+    grid-template-columns: 4fr 7fr;
+    gap: var(--space-20);
+  }
+
+  .service-detail__intro {
+    position: sticky;
+    inset-block-start: calc(var(--header-h-compact) + var(--space-16));
+    align-self: start;
+  }
+}

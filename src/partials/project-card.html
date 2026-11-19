@@ -1,0 +1,10 @@
+<li class="project-card" data-reveal>
+  <a class="project-card__link" href="{{root}}projects/{{item.slug}}/">
+    <span class="project-card__frame photo photo--cover" data-image-demo="{{item.imageDemo}}">
+      <img class="photo__img project-card__image" src="{{root}}{{item.mainImage}}" width="{{item.imageWidth}}" height="{{item.imageHeight}}" alt="{{item.imageAlt}}" loading="lazy" decoding="async">
+    </span>
+    <span class="project-card__meta">{{item.sector}} · <span class="ltr">{{item.year}}</span></span>
+    <span class="project-card__title">{{item.title}}</span>
+    <span class="project-card__city">{{item.city}}</span>
+  </a>
+</li>

@@ -1,314 +1,597 @@
-[
-  {
-    "id": 1,
-    "slug": "villa-malqa-riyadh",
-    "title": "فيلا سكنية بطراز كلاسيكي، حي الملقا",
-    "sector": "فلل سكنية",
-    "city": "الرياض",
-    "year": 2025,
-    "role": "مقاول عام",
-    "client": "عميل خاص",
-    "mainImage": "assets/id-1/villa-m.webp",
-    "imageWidth": 1600,
-    "imageHeight": 893,
-    "imageAlt": "واجهة فيلا كلاسيكية بأعمدة ونافورة في الفناء",
-    "gallery": [
-      "assets/id-1/villa-1.webp",
-      "assets/id-1/villa-2.webp",
-      "assets/id-1/villa-3.webp",
-      "assets/id-1/villa-4.webp"
-    ],
-    "description": "فيلا من طابقين بواجهة حجرية وأعمدة، نُفذت من الأساسات حتى التشطيب النهائي وفق كود البناء السعودي.",
-    "featured": true,
-    "demo": true,
-    "imageDemo": true
+{
+  "meta": {
+    "title": "مشاريعنا | إسناد التشييد",
+    "description": "مشاريع إسناد التشييد في الرياض وجدة والدمام والخبر ومكة المكرمة: فلل ومبانٍ سكنية وتجارية وأعمال تشطيب وتجديد، لكل مشروع صفحة بنطاق العمل وصور الموقع."
   },
-  {
-    "id": 2,
-    "slug": "duplex-jeddah-alshati",
-    "title": "دوبلكس سكني، حي الشاطئ",
-    "sector": "فلل سكنية",
-    "city": "جدة",
-    "year": 2024,
-    "role": "مقاول عام",
-    "client": "عميل خاص",
-    "mainImage": "assets/id-2/duplex-m.webp",
-    "imageWidth": 1600,
-    "imageHeight": 893,
-    "imageAlt": "ممر داخلي بإضاءة خطية في دوبلكس سكني",
-    "gallery": [
-      "assets/id-2/duplex-1.webp",
-      "assets/id-2/duplex-2.webp",
-      "assets/id-2/duplex-3.webp",
-      "assets/id-2/duplex-4.webp"
-    ],
-    "description": "دوبلكس سكني بتشطيب كامل يشمل الأرضيات والإضاءة المخفية وأعمال الجبس.",
-    "featured": true,
-    "demo": true,
-    "imageDemo": true
+  "hero": {
+    "eyebrow": "مشاريعنا",
+    "title": "مشاريع نفذناها في مدن المملكة",
+    "lead": "سكني وتجاري وتشطيب وتجديد. لكل مشروع صفحة تبيّن نطاق عملنا فيه وصور من الموقع."
   },
-  {
-    "id": 3,
-    "slug": "landscape-dammam-alshati",
-    "title": "تنسيق حدائق فيلا، الشاطئ",
-    "sector": "مشاريع خارجية",
-    "city": "الدمام",
-    "year": 2024,
-    "role": "مقاول تنفيذ",
-    "client": "عميل خاص",
-    "mainImage": "assets/id-3/land-m.webp",
-    "imageWidth": 1290,
-    "imageHeight": 726,
-    "imageAlt": "حديقة فيلا بممرات ومسطحات خضراء",
-    "gallery": [
-      "assets/id-3/land-1.webp",
-      "assets/id-3/land-2.webp",
-      "assets/id-3/land-3.webp",
-      "assets/id-3/land-4.webp"
-    ],
-    "description": "تنسيق حدائق وممرات وأعمال ري لفيلا سكنية، بخامات تتحمل مناخ المنطقة الشرقية.",
-    "featured": false,
-    "demo": true,
-    "imageDemo": true
+  "labels": {
+    "sector": "القطاع",
+    "city": "المدينة",
+    "year": "السنة",
+    "role": "دورنا",
+    "client": "العميل",
+    "overview": "نبذة عن المشروع",
+    "gallery": "معرض الصور",
+    "galleryHint": "اضغط على أي صورة لتكبيرها",
+    "backToList": "كل المشاريع",
+    "facts": "بيانات المشروع"
   },
-  {
-    "id": 4,
-    "slug": "retail-khobar-corniche",
-    "title": "مجمع تجاري صغير، كورنيش الخبر",
-    "sector": "تجاري",
-    "city": "الخبر",
-    "year": 2024,
-    "role": "مقاول عام",
-    "client": "شركة عقارية (اسم تجريبي)",
-    "mainImage": "assets/id-4/shopping-m.webp",
-    "imageWidth": 1600,
-    "imageHeight": 1600,
-    "imageAlt": "مجمع تجاري بواجهات زجاجية",
-    "gallery": [
-      "assets/id-4/shopping-1.webp",
-      "assets/id-4/shopping-2.webp",
-      "assets/id-4/shopping-3.webp",
-      "assets/id-4/shopping-4.webp"
-    ],
-    "description": "مجمع تجاري من وحدات متجاورة، شمل الهيكل والواجهات وتجهيز المحلات.",
-    "featured": false,
-    "demo": true,
-    "imageDemo": true
-  },
-  {
-    "id": 5,
-    "slug": "residential-riyadh-narjis",
-    "title": "عمارة سكنية، حي النرجس",
-    "sector": "سكني",
-    "city": "الرياض",
-    "year": 2023,
-    "role": "مقاول عام",
-    "client": "عميل خاص",
-    "mainImage": "assets/id-5/Promenade-m.webp",
-    "imageWidth": 1279,
-    "imageHeight": 674,
-    "imageAlt": "مبنى سكني متعدد الأدوار",
-    "gallery": [
-      "assets/id-5/Promenade-1.webp",
-      "assets/id-5/Promenade-2.webp",
-      "assets/id-5/Promenade-3.webp",
-      "assets/id-5/Promenade-4.webp"
-    ],
-    "description": "عمارة من شقق متعددة الأدوار، نُفذت بجدول مرحلي سُلّمت وفقه الأدوار تباعًا.",
-    "featured": true,
-    "demo": true,
-    "imageDemo": true
-  },
-  {
-    "id": 6,
-    "slug": "outdoor-makkah-alshawqiyah",
-    "title": "ملحق وجلسة خارجية، الشوقية",
-    "sector": "مشاريع خارجية",
-    "city": "مكة المكرمة",
-    "year": 2023,
-    "role": "مقاول تنفيذ",
-    "client": "عميل خاص",
-    "mainImage": "assets/id-6/living-m.webp",
-    "imageWidth": 1080,
-    "imageHeight": 1080,
-    "imageAlt": "جلسة خارجية بمسبح ومظلة",
-    "gallery": [
-      "assets/id-6/living-1.webp",
-      "assets/id-6/living-2.webp",
-      "assets/id-6/living-3.webp",
-      "assets/id-6/living-4.webp"
-    ],
-    "description": "ملحق خارجي بمظلات وإضاءة ومسبح، مع معالجة العزل والصرف.",
-    "featured": false,
-    "demo": true,
-    "imageDemo": true
-  },
-  {
-    "id": 7,
-    "slug": "landscape-riyadh-hittin",
-    "title": "حديقة ومسطحات، حي حطين",
-    "sector": "مشاريع خارجية",
-    "city": "الرياض",
-    "year": 2024,
-    "role": "مقاول تنفيذ",
-    "client": "عميل خاص",
-    "mainImage": "assets/id-7/land-m.webp",
-    "imageWidth": 4032,
-    "imageHeight": 3024,
-    "imageAlt": "حديقة منزلية مع مسطحات خضراء",
-    "gallery": [
-      "assets/id-7/land-1.webp",
-      "assets/id-7/land-2.webp",
-      "assets/id-7/land-3.webp",
-      "assets/id-7/land-4.webp"
-    ],
-    "description": "حديقة منزلية بأعمال تربة وري وإنارة وتشجير، سُلّمت بخطة صيانة لسنة.",
-    "featured": false,
-    "demo": true,
-    "imageDemo": true
-  },
-  {
-    "id": 8,
-    "slug": "apartment-jeddah-alrawdah",
-    "title": "تشطيب شقة سكنية، حي الروضة",
-    "sector": "تشطيب",
-    "city": "جدة",
-    "year": 2025,
-    "role": "مقاول تشطيب",
-    "client": "عميل خاص",
-    "mainImage": "assets/id-8/aprt-m.webp",
-    "imageWidth": 1280,
-    "imageHeight": 960,
-    "imageAlt": "صالة شقة سكنية بعد التشطيب",
-    "gallery": [
-      "assets/id-8/aprt-1.webp",
-      "assets/id-8/aprt-2.webp",
-      "assets/id-8/aprt-3.webp",
-      "assets/id-8/aprt-4.webp"
-    ],
-    "description": "تشطيب شقة بالكامل، من أعمال الكهرباء والسباكة حتى الدهانات والأبواب.",
-    "featured": true,
-    "demo": true,
-    "imageDemo": true
-  },
-  {
-    "id": 9,
-    "slug": "villa-dammam-alfursan",
-    "title": "فيلا سكنية مع مسبح، حي الفرسان",
-    "sector": "فلل سكنية",
-    "city": "الدمام",
-    "year": 2024,
-    "role": "مقاول عام",
-    "client": "عميل خاص",
-    "mainImage": "assets/id-9/villa-m.webp",
-    "imageWidth": 1600,
-    "imageHeight": 900,
-    "imageAlt": "فيلا بمسبح وحديقة من الأعلى",
-    "gallery": [
-      "assets/id-9/villa-1.webp",
-      "assets/id-9/villa-2.webp",
-      "assets/id-9/villa-3.webp",
-      "assets/id-9/villa-4.webp"
-    ],
-    "description": "فيلا بمسبح وحديقة خلفية وأسطح مستغلة، بتنسيق بين التنفيذ والأعمال الخارجية.",
-    "featured": false,
-    "demo": true,
-    "imageDemo": true
-  },
-  {
-    "id": 10,
-    "slug": "interior-riyadh-alyasmin",
-    "title": "تجهيز داخلي لشقة، حي الياسمين",
-    "sector": "تشطيب",
-    "city": "الرياض",
-    "year": 2024,
-    "role": "مقاول تشطيب",
-    "client": "عميل خاص",
-    "mainImage": "assets/id-10/apartment-m.webp",
-    "imageWidth": 1200,
-    "imageHeight": 900,
-    "imageAlt": "داخل شقة بعد التجهيز الداخلي",
-    "gallery": [
-      "assets/id-10/apartment-1.webp",
-      "assets/id-10/apartment-2.webp",
-      "assets/id-10/apartment-3.webp",
-      "assets/id-10/apartment-4.webp"
-    ],
-    "description": "تجهيز داخلي لشقة بتفاصيل نجارة وإنارة وأرضيات معتمدة العينات قبل التوريد.",
-    "featured": false,
-    "demo": true,
-    "imageDemo": true
-  },
-  {
-    "id": 11,
-    "slug": "office-khobar-alraka",
-    "title": "تجهيز مكاتب شركة استشارية، الراكة",
-    "sector": "تجاري",
-    "city": "الخبر",
-    "year": 2024,
-    "role": "مقاول تجهيز",
-    "client": "مكتب استشارات (اسم تجريبي)",
-    "mainImage": "assets/id-11/office-m.webp",
-    "imageWidth": 1080,
-    "imageHeight": 1080,
-    "imageAlt": "مكاتب شركة بعد التجهيز",
-    "gallery": [
-      "assets/id-11/office-1.webp",
-      "assets/id-11/office-2.webp",
-      "assets/id-11/office-3.webp",
-      "assets/id-11/office-4.webp"
-    ],
-    "description": "تجهيز مكاتب مفتوحة وغرف اجتماعات بجدول يراعي استمرار عمل الشركة.",
-    "featured": false,
-    "demo": true,
-    "imageDemo": true
-  },
-  {
-    "id": 12,
-    "slug": "duplex-riyadh-alnarjis",
-    "title": "دوبلكس سكني، حي العارض",
-    "sector": "فلل سكنية",
-    "city": "الرياض",
-    "year": 2023,
-    "role": "مقاول عام",
-    "client": "عميل خاص",
-    "mainImage": "assets/id-12/duplex-m.webp",
-    "imageWidth": 1440,
-    "imageHeight": 1080,
-    "imageAlt": "درج داخلي وإضاءة معمارية في دوبلكس",
-    "gallery": [
-      "assets/id-12/duplex-1.webp",
-      "assets/id-12/duplex-2.webp",
-      "assets/id-12/duplex-3.webp",
-      "assets/id-12/duplex-4.webp"
-    ],
-    "description": "دوبلكس بتشطيب فاخر شمل السلالم والإضاءة المعمارية وأعمال الرخام.",
-    "featured": false,
-    "demo": true,
-    "imageDemo": true
-  },
-  {
-    "id": 13,
-    "slug": "facade-makkah-alaziziyah",
-    "title": "تجديد واجهة مبنى، العزيزية",
-    "sector": "تجديد وصيانة",
-    "city": "مكة المكرمة",
-    "year": 2023,
-    "role": "مقاول تجديد",
-    "client": "عميل خاص",
-    "mainImage": "assets/id-13/safety-m.webp",
-    "imageWidth": 1080,
-    "imageHeight": 1080,
-    "imageAlt": "أعمال تجديد واجهة مبنى بسقالات",
-    "gallery": [
-      "assets/id-13/safety-1.webp",
-      "assets/id-13/safety-2.webp",
-      "assets/id-13/safety-3.webp",
-      "assets/id-13/safety-4.webp"
-    ],
-    "description": "تجديد واجهة مبنى قائم بسقالات معتمدة وخطة سلامة لحماية المارة والسكان.",
-    "featured": false,
-    "demo": true,
-    "imageDemo": true
-  }
-]
+  "items": [
+    {
+      "id": 1,
+      "slug": "villa-malqa-riyadh",
+      "title": "فيلا سكنية بطراز كلاسيكي، حي الملقا",
+      "sector": "فلل سكنية",
+      "city": "الرياض",
+      "year": 2025,
+      "role": "مقاول عام",
+      "client": "عميل خاص",
+      "mainImage": "assets/id-1/villa-m.webp",
+      "imageWidth": 1600,
+      "imageHeight": 893,
+      "imageAlt": "واجهة فيلا كلاسيكية بأعمدة ونافورة في الفناء",
+      "gallery": [
+        {
+          "src": "assets/id-1/villa-1.webp",
+          "width": 1600,
+          "height": 1230,
+          "alt": "فيلا سكنية بطراز كلاسيكي، حي الملقا، صورة 1 من 4"
+        },
+        {
+          "src": "assets/id-1/villa-2.webp",
+          "width": 1600,
+          "height": 1230,
+          "alt": "فيلا سكنية بطراز كلاسيكي، حي الملقا، صورة 2 من 4"
+        },
+        {
+          "src": "assets/id-1/villa-3.webp",
+          "width": 1600,
+          "height": 1230,
+          "alt": "فيلا سكنية بطراز كلاسيكي، حي الملقا، صورة 3 من 4"
+        },
+        {
+          "src": "assets/id-1/villa-4.webp",
+          "width": 1600,
+          "height": 1230,
+          "alt": "فيلا سكنية بطراز كلاسيكي، حي الملقا، صورة 4 من 4"
+        }
+      ],
+      "description": "فيلا من طابقين بواجهة حجرية وأعمدة، نُفذت من الأساسات حتى التشطيب النهائي وفق كود البناء السعودي.",
+      "featured": true,
+      "demo": true,
+      "imageDemo": true
+    },
+    {
+      "id": 2,
+      "slug": "duplex-jeddah-alshati",
+      "title": "دوبلكس سكني، حي الشاطئ",
+      "sector": "فلل سكنية",
+      "city": "جدة",
+      "year": 2024,
+      "role": "مقاول عام",
+      "client": "عميل خاص",
+      "mainImage": "assets/id-2/duplex-m.webp",
+      "imageWidth": 1600,
+      "imageHeight": 893,
+      "imageAlt": "ممر داخلي بإضاءة خطية في دوبلكس سكني",
+      "gallery": [
+        {
+          "src": "assets/id-2/duplex-1.webp",
+          "width": 1600,
+          "height": 893,
+          "alt": "دوبلكس سكني، حي الشاطئ، صورة 1 من 4"
+        },
+        {
+          "src": "assets/id-2/duplex-2.webp",
+          "width": 1600,
+          "height": 893,
+          "alt": "دوبلكس سكني، حي الشاطئ، صورة 2 من 4"
+        },
+        {
+          "src": "assets/id-2/duplex-3.webp",
+          "width": 1600,
+          "height": 893,
+          "alt": "دوبلكس سكني، حي الشاطئ، صورة 3 من 4"
+        },
+        {
+          "src": "assets/id-2/duplex-4.webp",
+          "width": 1280,
+          "height": 714,
+          "alt": "دوبلكس سكني، حي الشاطئ، صورة 4 من 4"
+        }
+      ],
+      "description": "دوبلكس سكني بتشطيب كامل يشمل الأرضيات والإضاءة المخفية وأعمال الجبس.",
+      "featured": true,
+      "demo": true,
+      "imageDemo": true
+    },
+    {
+      "id": 3,
+      "slug": "landscape-dammam-alshati",
+      "title": "تنسيق حدائق فيلا، الشاطئ",
+      "sector": "مشاريع خارجية",
+      "city": "الدمام",
+      "year": 2024,
+      "role": "مقاول تنفيذ",
+      "client": "عميل خاص",
+      "mainImage": "assets/id-3/land-m.webp",
+      "imageWidth": 1290,
+      "imageHeight": 726,
+      "imageAlt": "حديقة فيلا بممرات ومسطحات خضراء",
+      "gallery": [
+        {
+          "src": "assets/id-3/land-1.webp",
+          "width": 1290,
+          "height": 719,
+          "alt": "تنسيق حدائق فيلا، الشاطئ، صورة 1 من 4"
+        },
+        {
+          "src": "assets/id-3/land-2.webp",
+          "width": 1290,
+          "height": 722,
+          "alt": "تنسيق حدائق فيلا، الشاطئ، صورة 2 من 4"
+        },
+        {
+          "src": "assets/id-3/land-3.webp",
+          "width": 1290,
+          "height": 710,
+          "alt": "تنسيق حدائق فيلا، الشاطئ، صورة 3 من 4"
+        },
+        {
+          "src": "assets/id-3/land-4.webp",
+          "width": 1290,
+          "height": 716,
+          "alt": "تنسيق حدائق فيلا، الشاطئ، صورة 4 من 4"
+        }
+      ],
+      "description": "تنسيق حدائق وممرات وأعمال ري لفيلا سكنية، بخامات تتحمل مناخ المنطقة الشرقية.",
+      "featured": false,
+      "demo": true,
+      "imageDemo": true
+    },
+    {
+      "id": 4,
+      "slug": "retail-khobar-corniche",
+      "title": "مجمع تجاري صغير، كورنيش الخبر",
+      "sector": "تجاري",
+      "city": "الخبر",
+      "year": 2024,
+      "role": "مقاول عام",
+      "client": "شركة عقارية (اسم تجريبي)",
+      "mainImage": "assets/id-4/shopping-m.webp",
+      "imageWidth": 1600,
+      "imageHeight": 1600,
+      "imageAlt": "مجمع تجاري بواجهات زجاجية",
+      "gallery": [
+        {
+          "src": "assets/id-4/shopping-1.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "مجمع تجاري صغير، كورنيش الخبر، صورة 1 من 4"
+        },
+        {
+          "src": "assets/id-4/shopping-2.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "مجمع تجاري صغير، كورنيش الخبر، صورة 2 من 4"
+        },
+        {
+          "src": "assets/id-4/shopping-3.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "مجمع تجاري صغير، كورنيش الخبر، صورة 3 من 4"
+        },
+        {
+          "src": "assets/id-4/shopping-4.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "مجمع تجاري صغير، كورنيش الخبر، صورة 4 من 4"
+        }
+      ],
+      "description": "مجمع تجاري من وحدات متجاورة، شمل الهيكل والواجهات وتجهيز المحلات.",
+      "featured": false,
+      "demo": true,
+      "imageDemo": true
+    },
+    {
+      "id": 5,
+      "slug": "residential-riyadh-narjis",
+      "title": "عمارة سكنية، حي النرجس",
+      "sector": "سكني",
+      "city": "الرياض",
+      "year": 2023,
+      "role": "مقاول عام",
+      "client": "عميل خاص",
+      "mainImage": "assets/id-5/Promenade-m.webp",
+      "imageWidth": 1279,
+      "imageHeight": 674,
+      "imageAlt": "مبنى سكني متعدد الأدوار",
+      "gallery": [
+        {
+          "src": "assets/id-5/Promenade-1.webp",
+          "width": 1276,
+          "height": 715,
+          "alt": "عمارة سكنية، حي النرجس، صورة 1 من 4"
+        },
+        {
+          "src": "assets/id-5/Promenade-2.webp",
+          "width": 1271,
+          "height": 720,
+          "alt": "عمارة سكنية، حي النرجس، صورة 2 من 4"
+        },
+        {
+          "src": "assets/id-5/Promenade-3.webp",
+          "width": 1290,
+          "height": 718,
+          "alt": "عمارة سكنية، حي النرجس، صورة 3 من 4"
+        },
+        {
+          "src": "assets/id-5/Promenade-4.webp",
+          "width": 1290,
+          "height": 718,
+          "alt": "عمارة سكنية، حي النرجس، صورة 4 من 4"
+        }
+      ],
+      "description": "عمارة من شقق متعددة الأدوار، نُفذت بجدول مرحلي سُلّمت وفقه الأدوار تباعًا.",
+      "featured": true,
+      "demo": true,
+      "imageDemo": true
+    },
+    {
+      "id": 6,
+      "slug": "outdoor-makkah-alshawqiyah",
+      "title": "ملحق وجلسة خارجية، الشوقية",
+      "sector": "مشاريع خارجية",
+      "city": "مكة المكرمة",
+      "year": 2023,
+      "role": "مقاول تنفيذ",
+      "client": "عميل خاص",
+      "mainImage": "assets/id-6/living-m.webp",
+      "imageWidth": 1080,
+      "imageHeight": 1080,
+      "imageAlt": "جلسة خارجية بمسبح ومظلة",
+      "gallery": [
+        {
+          "src": "assets/id-6/living-1.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "ملحق وجلسة خارجية، الشوقية، صورة 1 من 4"
+        },
+        {
+          "src": "assets/id-6/living-2.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "ملحق وجلسة خارجية، الشوقية، صورة 2 من 4"
+        },
+        {
+          "src": "assets/id-6/living-3.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "ملحق وجلسة خارجية، الشوقية، صورة 3 من 4"
+        },
+        {
+          "src": "assets/id-6/living-4.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "ملحق وجلسة خارجية، الشوقية، صورة 4 من 4"
+        }
+      ],
+      "description": "ملحق خارجي بمظلات وإضاءة ومسبح، مع معالجة العزل والصرف.",
+      "featured": false,
+      "demo": true,
+      "imageDemo": true
+    },
+    {
+      "id": 7,
+      "slug": "landscape-riyadh-hittin",
+      "title": "حديقة ومسطحات، حي حطين",
+      "sector": "مشاريع خارجية",
+      "city": "الرياض",
+      "year": 2024,
+      "role": "مقاول تنفيذ",
+      "client": "عميل خاص",
+      "mainImage": "assets/id-7/land-m.webp",
+      "imageWidth": 4032,
+      "imageHeight": 3024,
+      "imageAlt": "حديقة منزلية مع مسطحات خضراء",
+      "gallery": [
+        {
+          "src": "assets/id-7/land-1.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "حديقة ومسطحات، حي حطين، صورة 1 من 4"
+        },
+        {
+          "src": "assets/id-7/land-2.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "حديقة ومسطحات، حي حطين، صورة 2 من 4"
+        },
+        {
+          "src": "assets/id-7/land-3.webp",
+          "width": 1280,
+          "height": 1280,
+          "alt": "حديقة ومسطحات، حي حطين، صورة 3 من 4"
+        },
+        {
+          "src": "assets/id-7/land-4.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "حديقة ومسطحات، حي حطين، صورة 4 من 4"
+        }
+      ],
+      "description": "حديقة منزلية بأعمال تربة وري وإنارة وتشجير، سُلّمت بخطة صيانة لسنة.",
+      "featured": false,
+      "demo": true,
+      "imageDemo": true
+    },
+    {
+      "id": 8,
+      "slug": "apartment-jeddah-alrawdah",
+      "title": "تشطيب شقة سكنية، حي الروضة",
+      "sector": "تشطيب",
+      "city": "جدة",
+      "year": 2025,
+      "role": "مقاول تشطيب",
+      "client": "عميل خاص",
+      "mainImage": "assets/id-8/aprt-m.webp",
+      "imageWidth": 1280,
+      "imageHeight": 960,
+      "imageAlt": "صالة شقة سكنية بعد التشطيب",
+      "gallery": [
+        {
+          "src": "assets/id-8/aprt-1.webp",
+          "width": 1280,
+          "height": 960,
+          "alt": "تشطيب شقة سكنية، حي الروضة، صورة 1 من 4"
+        },
+        {
+          "src": "assets/id-8/aprt-2.webp",
+          "width": 1280,
+          "height": 960,
+          "alt": "تشطيب شقة سكنية، حي الروضة، صورة 2 من 4"
+        },
+        {
+          "src": "assets/id-8/aprt-3.webp",
+          "width": 1280,
+          "height": 960,
+          "alt": "تشطيب شقة سكنية، حي الروضة، صورة 3 من 4"
+        },
+        {
+          "src": "assets/id-8/aprt-4.webp",
+          "width": 1280,
+          "height": 960,
+          "alt": "تشطيب شقة سكنية، حي الروضة، صورة 4 من 4"
+        }
+      ],
+      "description": "تشطيب شقة بالكامل، من أعمال الكهرباء والسباكة حتى الدهانات والأبواب.",
+      "featured": true,
+      "demo": true,
+      "imageDemo": true
+    },
+    {
+      "id": 9,
+      "slug": "villa-dammam-alfursan",
+      "title": "فيلا سكنية مع مسبح، حي الفرسان",
+      "sector": "فلل سكنية",
+      "city": "الدمام",
+      "year": 2024,
+      "role": "مقاول عام",
+      "client": "عميل خاص",
+      "mainImage": "assets/id-9/villa-m.webp",
+      "imageWidth": 1600,
+      "imageHeight": 900,
+      "imageAlt": "فيلا بمسبح وحديقة من الأعلى",
+      "gallery": [
+        {
+          "src": "assets/id-9/villa-1.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "فيلا سكنية مع مسبح، حي الفرسان، صورة 1 من 4"
+        },
+        {
+          "src": "assets/id-9/villa-2.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "فيلا سكنية مع مسبح، حي الفرسان، صورة 2 من 4"
+        },
+        {
+          "src": "assets/id-9/villa-3.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "فيلا سكنية مع مسبح، حي الفرسان، صورة 3 من 4"
+        },
+        {
+          "src": "assets/id-9/villa-4.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "فيلا سكنية مع مسبح، حي الفرسان، صورة 4 من 4"
+        }
+      ],
+      "description": "فيلا بمسبح وحديقة خلفية وأسطح مستغلة، بتنسيق بين التنفيذ والأعمال الخارجية.",
+      "featured": false,
+      "demo": true,
+      "imageDemo": true
+    },
+    {
+      "id": 10,
+      "slug": "interior-riyadh-alyasmin",
+      "title": "تجهيز داخلي لشقة، حي الياسمين",
+      "sector": "تشطيب",
+      "city": "الرياض",
+      "year": 2024,
+      "role": "مقاول تشطيب",
+      "client": "عميل خاص",
+      "mainImage": "assets/id-10/apartment-m.webp",
+      "imageWidth": 1200,
+      "imageHeight": 900,
+      "imageAlt": "داخل شقة بعد التجهيز الداخلي",
+      "gallery": [
+        {
+          "src": "assets/id-10/apartment-1.webp",
+          "width": 1200,
+          "height": 900,
+          "alt": "تجهيز داخلي لشقة، حي الياسمين، صورة 1 من 4"
+        },
+        {
+          "src": "assets/id-10/apartment-2.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "تجهيز داخلي لشقة، حي الياسمين، صورة 2 من 4"
+        },
+        {
+          "src": "assets/id-10/apartment-3.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "تجهيز داخلي لشقة، حي الياسمين، صورة 3 من 4"
+        },
+        {
+          "src": "assets/id-10/apartment-4.webp",
+          "width": 1600,
+          "height": 900,
+          "alt": "تجهيز داخلي لشقة، حي الياسمين، صورة 4 من 4"
+        }
+      ],
+      "description": "تجهيز داخلي لشقة بتفاصيل نجارة وإنارة وأرضيات معتمدة العينات قبل التوريد.",
+      "featured": false,
+      "demo": true,
+      "imageDemo": true
+    },
+    {
+      "id": 11,
+      "slug": "office-khobar-alraka",
+      "title": "تجهيز مكاتب شركة استشارية، الراكة",
+      "sector": "تجاري",
+      "city": "الخبر",
+      "year": 2024,
+      "role": "مقاول تجهيز",
+      "client": "مكتب استشارات (اسم تجريبي)",
+      "mainImage": "assets/id-11/office-m.webp",
+      "imageWidth": 1080,
+      "imageHeight": 1080,
+      "imageAlt": "مكاتب شركة بعد التجهيز",
+      "gallery": [
+        {
+          "src": "assets/id-11/office-1.webp",
+          "width": 1600,
+          "height": 893,
+          "alt": "تجهيز مكاتب شركة استشارية، الراكة، صورة 1 من 4"
+        },
+        {
+          "src": "assets/id-11/office-2.webp",
+          "width": 1600,
+          "height": 893,
+          "alt": "تجهيز مكاتب شركة استشارية، الراكة، صورة 2 من 4"
+        },
+        {
+          "src": "assets/id-11/office-3.webp",
+          "width": 1600,
+          "height": 893,
+          "alt": "تجهيز مكاتب شركة استشارية، الراكة، صورة 3 من 4"
+        },
+        {
+          "src": "assets/id-11/office-4.webp",
+          "width": 1080,
+          "height": 1080,
+          "alt": "تجهيز مكاتب شركة استشارية، الراكة، صورة 4 من 4"
+        }
+      ],
+      "description": "تجهيز مكاتب مفتوحة وغرف اجتماعات بجدول يراعي استمرار عمل الشركة.",
+      "featured": false,
+      "demo": true,
+      "imageDemo": true
+    },
+    {
+      "id": 12,
+      "slug": "duplex-riyadh-alnarjis",
+      "title": "دوبلكس سكني، حي العارض",
+      "sector": "فلل سكنية",
+      "city": "الرياض",
+      "year": 2023,
+      "role": "مقاول عام",
+      "client": "عميل خاص",
+      "mainImage": "assets/id-12/duplex-m.webp",
+      "imageWidth": 1440,
+      "imageHeight": 1080,
+      "imageAlt": "درج داخلي وإضاءة معمارية في دوبلكس",
+      "gallery": [
+        {
+          "src": "assets/id-12/duplex-1.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "دوبلكس سكني، حي العارض، صورة 1 من 4"
+        },
+        {
+          "src": "assets/id-12/duplex-2.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "دوبلكس سكني، حي العارض، صورة 2 من 4"
+        },
+        {
+          "src": "assets/id-12/duplex-3.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "دوبلكس سكني، حي العارض، صورة 3 من 4"
+        },
+        {
+          "src": "assets/id-12/duplex-4.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "دوبلكس سكني، حي العارض، صورة 4 من 4"
+        }
+      ],
+      "description": "دوبلكس بتشطيب فاخر شمل السلالم والإضاءة المعمارية وأعمال الرخام.",
+      "featured": false,
+      "demo": true,
+      "imageDemo": true
+    },
+    {
+      "id": 13,
+      "slug": "facade-makkah-alaziziyah",
+      "title": "تجديد واجهة مبنى، العزيزية",
+      "sector": "تجديد وصيانة",
+      "city": "مكة المكرمة",
+      "year": 2023,
+      "role": "مقاول تجديد",
+      "client": "عميل خاص",
+      "mainImage": "assets/id-13/safety-m.webp",
+      "imageWidth": 1080,
+      "imageHeight": 1080,
+      "imageAlt": "أعمال تجديد واجهة مبنى بسقالات",
+      "gallery": [
+        {
+          "src": "assets/id-13/safety-1.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "تجديد واجهة مبنى، العزيزية، صورة 1 من 4"
+        },
+        {
+          "src": "assets/id-13/safety-2.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "تجديد واجهة مبنى، العزيزية، صورة 2 من 4"
+        },
+        {
+          "src": "assets/id-13/safety-3.webp",
+          "width": 3024,
+          "height": 4032,
+          "alt": "تجديد واجهة مبنى، العزيزية، صورة 3 من 4"
+        },
+        {
+          "src": "assets/id-13/safety-4.webp",
+          "width": 2902,
+          "height": 3042,
+          "alt": "تجديد واجهة مبنى، العزيزية، صورة 4 من 4"
+        }
+      ],
+      "description": "تجديد واجهة مبنى قائم بسقالات معتمدة وخطة سلامة لحماية المارة والسكان.",
+      "featured": false,
+      "demo": true,
+      "imageDemo": true
+    }
+  ]
+}

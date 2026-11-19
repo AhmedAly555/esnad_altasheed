@@ -36,6 +36,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+address {
+  font-style: normal;
+}
+
 ::selection {
   background: var(--selection-bg);
   color: var(--selection-text);

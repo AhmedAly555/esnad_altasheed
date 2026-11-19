@@ -1,0 +1,21 @@
+.project {
+  padding-block: var(--space-12) var(--section-space);
+}
+
+.project__grid {
+  display: grid;
+  gap: var(--space-10);
+  align-items: start;
+}
+
+.project__figure {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+}
+
+@media (min-width: 64em) {
+  .project__grid {
+    grid-template-columns: 4fr 8fr;
+    gap: var(--space-16);
+  }
+}

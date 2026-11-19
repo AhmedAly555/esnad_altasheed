@@ -1,0 +1,17 @@
+<section class="section process" aria-labelledby="process-title">
+  <div class="container container--xl">
+    <div class="process__head" data-reveal>
+      <p class="eyebrow eyebrow--light process__eyebrow">{{source.eyebrow}}</p>
+      <h2 id="process-title">{{source.title}}</h2>
+      <p class="process__lead">{{source.lead}}</p>
+    </div>
+    <ol class="list-reset process__steps" data-process>
+      {{#each source.steps}}<li class="step" data-reveal>
+        <span class="step__n ltr">{{item.n}}</span>
+        <h3 class="step__title">{{item.title}}</h3>
+        <p class="step__text">{{item.text}}</p>
+      </li>
+      {{/each}}
+    </ol>
+  </div>
+</section>

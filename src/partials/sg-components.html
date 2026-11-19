@@ -1,31 +1,31 @@
 <div class="sg-block">
   <p class="sg-label">Headings (Noto Kufi Arabic 700)</p>
-  <div class="h1">نبني .. ونسائد المستقبل</div>
-  <div class="h2">إسناد التشييد للمقاولات</div>
-  <div class="h3">مشاريع سكنية وتجارية في المملكة</div>
-  <div class="h4">التزام بالجدول الزمني</div>
-  <div class="h5">الجودة والسلامة</div>
-  <div class="h6">شفافية في التواصل</div>
+  <div class="h1">{{site.company.taglineAr}}</div>
+  <div class="h2">{{styleguide.headings.h2}}</div>
+  <div class="h3">{{styleguide.headings.h3}}</div>
+  <div class="h4">{{styleguide.headings.h4}}</div>
+  <div class="h5">{{styleguide.headings.h5}}</div>
+  <div class="h6">{{styleguide.headings.h6}}</div>
 </div>
 
 <div class="sg-block">
   <p class="sg-label">Body, lead, muted, link (IBM Plex Sans Arabic 400/500, Inter for Latin and digits)</p>
   <div class="prose">
-    <p class="lead">نؤمن أن المبنى الجيد يبدأ بخطة واضحة وينتهي بتسليم في موعده، وبين الاثنين فريق يعرف ما يفعله.</p>
-    <p>نعمل على مشاريع سكنية وتجارية وتعليمية في الرياض وجدة والدمام، ونلتزم بكود البناء السعودي في كل مرحلة، من الأساسات حتى التسليم. للاستفسار اتصل على <a class="ltr" href="#">+966 50 123 4567</a> أو <a href="#">اطلب عرض سعر</a>.</p>
-    <p class="muted small">نص ثانوي: آخر تحديث 2025، مساحة 1,250 م²، 12 شهرا.</p>
-    <p><strong>نص بوزن متوسط</strong> للتأكيد داخل الفقرة، دون خط عريض مصطنع.</p>
+    <p class="lead">{{styleguide.body.lead}}</p>
+    <p>{{styleguide.body.paragraph}} <a class="ltr" href="#">{{site.contact.phone.display}}</a> {{styleguide.body.or}} <a href="#">{{ui.cta.primary.label}}</a>.</p>
+    <p class="muted small">{{styleguide.body.muted}}</p>
+    <p><strong>{{styleguide.body.strongLead}}</strong> {{styleguide.body.strongTail}}</p>
   </div>
 </div>
 
 <div class="sg-block">
   <p class="sg-label">Buttons</p>
   <div class="sg-cluster">
-    <a class="btn" href="#">زر رئيسي</a>
-    <a class="btn btn--gold" href="#">اطلب عرض سعر</a>
-    <a class="btn btn--outline" href="#">اعرف المزيد</a>
-    <a class="btn btn--outline btn--sm" href="#">زر صغير</a>
-    <button class="btn" type="button" disabled>معطل</button>
+    <a class="btn" href="#">{{styleguide.buttons.primary}}</a>
+    <a class="btn btn--gold" href="#">{{ui.cta.primary.label}}</a>
+    <a class="btn btn--outline" href="#">{{styleguide.buttons.outline}}</a>
+    <a class="btn btn--outline btn--sm" href="#">{{styleguide.buttons.small}}</a>
+    <button class="btn" type="button" disabled>{{styleguide.buttons.disabled}}</button>
   </div>
 </div>
 
@@ -34,16 +34,16 @@
   <span class="gold-line gold-line--wide"></span>
   <div class="sg-grid">
     <div class="card">
-      <h3 class="h5">بطاقة فاتحة</h3>
-      <p class="muted">حد رفيع وظل أخضر خفيف.</p>
+      <h3 class="h5">{{styleguide.cards.light.title}}</h3>
+      <p class="muted">{{styleguide.cards.light.text}}</p>
     </div>
     <a class="card card--interactive" href="#">
-      <h3 class="h5">بطاقة قابلة للنقر</h3>
-      <p class="muted">ترتفع 4 بكسل عند التمرير.</p>
+      <h3 class="h5">{{styleguide.cards.interactive.title}}</h3>
+      <p class="muted">{{styleguide.cards.interactive.text}}</p>
     </a>
     <div class="card card--glass">
-      <h3 class="h5">بطاقة زجاجية</h3>
-      <p class="muted">تُستخدم في الأقسام الداكنة فقط.</p>
+      <h3 class="h5">{{styleguide.cards.glass.title}}</h3>
+      <p class="muted">{{styleguide.cards.glass.text}}</p>
     </div>
   </div>
   <hr class="divider divider--diamond">
@@ -53,31 +53,30 @@
   <p class="sg-label">Form fields (default, focus it, error)</p>
   <form class="sg-form" novalidate>
     <div class="field">
-      <label for="{{id}}-name">الاسم الكامل</label>
-      <input class="input" id="{{id}}-name" name="name" type="text" placeholder="محمد العتيبي" autocomplete="name">
+      <label for="{{id}}-name">{{styleguide.form.name.label}}</label>
+      <input class="input" id="{{id}}-name" name="name" type="text" placeholder="{{styleguide.form.name.placeholder}}" autocomplete="name">
     </div>
     <div class="field">
-      <label for="{{id}}-phone">رقم الجوال</label>
+      <label for="{{id}}-phone">{{styleguide.form.phone.label}}</label>
       <input class="input" id="{{id}}-phone" name="phone" type="tel" placeholder="+966 5X XXX XXXX" autocomplete="tel" dir="ltr">
-      <span class="field__hint">نرد خلال يوم عمل واحد.</span>
+      <span class="field__hint">{{styleguide.form.phone.hint}}</span>
     </div>
     <div class="field">
-      <label for="{{id}}-type">نوع المشروع</label>
+      <label for="{{id}}-type">{{styleguide.form.type.label}}</label>
       <select class="select" id="{{id}}-type" name="type">
-        <option>فيلا سكنية</option>
-        <option>مبنى تجاري</option>
-        <option>تشطيب وتجهيز</option>
+        {{#each styleguide.form.type.options}}<option>{{item}}</option>
+        {{/each}}
       </select>
     </div>
     <div class="field">
-      <label for="{{id}}-email">البريد الإلكتروني</label>
-      <input class="input" id="{{id}}-email" name="email" type="email" value="غير صحيح" aria-invalid="true" aria-describedby="{{id}}-email-err" dir="ltr">
-      <span class="field__error" id="{{id}}-email-err">أدخل بريدا إلكترونيا صحيحا.</span>
+      <label for="{{id}}-email">{{styleguide.form.email.label}}</label>
+      <input class="input" id="{{id}}-email" name="email" type="email" value="{{styleguide.form.email.value}}" aria-invalid="true" aria-describedby="{{id}}-email-err" dir="ltr">
+      <span class="field__error" id="{{id}}-email-err">{{styleguide.form.email.error}}</span>
     </div>
     <div class="field">
-      <label for="{{id}}-msg">تفاصيل المشروع</label>
-      <textarea class="textarea" id="{{id}}-msg" name="message" placeholder="المساحة، الموقع، الموعد المتوقع"></textarea>
+      <label for="{{id}}-msg">{{styleguide.form.message.label}}</label>
+      <textarea class="textarea" id="{{id}}-msg" name="message" placeholder="{{styleguide.form.message.placeholder}}"></textarea>
     </div>
-    <button class="btn btn--sm" type="button">إرسال</button>
+    <button class="btn btn--sm" type="button">{{styleguide.form.submit}}</button>
   </form>
 </div>

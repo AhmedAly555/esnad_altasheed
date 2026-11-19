@@ -1,0 +1,23 @@
+/* Ruled label and value rows: project data and contact details */
+.facts {
+  display: grid;
+  border-block-start: 1px solid var(--border);
+}
+
+.facts__row {
+  display: grid;
+  grid-template-columns: minmax(5rem, 1fr) 2fr;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  border-block-end: 1px solid var(--border);
+}
+
+.facts__label {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.facts__value {
+  color: var(--text-strong);
+  font-weight: var(--weight-medium);
+}

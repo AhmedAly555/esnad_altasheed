@@ -62,7 +62,7 @@
   ],
   "stats": [
     {
-      "value": "12",
+      "value": "13",
       "unit": "",
       "label": "مشروعًا منجزًا وقيد التنفيذ",
       "demo": true
@@ -80,10 +80,14 @@
       "demo": true
     },
     {
-      "value": "4",
+      "value": "5",
       "unit": "",
-      "label": "مدن: الرياض، جدة، الدمام، الخبر",
+      "label": "مدن: الرياض، جدة، الدمام، الخبر، مكة المكرمة",
       "demo": true
     }
-  ]
+  ],
+  "form": {
+    "endpoint": "https://formspree.io/f/xxxxdemo",
+    "demo": true
+  }
 }
