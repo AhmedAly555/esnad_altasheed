@@ -1,0 +1,22 @@
+<header class="site-header site-header--{{header}} on-dark" data-header>
+  <div class="container container--xl site-header__bar">
+    {{> brand}}
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="{{ui.header.menuOpen}}" data-menu-toggle data-label-open="{{ui.header.menuOpen}}" data-label-close="{{ui.header.menuClose}}">
+      <svg class="menu-toggle__open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="menu-toggle__close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="site-nav" id="site-nav" data-menu-panel>
+      <nav aria-label="{{ui.header.navLabel}}">
+        <ul class="list-reset site-nav__list">
+          {{#each nav}}<li class="site-nav__item"><a class="site-nav__link" href="{{root}}{{item.href}}"{{item.attrs}}>{{item.label}}</a></li>
+          {{/each}}
+        </ul>
+      </nav>
+      <div class="site-nav__tools">
+        <a class="site-nav__phone ltr" href="tel:{{site.contact.phone.href}}">{{site.contact.phone.display}}</a>
+        <button class="lang-switch" type="button" lang="en" disabled aria-label="{{ui.header.langSwitchLabel}}">{{ui.header.langSwitch}}</button>
+        <a class="btn btn--outline btn--sm site-nav__cta" href="{{root}}{{ui.header.cta.href}}">{{ui.header.cta.label}}</a>
+      </div>
+    </div>
+  </div>
+</header>

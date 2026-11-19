@@ -1,0 +1,35 @@
+<footer class="site-footer on-dark">
+  <div class="container container--xl">
+    <div class="site-footer__grid">
+      <div class="site-footer__about">
+        {{> brand}}
+        <p class="site-footer__line">{{site.company.footerAr}}</p>
+        <ul class="list-reset site-footer__list site-footer__list--inline" aria-label="{{ui.footer.socialLabel}}">
+          {{#each site.social}}<li><a class="site-footer__link" href="{{item.url}}" rel="noopener" target="_blank">{{item.label}}</a></li>
+          {{/each}}
+        </ul>
+      </div>
+      <nav class="site-footer__col" aria-label="{{ui.footer.quickLinks}}">
+        <h2 class="site-footer__title">{{ui.footer.quickLinks}}</h2>
+        <ul class="list-reset site-footer__list">
+          {{#each nav}}<li><a class="site-footer__link" href="{{root}}{{item.href}}"{{item.attrs}}>{{item.label}}</a></li>
+          {{/each}}
+        </ul>
+      </nav>
+      <div class="site-footer__col">
+        <h2 class="site-footer__title">{{ui.footer.contact}}</h2>
+        <ul class="list-reset site-footer__list">
+          <li class="site-footer__item"><span class="site-footer__label">{{ui.footer.labels.phone}}</span> <a class="site-footer__link ltr" href="tel:{{site.contact.phone.href}}">{{site.contact.phone.display}}</a></li>
+          <li class="site-footer__item"><span class="site-footer__label">{{ui.footer.labels.whatsapp}}</span> <a class="site-footer__link ltr" href="https://wa.me/{{site.contact.whatsapp.href}}" rel="noopener" target="_blank">{{site.contact.whatsapp.display}}</a></li>
+          <li class="site-footer__item"><span class="site-footer__label">{{ui.footer.labels.email}}</span> <a class="site-footer__link ltr" href="mailto:{{site.contact.email}}">{{site.contact.email}}</a></li>
+          <li class="site-footer__item"><span class="site-footer__label">{{ui.footer.labels.address}}</span> <address class="site-footer__address">{{site.address.lineAr}}، {{site.address.cityAr}}</address></li>
+          <li class="site-footer__item"><span class="site-footer__label">{{ui.footer.labels.hours}}</span> <span>{{site.hours.ar}}</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <p>© <span class="ltr">{{year}}</span> {{site.company.nameAr}}. {{ui.footer.rights}}</p>
+      <p class="muted">{{ui.footer.crLabel}} <span class="ltr">{{site.legal.cr}}</span> · {{ui.footer.vatLabel}} <span class="ltr">{{site.legal.vat}}</span></p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,71 @@
+/* Fixed header: transparent over a hero, solid green once scrolled or on pages without one */
+.header-sentinel {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: 1px;
+  block-size: var(--space-6);
+  pointer-events: none;
+}
+
+.site-header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: var(--z-header);
+  background: transparent;
+  transition:
+    background-color var(--dur-header) var(--ease),
+    box-shadow var(--dur-header) var(--ease);
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: 1px;
+  background: var(--grad-gold-line);
+  opacity: 0;
+  transition: opacity var(--dur-header) var(--ease);
+}
+
+.site-header--solid,
+.site-header.is-scrolled,
+.site-header.is-menu-open {
+  background: var(--green-900);
+}
+
+.site-header--solid::after,
+.site-header.is-scrolled::after,
+.site-header.is-menu-open::after {
+  opacity: 1;
+}
+
+.site-header.is-scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.site-header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  block-size: var(--bar-h, var(--header-h));
+  transition: block-size var(--dur-header) var(--ease);
+}
+
+@media (min-width: 64em) {
+  .site-header.is-scrolled {
+    --bar-h: var(--header-h-compact);
+    --brand-mark: var(--mark-size-compact);
+  }
+}
+
+.site-main--solid {
+  padding-block-start: var(--header-h);
+}
+
+html.is-menu-open {
+  overflow: hidden;
+}

@@ -1,0 +1,30 @@
+/* Brand tint over every photo. The neutral green fill shows until a real image loads */
+.photo {
+  position: relative;
+  overflow: hidden;
+  background: var(--green-700);
+}
+
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--photo-tint);
+  pointer-events: none;
+}
+
+.photo--hero::after {
+  background: var(--grad-hero);
+}
+
+.photo__img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+/* For frames with their own aspect ratio: the image fills the box instead of sizing it */
+.photo--cover > .photo__img {
+  position: absolute;
+  inset: 0;
+}

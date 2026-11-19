@@ -1,0 +1,45 @@
+/* Scroll reveal. Opt in with data-reveal; js/behaviors/reveal.js adds .is-visible and sets --i
+   (stagger index). All timing and distance come from tokens, which collapse under reduced motion. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition:
+    opacity var(--dur-reveal) var(--ease) calc(var(--i, 0) * var(--stagger)),
+    transform var(--dur-reveal) var(--ease) calc(var(--i, 0) * var(--stagger));
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hands transform and transition back to the component once the reveal has finished */
+.js [data-reveal].is-done {
+  transition: none;
+}
+
+/* Headline mask: each rendered line is wrapped, the text rises out of an overflow mask.
+   The padding and negative margin keep ascenders and diacritics from being clipped. */
+.js [data-lines]:not(.is-split) {
+  visibility: hidden;
+}
+
+.line {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.12em;
+  margin-block: -0.12em;
+}
+
+.line__inner {
+  display: block;
+}
+
+.js [data-lines].is-split .line__inner {
+  transform: translateY(115%);
+  transition: transform var(--dur-reveal) var(--ease) calc((var(--i, 0) + var(--line, 0)) * var(--stagger));
+}
+
+.js [data-lines].is-split.is-visible .line__inner {
+  transform: none;
+}

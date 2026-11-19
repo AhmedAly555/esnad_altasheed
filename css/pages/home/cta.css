@@ -1,0 +1,29 @@
+.cta__card {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+  padding: var(--space-8);
+}
+
+.cta__title {
+  margin-block-end: var(--space-4);
+}
+
+.cta__actions {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+
+.cta__phone {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 48em) {
+  .cta__card {
+    grid-template-columns: 1.6fr 1fr;
+    gap: var(--space-16);
+    padding: var(--space-16);
+  }
+}

@@ -1,0 +1,7 @@
+[
+  { "key": "home", "label": "الرئيسية", "href": "" },
+  { "key": "about", "label": "من نحن", "href": "about/" },
+  { "key": "services", "label": "خدماتنا", "href": "services/" },
+  { "key": "projects", "label": "مشاريعنا", "href": "projects/" },
+  { "key": "contact", "label": "تواصل معنا", "href": "contact/" }
+]

@@ -1,0 +1,139 @@
+---
+data: home
+nav: home
+header: overlay
+css: pages/home
+---
+<section class="hero on-dark section--dark" aria-labelledby="hero-title">
+  <div class="hero__media photo photo--hero" data-image-demo="{{home.hero.image.imageDemo}}">
+    <img class="photo__img hero__image" src="{{root}}{{home.hero.image.src}}" width="{{home.hero.image.width}}" height="{{home.hero.image.height}}" alt="{{home.hero.image.alt}}" data-parallax fetchpriority="high" decoding="async">
+  </div>
+  <div class="container container--xl hero__inner">
+    <div class="hero__copy">
+      <p class="eyebrow" data-reveal>{{home.hero.eyebrow}}</p>
+      <h1 id="hero-title" class="display hero__title" data-lines>{{home.hero.title}}</h1>
+      <p class="lead hero__lead" data-reveal>{{home.hero.lead}}</p>
+      <div class="hero__actions" data-reveal>
+        <a class="btn btn--gold" href="{{root}}{{home.hero.primary.href}}">{{home.hero.primary.label}}</a>
+        <a class="btn btn--outline" href="{{root}}{{home.hero.secondary.href}}">{{home.hero.secondary.label}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section about" aria-labelledby="about-title">
+  <div class="container container--xl about__grid">
+    <div class="about__text" data-reveal>
+      <p class="eyebrow eyebrow--light">{{home.about.eyebrow}}</p>
+      <h2 id="about-title">{{home.about.title}}</h2>
+      <span class="gold-line gold-line--draw"></span>
+      {{#each home.about.paragraphs}}<p class="about__paragraph">{{item.text}}</p>
+      {{/each}}
+      <ul class="list-reset about__points">
+        {{#each home.about.points}}<li class="about__point">{{item.text}}</li>
+        {{/each}}
+      </ul>
+      <a class="link-arrow" href="{{root}}{{home.about.link.href}}">{{home.about.link.label}}{{> arrow}}</a>
+    </div>
+    <figure class="about__figure photo photo--cover" data-reveal data-image-demo="{{home.about.image.imageDemo}}">
+      <img class="photo__img" src="{{root}}{{home.about.image.src}}" width="{{home.about.image.width}}" height="{{home.about.image.height}}" alt="{{home.about.image.alt}}" loading="lazy" decoding="async">
+    </figure>
+  </div>
+</section>
+
+<section class="section services" aria-labelledby="services-title">
+  <div class="container container--xl services__grid">
+    <div class="services__intro" data-reveal>
+      <p class="eyebrow eyebrow--light">{{home.services.eyebrow}}</p>
+      <h2 id="services-title">{{home.services.title}}</h2>
+      <span class="gold-line gold-line--draw"></span>
+      <p class="services__lead">{{home.services.lead}}</p>
+      <a class="link-arrow" href="{{root}}{{home.services.link.href}}">{{home.services.link.label}}{{> arrow}}</a>
+    </div>
+    <ol class="list-reset services__list">
+      {{#each services}}<li class="service-row" data-reveal>
+        <a class="service-row__link" href="{{root}}services/#{{item.slug}}">
+          <span class="service-row__n" aria-hidden="true"></span>
+          <span class="service-row__body">
+            <span class="service-row__title">{{item.title}}</span>
+            <span class="service-row__text">{{item.summary}}</span>
+          </span>
+          <span class="service-row__go">{{> arrow}}<span class="visually-hidden">{{home.services.more}}</span></span>
+        </a>
+      </li>
+      {{/each}}
+    </ol>
+  </div>
+</section>
+
+<section class="section section--forest stats" aria-label="{{home.stats.label}}">
+  <div class="container container--xl">
+    <dl class="stats__list" data-reveal>
+      {{#each site.stats}}<div class="stat" data-reveal-trigger>
+        <dt class="stat__label">{{item.label}}</dt>
+        <dd class="stat__value"><span class="ltr" data-count>{{item.value}}</span> <span class="stat__unit">{{item.unit}}</span></dd>
+      </div>
+      {{/each}}
+    </dl>
+  </div>
+</section>
+
+<section class="section section--sand projects" aria-labelledby="projects-title">
+  <div class="container container--xl">
+    <div class="section-head" data-reveal>
+      <div>
+        <p class="eyebrow eyebrow--light">{{home.projects.eyebrow}}</p>
+        <h2 id="projects-title">{{home.projects.title}}</h2>
+        <span class="gold-line gold-line--draw section-head__rule"></span>
+      </div>
+      <p class="section-head__lead">{{home.projects.lead}}</p>
+      <a class="link-arrow" href="{{root}}{{home.projects.link.href}}">{{home.projects.link.label}}{{> arrow}}</a>
+    </div>
+    <ul class="list-reset projects__grid">
+      {{#each featuredProjects}}<li class="project-card" data-reveal>
+        <a class="project-card__link" href="{{root}}projects/#{{item.slug}}">
+          <span class="project-card__frame photo photo--cover">
+            <img class="photo__img project-card__image" src="{{root}}{{item.mainImage}}" width="{{item.imageWidth}}" height="{{item.imageHeight}}" alt="{{item.imageAlt}}" loading="lazy" decoding="async">
+          </span>
+          <span class="project-card__meta">{{item.sector}} · <span class="ltr">{{item.year}}</span></span>
+          <span class="project-card__title">{{item.title}}</span>
+          <span class="project-card__city">{{item.city}}</span>
+        </a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>
+
+<section class="section process" aria-labelledby="process-title">
+  <div class="container container--xl">
+    <div class="process__head" data-reveal>
+      <p class="eyebrow eyebrow--light process__eyebrow">{{home.process.eyebrow}}</p>
+      <h2 id="process-title">{{home.process.title}}</h2>
+      <p class="process__lead">{{home.process.lead}}</p>
+    </div>
+    <ol class="list-reset process__steps" data-process>
+      {{#each home.process.steps}}<li class="step" data-reveal>
+        <span class="step__n ltr">{{item.n}}</span>
+        <h3 class="step__title">{{item.title}}</h3>
+        <p class="step__text">{{item.text}}</p>
+      </li>
+      {{/each}}
+    </ol>
+  </div>
+</section>
+
+<section class="section section--gradient cta" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="card card--glass cta__card" data-reveal>
+      <div>
+        <h2 id="cta-title" class="cta__title">{{home.cta.title}}</h2>
+        <p>{{home.cta.text}}</p>
+      </div>
+      <div class="cta__actions">
+        <a class="btn btn--gold" href="{{root}}{{home.cta.primary.href}}">{{home.cta.primary.label}}</a>
+        <p class="cta__phone">{{home.cta.phoneLabel}} <a class="ltr" href="tel:{{site.contact.phone.href}}">{{site.contact.phone.display}}</a></p>
+      </div>
+    </div>
+  </div>
+</section>

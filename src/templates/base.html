@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{lang}}" dir="{{dir}}">
+<head>
+  {{> head}}
+</head>
+<body>
+  <a class="skip-link" href="#main">{{ui.skipLink}}</a>
+  <div class="header-sentinel" data-header-sentinel aria-hidden="true"></div>
+  {{> header}}
+  <main id="main" class="site-main site-main--{{header}}">
+{{content}}
+  </main>
+  {{> footer}}
+  <script type="module" src="{{root}}js/main.js"></script>
+  {{pageScripts}}
+</body>
+</html>

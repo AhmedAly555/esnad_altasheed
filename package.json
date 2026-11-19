@@ -1,0 +1,20 @@
+{
+  "name": "esnad-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Esnad Al-Tasheed corporate website: static output, zero runtime dependencies",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node build/build.mjs",
+    "dev": "node build/dev.mjs",
+    "check:demo": "node build/check-demo.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}

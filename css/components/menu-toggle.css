@@ -1,0 +1,26 @@
+.menu-toggle {
+  display: none;
+  place-items: center;
+  inline-size: var(--tap-target);
+  block-size: var(--tap-target);
+  padding: 0;
+  background: transparent;
+  color: var(--ivory);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+}
+
+.menu-toggle__close,
+.menu-toggle[aria-expanded="true"] .menu-toggle__open {
+  display: none;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__close {
+  display: block;
+}
+
+@media (max-width: 63.99em) {
+  .menu-toggle {
+    display: grid;
+  }
+}
