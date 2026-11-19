@@ -1,11 +1,45 @@
 ---
-title: تواصل معنا | إسناد التشييد
+data: contact
 nav: contact
+css: pages/contact
+scripts: pages/contact
 ---
-<section class="section">
-  <div class="container">
-    <h1>تواصل معنا</h1>
-    <span class="gold-line"></span>
-    <p class="muted">صفحة مؤقتة لمعاينة الهيكل المشترك. يُبنى محتواها لاحقاً.</p>
+{{> page-head eyebrow=contact.hero.eyebrow title=contact.hero.title lead=contact.hero.lead tone="sand" layout="compact"}}
+
+<section class="section contact" aria-label="{{contact.form.title}}">
+  <div class="container container--xl contact__grid">
+    <div class="contact__form card" data-contact>
+      <h2 class="h3">{{contact.form.title}}</h2>
+      <span class="gold-line"></span>
+      <p class="contact__lead">{{contact.form.lead}}</p>
+      {{> contact-form}}
+      <div class="form-status form-status--success" role="status" tabindex="-1" hidden data-status="success">
+        <h3 class="form-status__title">{{contact.form.success.title}}</h3>
+        <p>{{contact.form.success.text}}</p>
+      </div>
+      <div class="form-status form-status--error" role="alert" tabindex="-1" hidden data-status="failure">
+        <h3 class="form-status__title">{{contact.form.failure.title}}</h3>
+        <p>{{contact.form.failure.text}}</p>
+        <a class="link-arrow" href="{{contact.whatsappUrl}}" rel="noopener" target="_blank">{{contact.whatsappCta}}{{> arrow}}</a>
+      </div>
+    </div>
+
+    <aside class="contact__aside" aria-labelledby="details-title">
+      <h2 id="details-title" class="h3">{{contact.details.title}}</h2>
+      <span class="gold-line"></span>
+      <dl class="facts contact__facts">
+        <div class="facts__row"><dt class="facts__label">{{ui.contactLabels.phone}}</dt><dd class="facts__value"><a class="ltr" href="tel:{{site.contact.phone.href}}">{{site.contact.phone.display}}</a></dd></div>
+        <div class="facts__row"><dt class="facts__label">{{ui.contactLabels.whatsapp}}</dt><dd class="facts__value"><a class="ltr" href="{{contact.whatsappUrl}}" rel="noopener" target="_blank">{{site.contact.whatsapp.display}}</a></dd></div>
+        <div class="facts__row"><dt class="facts__label">{{ui.contactLabels.email}}</dt><dd class="facts__value"><a class="ltr" href="mailto:{{site.contact.email}}">{{site.contact.email}}</a></dd></div>
+        <div class="facts__row"><dt class="facts__label">{{ui.contactLabels.address}}</dt><dd class="facts__value"><address>{{site.address.fullAr}}</address></dd></div>
+        <div class="facts__row"><dt class="facts__label">{{ui.contactLabels.hours}}</dt><dd class="facts__value">{{site.hours.ar}}</dd></div>
+      </dl>
+      <a class="btn btn--outline" href="{{contact.whatsappUrl}}" rel="noopener" target="_blank">{{contact.whatsappCta}}</a>
+      <div class="map on-dark">
+        <h3 class="map__title">{{contact.map.title}}</h3>
+        <address class="map__address">{{site.address.fullAr}}</address>
+        <a class="link-arrow map__link" href="{{contact.mapUrl}}" rel="noopener" target="_blank">{{contact.map.link}}{{> arrow}}</a>
+      </div>
+    </aside>
   </div>
 </section>

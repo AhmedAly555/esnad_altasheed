@@ -1,0 +1,30 @@
+<section class="service-detail" id="{{item.slug}}" aria-labelledby="{{item.slug}}-title">
+  <div class="container container--xl service-detail__grid">
+    <div class="service-detail__intro" data-reveal>
+      <span class="service-detail__n" aria-hidden="true"></span>
+      <h2 id="{{item.slug}}-title">{{item.title}}</h2>
+      <span class="gold-line gold-line--draw"></span>
+      <p class="service-detail__lead">{{item.lead}}</p>
+      <a class="btn btn--outline btn--sm" href="{{root}}contact/?type={{item.slug}}">{{services.labels.cta}}</a>
+    </div>
+    <div class="service-detail__body">
+      <div data-reveal>
+        <h3 class="service-detail__heading">{{services.labels.scope}}</h3>
+        <ul class="list-reset service-detail__scope">
+          {{#each item.scope}}<li class="service-detail__scope-item">{{item}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      <div data-reveal>
+        <h3 class="service-detail__heading">{{services.labels.process}}</h3>
+        <ol class="list-reset service-detail__steps">
+          {{#each item.steps}}<li class="service-detail__step">
+            <span class="service-detail__step-title">{{item.title}}</span>
+            <span class="service-detail__step-text">{{item.text}}</span>
+          </li>
+          {{/each}}
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+<form class="contact-form" action="{{site.form.endpoint}}" method="post" novalidate data-contact-form>
+  <p class="field__hint">{{contact.form.requiredNote}}</p>
+  <div class="field">
+    <label for="cf-name">{{contact.form.fields.name.label}} <span aria-hidden="true">*</span></label>
+    <input class="input" id="cf-name" name="name" type="text" autocomplete="name" required aria-describedby="cf-name-error" data-error-required="{{contact.form.fields.name.error}}">
+    <span class="field__error" id="cf-name-error" hidden></span>
+  </div>
+  <div class="field">
+    <label for="cf-phone">{{contact.form.fields.phone.label}} <span aria-hidden="true">*</span></label>
+    <input class="input" id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" placeholder="{{contact.form.fields.phone.placeholder}}" required aria-describedby="cf-phone-hint cf-phone-error" data-error-required="{{contact.form.fields.phone.errorRequired}}" data-error-invalid="{{contact.form.fields.phone.errorInvalid}}">
+    <span class="field__hint" id="cf-phone-hint">{{contact.form.fields.phone.hint}}</span>
+    <span class="field__error" id="cf-phone-error" hidden></span>
+  </div>
+  <div class="field">
+    <label for="cf-email">{{contact.form.fields.email.label}}</label>
+    <input class="input" id="cf-email" name="email" type="email" autocomplete="email" dir="ltr" aria-describedby="cf-email-error" data-error-invalid="{{contact.form.fields.email.errorInvalid}}">
+    <span class="field__error" id="cf-email-error" hidden></span>
+  </div>
+  <div class="field">
+    <label for="cf-type">{{contact.form.fields.type.label}} <span aria-hidden="true">*</span></label>
+    <select class="select" id="cf-type" name="project_type" required aria-describedby="cf-type-error" data-error-required="{{contact.form.fields.type.error}}">
+      <option value="">{{contact.form.fields.type.placeholder}}</option>
+      {{#each services.items}}<option value="{{item.slug}}">{{item.title}}</option>
+      {{/each}}
+      <option value="other">{{contact.form.fields.type.other}}</option>
+    </select>
+    <span class="field__error" id="cf-type-error" hidden></span>
+  </div>
+  <div class="field">
+    <label for="cf-message">{{contact.form.fields.message.label}} <span aria-hidden="true">*</span></label>
+    <textarea class="textarea" id="cf-message" name="message" placeholder="{{contact.form.fields.message.placeholder}}" required aria-describedby="cf-message-error" data-error-required="{{contact.form.fields.message.error}}"></textarea>
+    <span class="field__error" id="cf-message-error" hidden></span>
+  </div>
+  <div class="visually-hidden" aria-hidden="true">
+    <label>{{contact.form.honeypotLabel}} <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+  </div>
+  <button class="btn" type="submit" data-submit data-label-sending="{{contact.form.sending}}">{{contact.form.submit}}</button>
+</form>

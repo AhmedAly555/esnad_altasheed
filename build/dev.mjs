@@ -22,16 +22,20 @@ const TYPES = {
 
 let building = Promise.resolve();
 
-// Requests wait for the running build, because a build wipes dist/ first
+// Requests wait for the running build. A failed build leaves the last good dist/ in place and is reported here.
 function rebuild() {
   building = building.then(async () => {
     try {
-      const { pages, problems } = await build();
-      console.log(
-        `[build] ${pages.length} page(s)${problems.length ? `, ${problems.length} problem(s):\n- ${problems.join("\n- ")}` : ""}`,
-      );
+      const { pages, problems } = await build({ dev: true });
+      if (problems.length) {
+        console.error(
+          `[build] FAILED, serving the last good dist/. ${problems.length} problem(s):\n- ${problems.join("\n- ")}`,
+        );
+      } else {
+        console.log(`[build] ${pages.length} page(s)`);
+      }
     } catch (e) {
-      console.error(`[build] ${e.message}`);
+      console.error(`[build] FAILED, serving the last good dist/: ${e.message}`);
     }
   });
   return building;

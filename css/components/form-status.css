@@ -1,0 +1,21 @@
+/* Outcome panel shown in place of a submitted form. Colour sits on the top rule only. */
+.form-status {
+  padding: var(--space-6);
+  background: var(--bg-alt);
+  border-block-start: 3px solid var(--success);
+  border-radius: var(--radius-md);
+}
+
+.form-status--error {
+  border-block-start-color: var(--error);
+}
+
+.form-status__title {
+  margin-block-end: var(--space-2);
+  font-size: var(--text-xl);
+}
+
+.form-status:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}

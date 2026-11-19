@@ -1,11 +1,16 @@
 ---
-title: مشاريعنا | إسناد التشييد
+data: projects
 nav: projects
 ---
-<section class="section">
-  <div class="container">
-    <h1>مشاريعنا</h1>
-    <span class="gold-line"></span>
-    <p class="muted">صفحة مؤقتة لمعاينة الهيكل المشترك. يُبنى محتواها لاحقاً.</p>
+{{> page-head eyebrow=projects.hero.eyebrow title=projects.hero.title lead=projects.hero.lead tone="dark" layout="wide"}}
+
+<section class="section section--sand" aria-label="{{projects.hero.eyebrow}}">
+  <div class="container container--xl">
+    <ul class="list-reset project-grid project-grid--lead">
+      {{#each projects.items}}{{> project-card}}
+      {{/each}}
+    </ul>
   </div>
 </section>
+
+{{> cta-band cta=projects.cta variant="start"}}

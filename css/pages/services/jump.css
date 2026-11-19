@@ -1,0 +1,36 @@
+/* In-page index that stays under the header while the five services scroll past */
+.service-jump {
+  position: sticky;
+  inset-block-start: var(--header-h);
+  z-index: var(--z-sticky);
+  counter-reset: service;
+  background: var(--bg);
+  border-block-end: 1px solid var(--line);
+}
+
+.service-jump__list {
+  display: flex;
+  gap: var(--space-8);
+  overflow-x: auto;
+}
+
+.service-jump__link {
+  display: block;
+  padding-block: var(--space-4);
+  border-block-end: 2px solid transparent;
+  color: var(--text-strong);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color var(--transition);
+}
+
+.service-jump__link:hover {
+  border-color: var(--gold-500);
+}
+
+@media (min-width: 64em) {
+  .service-jump {
+    inset-block-start: var(--header-h-compact);
+  }
+}

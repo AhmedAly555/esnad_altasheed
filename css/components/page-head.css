@@ -1,0 +1,79 @@
+/* Opening band of every inner page. Tone (dark or sand) comes from the section modifier; the layout modifier
+   changes the silhouette: split (default), wide (title alone, lead beneath), compact, bridge (compact, leaves
+   room for the next block to overlap it). Dark sits on the same green as the solid header, so the two read as one. */
+.page-head {
+  padding-block: var(--space-12) var(--space-16);
+}
+
+.page-head__inner {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.page-head__title {
+  max-inline-size: 22ch;
+}
+
+.page-head__lead {
+  color: var(--text-muted);
+}
+
+.section--sand .page-head__eyebrow {
+  color: var(--accent-text);
+}
+
+.page-head--compact,
+.page-head--bridge {
+  padding-block-start: var(--space-8);
+}
+
+.page-head--compact .page-head__title,
+.page-head--bridge .page-head__title {
+  font-size: var(--text-3xl);
+}
+
+.page-head--bridge {
+  padding-block-end: var(--space-24);
+}
+
+@media (min-width: 64em) {
+  .page-head {
+    padding-block: var(--space-20) var(--space-24);
+  }
+
+  .page-head__inner {
+    grid-template-columns: 7fr 4fr;
+    column-gap: var(--space-16);
+    align-items: end;
+  }
+
+  .page-head__eyebrow {
+    grid-column: 1 / -1;
+  }
+
+  .page-head--wide .page-head__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .page-head--wide .page-head__title {
+    max-inline-size: 16ch;
+    font-size: var(--text-5xl);
+  }
+
+  .page-head--wide .page-head__lead {
+    max-inline-size: 46ch;
+  }
+
+  .page-head--compact,
+  .page-head--bridge {
+    padding-block-start: var(--space-12);
+  }
+
+  .page-head--compact {
+    padding-block-end: var(--space-16);
+  }
+
+  .page-head--bridge {
+    padding-block-end: var(--space-32);
+  }
+}

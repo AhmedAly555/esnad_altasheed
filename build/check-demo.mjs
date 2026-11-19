@@ -1,6 +1,8 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { CONTENT } from "./lib/paths.mjs";
+import { CONTENT, DIST } from "./lib/paths.mjs";
+import { devOnlyOutputs } from "./lib/dev-only.mjs";
+import { exists } from "./lib/fs-utils.mjs";
 
 const FLAGS = ["demo", "imageDemo"];
 
@@ -20,6 +22,15 @@ function scan(node, trail, hits) {
   }
 }
 
+/** A dist/ built with npm run dev or build:dev still holds the styleguide, which must never be deployed. */
+async function devOnlyLeftovers() {
+  const found = [];
+  for (const output of devOnlyOutputs()) {
+    if (await exists(path.join(DIST, output))) found.push(output);
+  }
+  return found;
+}
+
 const files = (await fs.readdir(CONTENT)).filter((f) => f.endsWith(".json"));
 
 let total = 0;
@@ -31,6 +42,13 @@ for (const file of files) {
   console.log(`\n${file}  (${hits.length})`);
   for (const h of hits) console.log(`  [${h.flag}] ${h.path || "(root)"}${h.label ? "  " + h.label : ""}`);
   total += hits.length;
+}
+
+const leftovers = await devOnlyLeftovers();
+if (leftovers.length) {
+  console.error(`\ndev-only output found in dist/:\n  ${leftovers.join("\n  ")}`);
+  console.error("check:demo FAILED: dist/ is a development build. Run npm run build (production) and check again.");
+  process.exit(1);
 }
 
 if (total) {

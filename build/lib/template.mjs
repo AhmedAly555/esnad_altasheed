@@ -3,13 +3,14 @@ import { SRC } from "./paths.mjs";
 import { readText } from "./fs-utils.mjs";
 
 // Template syntax:
-//   {{ key }}                    value from the context; missing is an error; escaped unless the key is raw
-//   {{> partial a="x" b="y"}}    include src/partials/partial.html with local args
-//   {{#each list}}..{{/each}}    repeat the body per item, fields read as {{ item.field }}
+//   {{ key }}                      value from the context; missing is an error; escaped unless the key is raw
+//   {{> partial a="x" b=data.key}} include src/partials/partial.html; a quoted arg is text, a bare arg is a context value
+//   {{#each list}}..{{/each}}      render the body once per item, with the item as {{ item }} / {{ item.field }}.
+//                                  The body may include partials, which also see `item`.
 const RAW_KEYS = new Set(["content", "pageCss", "pageScripts", "attrs"]);
-const INCLUDE = /\{\{>\s*([\w-]+)((?:\s+[\w-]+="[^"]*")*)\s*\}\}/g;
+const INCLUDE = /\{\{>\s*([\w-]+)((?:\s+[\w-]+=(?:"[^"]*"|[\w.-]+))*)\s*\}\}/g;
+const ARG = /([\w-]+)=(?:"([^"]*)"|([\w.-]+))/g;
 const EACH = /\{\{#each\s+([\w.-]+)\s*\}\}([\s\S]*?)\{\{\/each\}\}/g;
-const ITEM_FIELD = /\{\{\s*item\.([\w.-]+)\s*\}\}/g;
 const VALUE = /\{\{\s*([\w.-]+)\s*\}\}/g;
 
 const partials = new Map();
@@ -23,36 +24,41 @@ async function loadPartial(name) {
   return partials.get(name);
 }
 
-function expandEach(template, ctx, from) {
-  return template.replace(EACH, (_, key, body) => {
-    const list = lookup(ctx, key);
-    if (!Array.isArray(list)) throw new Error(`#each "${key}" is not a list in ${from}`);
-    return list
-      .map((item) =>
-        body.replace(ITEM_FIELD, (__, field) => {
-          const value = lookup(item, field);
-          if (value === undefined) throw new Error(`Missing "item.${field}" in #each ${key} (${from})`);
-          return output(field, value);
-        }),
-      )
-      .join("");
-  });
-}
-
-async function expandIncludes(template, ctx) {
+async function replaceAsync(text, pattern, replacer) {
   let result = "";
   let last = 0;
-  for (const match of template.matchAll(INCLUDE)) {
-    result += template.slice(last, match.index);
-    const args = Object.fromEntries([...match[2].matchAll(/([\w-]+)="([^"]*)"/g)].map((arg) => [arg[1], arg[2]]));
-    result += await render(await loadPartial(match[1]), { ...ctx, ...args }, `partial ${match[1]}`);
+  for (const match of text.matchAll(pattern)) {
+    result += text.slice(last, match.index) + (await replacer(match));
     last = match.index + match[0].length;
   }
-  return result + template.slice(last);
+  return result + text.slice(last);
 }
 
+function parseArgs(raw, ctx, from) {
+  const args = {};
+  for (const [, name, text, ref] of raw.matchAll(ARG)) {
+    args[name] = text ?? lookup(ctx, ref);
+    if (args[name] === undefined) throw new Error(`Missing value "${ref}" for arg "${name}" in ${from}`);
+  }
+  return args;
+}
+
+const expandEach = (template, ctx, from) =>
+  replaceAsync(template, EACH, async ([, key, body]) => {
+    const list = lookup(ctx, key);
+    if (!Array.isArray(list)) throw new Error(`#each "${key}" is not a list in ${from}`);
+    const rendered = [];
+    for (const item of list) rendered.push(await render(body, { ...ctx, item }, `#each ${key} in ${from}`));
+    return rendered.join("");
+  });
+
+const expandIncludes = (template, ctx, from) =>
+  replaceAsync(template, INCLUDE, async ([, name, rawArgs]) =>
+    render(await loadPartial(name), { ...ctx, ...parseArgs(rawArgs, ctx, from) }, `partial ${name}`),
+  );
+
 export async function render(template, ctx, from) {
-  const expanded = await expandIncludes(expandEach(template, ctx, from), ctx);
+  const expanded = await expandIncludes(await expandEach(template, ctx, from), ctx, from);
   return expanded.replace(VALUE, (_, key) => {
     const value = lookup(ctx, key);
     if (value === undefined) throw new Error(`Missing value "${key}" in ${from}`);

@@ -1,0 +1,14 @@
+<dialog class="lightbox on-dark" aria-label="{{ui.lightbox.label}}" data-lightbox>
+  <div class="lightbox__bar">
+    <p class="lightbox__count ltr" data-lightbox-count></p>
+    <button class="lightbox__btn" type="button" aria-label="{{ui.lightbox.close}}" data-lightbox-close>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <figure class="lightbox__figure">
+    <img class="lightbox__img" alt="" data-lightbox-image>
+    <figcaption class="lightbox__caption" aria-hidden="true" data-lightbox-caption></figcaption>
+  </figure>
+  <button class="lightbox__btn lightbox__nav lightbox__nav--previous" type="button" aria-label="{{ui.lightbox.previous}}" data-lightbox-previous>{{> arrow}}</button>
+  <button class="lightbox__btn lightbox__nav lightbox__nav--next" type="button" aria-label="{{ui.lightbox.next}}" data-lightbox-next>{{> arrow}}</button>
+</dialog>

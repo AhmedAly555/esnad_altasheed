@@ -9,21 +9,37 @@
     "menuClose": "إغلاق القائمة",
     "langSwitch": "EN",
     "langSwitchLabel": "English, coming soon",
-    "cta": { "label": "اطلب عرض سعر", "href": "contact/" }
+    "cta": {
+      "label": "اطلب عرض سعر",
+      "href": "contact/"
+    }
   },
   "footer": {
     "quickLinks": "روابط سريعة",
     "contact": "تواصل معنا",
     "socialLabel": "حسابات التواصل الاجتماعي",
-    "labels": {
-      "phone": "الهاتف",
-      "whatsapp": "واتساب",
-      "email": "البريد",
-      "address": "العنوان",
-      "hours": "ساعات العمل"
-    },
     "rights": "جميع الحقوق محفوظة.",
     "crLabel": "السجل التجاري",
     "vatLabel": "الرقم الضريبي"
+  },
+  "contactLabels": {
+    "phone": "الهاتف",
+    "whatsapp": "واتساب",
+    "email": "البريد",
+    "address": "العنوان",
+    "hours": "ساعات العمل"
+  },
+  "cta": {
+    "title": "عندك مشروع؟ ابدأ بمعاينة وسعر واضح",
+    "text": "أرسل لنا موقع المشروع ومخططاته إن وجدت، ونردّ خلال يوم عمل واحد بموعد للمعاينة.",
+    "label": "اطلب عرض سعر",
+    "href": "contact/",
+    "phoneLabel": "أو اتصل بنا"
+  },
+  "lightbox": {
+    "label": "عرض الصور",
+    "close": "إغلاق",
+    "previous": "الصورة السابقة",
+    "next": "الصورة التالية"
   }
 }

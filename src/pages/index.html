@@ -15,7 +15,7 @@ css: pages/home
       <p class="lead hero__lead" data-reveal>{{home.hero.lead}}</p>
       <div class="hero__actions" data-reveal>
         <a class="btn btn--gold" href="{{root}}{{home.hero.primary.href}}">{{home.hero.primary.label}}</a>
-        <a class="btn btn--outline" href="{{root}}{{home.hero.secondary.href}}">{{home.hero.secondary.label}}</a>
+        <a class="btn btn--quiet" href="{{root}}{{home.hero.secondary.href}}">{{home.hero.secondary.label}}</a>
       </div>
     </div>
   </div>
@@ -51,7 +51,7 @@ css: pages/home
       <a class="link-arrow" href="{{root}}{{home.services.link.href}}">{{home.services.link.label}}{{> arrow}}</a>
     </div>
     <ol class="list-reset services__list">
-      {{#each services}}<li class="service-row" data-reveal>
+      {{#each services.items}}<li class="service-row" data-reveal>
         <a class="service-row__link" href="{{root}}services/#{{item.slug}}">
           <span class="service-row__n" aria-hidden="true"></span>
           <span class="service-row__body">
@@ -89,51 +89,13 @@ css: pages/home
       <p class="section-head__lead">{{home.projects.lead}}</p>
       <a class="link-arrow" href="{{root}}{{home.projects.link.href}}">{{home.projects.link.label}}{{> arrow}}</a>
     </div>
-    <ul class="list-reset projects__grid">
-      {{#each featuredProjects}}<li class="project-card" data-reveal>
-        <a class="project-card__link" href="{{root}}projects/#{{item.slug}}">
-          <span class="project-card__frame photo photo--cover">
-            <img class="photo__img project-card__image" src="{{root}}{{item.mainImage}}" width="{{item.imageWidth}}" height="{{item.imageHeight}}" alt="{{item.imageAlt}}" loading="lazy" decoding="async">
-          </span>
-          <span class="project-card__meta">{{item.sector}} · <span class="ltr">{{item.year}}</span></span>
-          <span class="project-card__title">{{item.title}}</span>
-          <span class="project-card__city">{{item.city}}</span>
-        </a>
-      </li>
+    <ul class="list-reset project-grid">
+      {{#each featuredProjects}}{{> project-card}}
       {{/each}}
     </ul>
   </div>
 </section>
 
-<section class="section process" aria-labelledby="process-title">
-  <div class="container container--xl">
-    <div class="process__head" data-reveal>
-      <p class="eyebrow eyebrow--light process__eyebrow">{{home.process.eyebrow}}</p>
-      <h2 id="process-title">{{home.process.title}}</h2>
-      <p class="process__lead">{{home.process.lead}}</p>
-    </div>
-    <ol class="list-reset process__steps" data-process>
-      {{#each home.process.steps}}<li class="step" data-reveal>
-        <span class="step__n ltr">{{item.n}}</span>
-        <h3 class="step__title">{{item.title}}</h3>
-        <p class="step__text">{{item.text}}</p>
-      </li>
-      {{/each}}
-    </ol>
-  </div>
-</section>
+{{> process-section source=home.process}}
 
-<section class="section section--gradient cta" aria-labelledby="cta-title">
-  <div class="container">
-    <div class="card card--glass cta__card" data-reveal>
-      <div>
-        <h2 id="cta-title" class="cta__title">{{home.cta.title}}</h2>
-        <p>{{home.cta.text}}</p>
-      </div>
-      <div class="cta__actions">
-        <a class="btn btn--gold" href="{{root}}{{home.cta.primary.href}}">{{home.cta.primary.label}}</a>
-        <p class="cta__phone">{{home.cta.phoneLabel}} <a class="ltr" href="tel:{{site.contact.phone.href}}">{{site.contact.phone.display}}</a></p>
-      </div>
-    </div>
-  </div>
-</section>
+{{> cta-band cta=ui.cta variant="card"}}

@@ -1,11 +1,22 @@
 ---
-title: خدماتنا | إسناد التشييد
+data: services
 nav: services
+css: pages/services
 ---
-<section class="section">
-  <div class="container">
-    <h1>خدماتنا</h1>
-    <span class="gold-line"></span>
-    <p class="muted">صفحة مؤقتة لمعاينة الهيكل المشترك. يُبنى محتواها لاحقاً.</p>
+{{> page-head eyebrow=services.hero.eyebrow title=services.hero.title lead=services.hero.lead tone="sand" layout="split"}}
+
+<nav class="service-jump" aria-label="{{services.labels.jumpNav}}">
+  <div class="container container--xl">
+    <ul class="list-reset service-jump__list">
+      {{#each services.items}}<li><a class="service-jump__link" href="#{{item.slug}}">{{item.title}}</a></li>
+      {{/each}}
+    </ul>
   </div>
-</section>
+</nav>
+
+<div class="service-list">
+  {{#each services.items}}{{> service-section}}
+  {{/each}}
+</div>
+
+{{> cta-band cta=services.cta variant="card"}}

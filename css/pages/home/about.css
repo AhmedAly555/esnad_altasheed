@@ -31,7 +31,6 @@
 
 .about__figure {
   aspect-ratio: 4 / 5;
-  border-radius: var(--radius-lg);
 }
 
 @media (min-width: 64em) {

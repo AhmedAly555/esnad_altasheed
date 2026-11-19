@@ -1,11 +1,70 @@
 ---
-title: من نحن | إسناد التشييد
+data: about
 nav: about
+css: pages/about
 ---
-<section class="section">
-  <div class="container">
-    <h1>من نحن</h1>
-    <span class="gold-line"></span>
-    <p class="muted">صفحة مؤقتة لمعاينة الهيكل المشترك. يُبنى محتواها لاحقاً.</p>
+{{> page-head eyebrow=about.hero.eyebrow title=about.hero.title lead=about.hero.lead tone="dark" layout="split"}}
+
+<section class="section story" aria-labelledby="story-title">
+  <div class="container container--xl story__grid">
+    <div class="story__text" data-reveal>
+      <p class="eyebrow eyebrow--light">{{about.story.eyebrow}}</p>
+      <h2 id="story-title">{{about.story.title}}</h2>
+      <span class="gold-line gold-line--draw"></span>
+      {{#each about.story.paragraphs}}<p class="story__paragraph">{{item}}</p>
+      {{/each}}
+    </div>
+    <div class="story__statements">
+      <div class="statement" data-reveal>
+        <h2 class="statement__label">{{about.vision.label}}</h2>
+        <p class="statement__text">{{about.vision.text}}</p>
+      </div>
+      <div class="statement" data-reveal>
+        <h2 class="statement__label">{{about.mission.label}}</h2>
+        <p class="statement__text">{{about.mission.text}}</p>
+      </div>
+    </div>
   </div>
 </section>
+
+<section class="section section--sand values" aria-labelledby="values-title">
+  <div class="container container--xl">
+    <div class="values__intro" data-reveal>
+      <p class="eyebrow eyebrow--light">{{about.values.eyebrow}}</p>
+      <h2 id="values-title">{{about.values.title}}</h2>
+      <span class="gold-line gold-line--draw"></span>
+    </div>
+    <ol class="list-reset values__list">
+      {{#each about.values.items}}<li class="value" data-reveal>
+        <h3 class="value__title">{{item.title}}</h3>
+        <p class="value__text">{{item.text}}</p>
+      </li>
+      {{/each}}
+    </ol>
+  </div>
+</section>
+
+{{> process-section source=about.approach}}
+
+<section class="section section--sand team" aria-labelledby="team-title">
+  <div class="container container--xl">
+    <div class="section-head" data-reveal>
+      <div>
+        <p class="eyebrow eyebrow--light">{{about.team.eyebrow}}</p>
+        <h2 id="team-title">{{about.team.title}}</h2>
+        <span class="gold-line gold-line--draw section-head__rule"></span>
+      </div>
+      <p class="section-head__lead">{{about.team.lead}}</p>
+    </div>
+    <ul class="list-reset team__list">
+      {{#each about.team.members}}<li class="member" data-reveal>
+        <h3 class="member__name">{{item.name}}</h3>
+        <p class="member__role">{{item.role}}</p>
+        <p class="member__bio">{{item.bio}}</p>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>
+
+{{> cta-band cta=about.cta variant="start"}}

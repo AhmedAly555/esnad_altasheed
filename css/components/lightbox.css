@@ -1,0 +1,109 @@
+/* Full-screen image viewer built on <dialog>. js/behaviors/lightbox.js drives it. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  inline-size: 100%;
+  block-size: 100%;
+  max-inline-size: none;
+  max-block-size: none;
+  margin: 0;
+  padding: var(--space-16) var(--gutter);
+  border: 0;
+  background: var(--scrim);
+  color: var(--text);
+}
+
+.lightbox[open] {
+  display: grid;
+  place-items: center;
+}
+
+.lightbox::backdrop {
+  background: var(--scrim);
+}
+
+html.is-lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox__bar {
+  position: absolute;
+  inset-block-start: var(--space-4);
+  inset-inline: var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lightbox__count {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.lightbox__figure {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: center;
+  max-inline-size: 100%;
+}
+
+.lightbox__img {
+  max-inline-size: 100%;
+  max-block-size: calc(100svh - var(--space-32) - var(--space-8));
+  inline-size: auto;
+  block-size: auto;
+  border-radius: var(--radius-md);
+}
+
+.lightbox__caption {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+.lightbox__btn {
+  display: grid;
+  place-items: center;
+  inline-size: var(--tap-target);
+  block-size: var(--tap-target);
+  padding: 0;
+  background: transparent;
+  color: var(--ivory);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.lightbox__btn:hover {
+  background: var(--glass-bg);
+  border-color: var(--gold-500);
+}
+
+.lightbox__nav {
+  position: absolute;
+  inset-block-end: var(--space-4);
+}
+
+.lightbox__nav--previous {
+  inset-inline-start: var(--gutter);
+}
+
+.lightbox__nav--next {
+  inset-inline-end: var(--gutter);
+}
+
+/* The shared arrow points the reading direction, so "previous" turns it around */
+.lightbox__nav--previous .arrow {
+  rotate: 180deg;
+}
+
+@media (min-width: 48em) {
+  .lightbox__nav {
+    inset-block: 50% auto;
+    translate: 0 -50%;
+  }
+}

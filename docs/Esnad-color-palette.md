@@ -50,7 +50,7 @@ Gold gradients must always look like brushed metal (3 stops, diagonal), never fl
 
 ```css
 --grad-gold: linear-gradient(135deg, #8A5E0C 0%, #D89C24 38%, #F0C03C 55%, #B47818 100%);
---grad-gold-soft: linear-gradient(135deg, #D89C24 0%, #F0C03C 100%);
+--grad-gold-soft: linear-gradient(135deg, #D89C24 0%, #F0C03C 55%, #D89C24 100%); /* 3 stops: a flat 2-stop version read as orange (Task 6) */
 --grad-green: linear-gradient(160deg, #0A5A2D 0%, #013A1E 45%, #00240F 100%);
 --grad-hero: linear-gradient(180deg, rgba(4,24,12,.55) 0%, rgba(0,36,15,.92) 100%); /* overlay on hero photo */
 --grad-gold-line: linear-gradient(90deg, transparent, #D89C24 20%, #F0C03C 50%, #D89C24 80%, transparent);
