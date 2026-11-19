@@ -70,7 +70,7 @@
 
   /* Gradients (gold is always 3+ stop brushed metal) */
   --grad-gold: linear-gradient(135deg, #8a5e0c 0%, #d89c24 38%, #f0c03c 55%, #b47818 100%);
-  --grad-gold-soft: linear-gradient(135deg, #d89c24 0%, #f0c03c 100%);
+  --grad-gold-soft: linear-gradient(135deg, #d89c24 0%, #f0c03c 55%, #d89c24 100%);
   --grad-green: linear-gradient(160deg, #0a5a2d 0%, #013a1e 45%, #00240f 100%);
   --grad-hero: linear-gradient(180deg, rgba(4, 24, 12, 0.55) 0%, rgba(0, 36, 15, 0.92) 100%);
   --grad-hero-nav: linear-gradient(180deg, rgba(4, 24, 12, 0.75) 0%, rgba(4, 24, 12, 0) 100%);
@@ -124,7 +124,6 @@
   --text-4xl: clamp(2.25rem, 1.65rem + 3vw, 3.75rem);
   --text-5xl: clamp(2.625rem, 1.7rem + 4.6vw, 4.75rem);
 
-  --tracking-label: 0.04em;
   --tracking-caps: 0.08em;
   --tracking-wide: 0.12em;
 
@@ -156,6 +155,11 @@
   --marker-size: 0.625rem;
   --lift: 4px;
 
+  /* Photo frames: one wide and one narrow ratio whose heights match when set side by side in a 7 + 5 column row */
+  --ratio-wide: 16 / 10;
+  --ratio-narrow: 28 / 25;
+  --ratio-lead: 21 / 9;
+
   /* Z-index scale */
   --z-base: 0;
   --z-raised: 10;
@@ -181,6 +185,7 @@
   --parallax-ratio: 0.12;
   --parallax-scale: 1.14;
   --transition: var(--dur) var(--ease);
+  --scroll-behavior: smooth;
 }
 
 /* Reduced motion is handled here once: every duration, distance and scale below collapses,
@@ -199,5 +204,6 @@
     --arrow-shift: 0px;
     --lift: 0px;
     --parallax-scale: 1;
+    --scroll-behavior: auto;
   }
 }

@@ -12,14 +12,9 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-padding-block-start: var(--space-24);
+  scroll-behavior: var(--scroll-behavior);
   scrollbar-width: thin;
   scrollbar-color: var(--stone) var(--bg-alt);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
 }
 
 body {

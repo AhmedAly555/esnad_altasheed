@@ -61,7 +61,6 @@
 }
 
 .btn--gold:hover {
-  background: var(--grad-gold-soft);
   filter: brightness(1.08);
   box-shadow: var(--shadow-gold);
 }
@@ -94,4 +93,17 @@
 .btn--outline:hover {
   --btn-bg: var(--outline-hover-bg);
   --btn-fg: var(--outline-hover-fg);
+}
+
+/* Dark sections only: a neutral secondary beside the gold button, so gold stays on one control per view */
+.btn--quiet {
+  --btn-bg: transparent;
+  --btn-fg: var(--text-strong);
+  border-color: var(--text-muted);
+  box-shadow: none;
+}
+
+.btn--quiet:hover {
+  --btn-bg: var(--ivory);
+  --btn-fg: var(--green-950);
 }

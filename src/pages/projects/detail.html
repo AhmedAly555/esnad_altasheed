@@ -6,20 +6,20 @@ nav: projects
 css: pages/project
 scripts: pages/project
 ---
-{{> page-head eyebrow=project.sector title=project.title lead=project.description}}
+{{> page-head eyebrow=project.sector title=project.title lead=project.description tone="dark" layout="bridge"}}
 
 <section class="section project" aria-label="{{projects.labels.facts}}">
-  <div class="container container--xl project__grid">
-    <dl class="facts project__facts" data-reveal>
-      <div class="facts__row"><dt class="facts__label">{{projects.labels.sector}}</dt><dd class="facts__value">{{project.sector}}</dd></div>
-      <div class="facts__row"><dt class="facts__label">{{projects.labels.city}}</dt><dd class="facts__value">{{project.city}}</dd></div>
-      <div class="facts__row"><dt class="facts__label">{{projects.labels.year}}</dt><dd class="facts__value ltr">{{project.year}}</dd></div>
-      <div class="facts__row"><dt class="facts__label">{{projects.labels.role}}</dt><dd class="facts__value">{{project.role}}</dd></div>
-      <div class="facts__row"><dt class="facts__label">{{projects.labels.client}}</dt><dd class="facts__value">{{project.client}}</dd></div>
-    </dl>
+  <div class="container container--xl">
     <figure class="project__figure photo photo--cover" data-reveal data-image-demo="{{project.imageDemo}}">
       <img class="photo__img" src="{{root}}{{project.mainImage}}" width="{{project.imageWidth}}" height="{{project.imageHeight}}" alt="{{project.imageAlt}}" fetchpriority="high" decoding="async">
     </figure>
+    <dl class="facts facts--columns" data-reveal>
+      <div class="facts__row"><dt class="facts__label">{{projects.labels.sector}}</dt><dd class="facts__value">{{project.sector}}</dd></div>
+      <div class="facts__row"><dt class="facts__label">{{projects.labels.city}}</dt><dd class="facts__value">{{project.city}}</dd></div>
+      <div class="facts__row"><dt class="facts__label">{{projects.labels.year}}</dt><dd class="facts__value"><span class="ltr">{{project.year}}</span></dd></div>
+      <div class="facts__row"><dt class="facts__label">{{projects.labels.role}}</dt><dd class="facts__value">{{project.role}}</dd></div>
+      <div class="facts__row"><dt class="facts__label">{{projects.labels.client}}</dt><dd class="facts__value">{{project.client}}</dd></div>
+    </dl>
   </div>
 </section>
 
@@ -44,5 +44,5 @@ scripts: pages/project
   </div>
 </section>
 
-{{> cta-band}}
+{{> cta-band cta=projects.detailCta variant="card"}}
 {{> lightbox}}

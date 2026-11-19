@@ -3,6 +3,7 @@
   position: relative;
   overflow: hidden;
   background: var(--green-700);
+  border-radius: var(--radius-xs);
 }
 
 .photo::after {
@@ -11,6 +12,10 @@
   inset: 0;
   background: var(--photo-tint);
   pointer-events: none;
+}
+
+.photo--hero {
+  border-radius: 0;
 }
 
 .photo--hero::after {

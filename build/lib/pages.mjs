@@ -3,6 +3,7 @@ import path from "node:path";
 import { DIST, SRC } from "./paths.mjs";
 import { readText, walk } from "./fs-utils.mjs";
 import { parseFrontMatter, render } from "./template.mjs";
+import { isDevOnly } from "./dev-only.mjs";
 
 const DEFAULTS = {
   lang: "ar",
@@ -68,12 +69,13 @@ function pageJobs(rel, meta, content) {
 }
 
 /** Renders every src/pages/**.html through the base template into dist/. Returns the written paths. */
-export async function buildPages(content) {
+export async function buildPages(content, { dev = false } = {}) {
   const layout = await readText(path.join(SRC, "templates", "base.html"));
   const pagesDir = path.join(SRC, "pages");
   const written = [];
 
   for (const file of (await walk(pagesDir)).filter((name) => name.endsWith(".html"))) {
+    if (!dev && isDevOnly(path.relative(pagesDir, file))) continue;
     const { meta, body } = parseFrontMatter(await readText(file));
     for (const { outRel, entry } of pageJobs(path.relative(pagesDir, file), meta, content)) {
       const ctx = pageContext({ meta, content, outRel, entry });

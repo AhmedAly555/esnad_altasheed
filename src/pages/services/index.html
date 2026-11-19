@@ -3,7 +3,7 @@ data: services
 nav: services
 css: pages/services
 ---
-{{> page-head eyebrow=services.hero.eyebrow title=services.hero.title lead=services.hero.lead}}
+{{> page-head eyebrow=services.hero.eyebrow title=services.hero.title lead=services.hero.lead tone="sand" layout="split"}}
 
 <nav class="service-jump" aria-label="{{services.labels.jumpNav}}">
   <div class="container container--xl">
@@ -14,7 +14,9 @@ css: pages/services
   </div>
 </nav>
 
-{{#each services.items}}{{> service-section}}
-{{/each}}
+<div class="service-list">
+  {{#each services.items}}{{> service-section}}
+  {{/each}}
+</div>
 
-{{> cta-band}}
+{{> cta-band cta=services.cta variant="card"}}

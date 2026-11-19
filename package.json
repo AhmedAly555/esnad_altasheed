@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "node build/build.mjs",
+    "build:dev": "node build/build.mjs --dev",
     "dev": "node build/dev.mjs",
     "check:demo": "node build/check-demo.mjs",
     "format": "prettier --write .",

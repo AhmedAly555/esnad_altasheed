@@ -43,7 +43,7 @@
   min-block-size: 14rem;
   padding: var(--space-8);
   background: var(--green-700);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xs);
 }
 
 .map__title {

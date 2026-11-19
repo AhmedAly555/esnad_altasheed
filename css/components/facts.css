@@ -21,3 +21,16 @@
   color: var(--text-strong);
   font-weight: var(--weight-medium);
 }
+
+/* The same ruled data as a strip of columns, label above value */
+.facts--columns {
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  column-gap: var(--space-8);
+  border-block-start: 0;
+}
+
+.facts--columns .facts__row {
+  grid-template-columns: 1fr;
+  gap: var(--space-1);
+  border-block-start: 1px solid var(--border);
+}

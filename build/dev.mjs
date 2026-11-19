@@ -26,7 +26,7 @@ let building = Promise.resolve();
 function rebuild() {
   building = building.then(async () => {
     try {
-      const { pages, problems } = await build();
+      const { pages, problems } = await build({ dev: true });
       console.log(
         `[build] ${pages.length} page(s)${problems.length ? `, ${problems.length} problem(s):\n- ${problems.join("\n- ")}` : ""}`,
       );

@@ -3,7 +3,7 @@ data: about
 nav: about
 css: pages/about
 ---
-{{> page-head eyebrow=about.hero.eyebrow title=about.hero.title lead=about.hero.lead}}
+{{> page-head eyebrow=about.hero.eyebrow title=about.hero.title lead=about.hero.lead tone="dark" layout="split"}}
 
 <section class="section story" aria-labelledby="story-title">
   <div class="container container--xl story__grid">
@@ -28,7 +28,7 @@ css: pages/about
 </section>
 
 <section class="section section--sand values" aria-labelledby="values-title">
-  <div class="container container--xl values__grid">
+  <div class="container container--xl">
     <div class="values__intro" data-reveal>
       <p class="eyebrow eyebrow--light">{{about.values.eyebrow}}</p>
       <h2 id="values-title">{{about.values.title}}</h2>
@@ -67,4 +67,4 @@ css: pages/about
   </div>
 </section>
 
-{{> cta-band}}
+{{> cta-band cta=about.cta variant="start"}}

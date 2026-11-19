@@ -2,6 +2,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { CSS, DIST } from "./paths.mjs";
 import { readText } from "./fs-utils.mjs";
+import { isDevOnly } from "./dev-only.mjs";
 
 // Source order is the cascade order: tokens, base, layout, components. Page styles bundle separately.
 const SITE_ORDER = ["tokens.css", "base", "layout", "components"];
@@ -23,7 +24,7 @@ async function write(relative, css) {
   await fs.writeFile(target, css);
 }
 
-export async function bundleCss() {
+export async function bundleCss({ dev = false } = {}) {
   const siteFiles = [];
   for (const entry of SITE_ORDER) {
     const full = path.join(CSS, entry);
@@ -36,6 +37,7 @@ export async function bundleCss() {
   // A page is either one file (pages/name.css) or a folder of files (pages/name/*.css) bundled into one
   const pagesDir = path.join(CSS, "pages");
   for (const entry of await fs.readdir(pagesDir, { withFileTypes: true })) {
+    if (!dev && isDevOnly(entry.name)) continue;
     if (entry.isDirectory()) {
       await write(`pages/${entry.name}.css`, await concat(await sortedCss(path.join(pagesDir, entry.name))));
     } else if (entry.name.endsWith(".css")) {

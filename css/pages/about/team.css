@@ -1,16 +1,13 @@
 /* Text-only roster: no portraits exist yet, and a faked photo would be worse than none */
 .team__list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: var(--space-10) var(--space-8);
+  border-block-end: 1px solid var(--stone);
 }
 
 .member {
   display: grid;
   gap: var(--space-2);
-  align-content: start;
-  padding-block-start: var(--space-4);
-  border-block-start: 2px solid var(--green-700);
+  padding-block: var(--space-6);
+  border-block-start: 1px solid var(--stone);
 }
 
 .member__name {
@@ -23,6 +20,10 @@
   font-weight: var(--weight-medium);
 }
 
-.member__bio {
-  color: var(--text-muted);
+@media (min-width: 64em) {
+  .member {
+    grid-template-columns: 5fr 4fr 7fr;
+    align-items: baseline;
+    gap: var(--space-8);
+  }
 }

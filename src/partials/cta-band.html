@@ -1,12 +1,12 @@
-<section class="section section--gradient cta" aria-labelledby="cta-title">
-  <div class="container">
+<section class="section section--gradient cta cta--{{variant}}" aria-labelledby="cta-title">
+  <div class="container container--xl">
     <div class="card card--glass cta__card" data-reveal>
       <div>
-        <h2 id="cta-title" class="cta__title">{{ui.cta.title}}</h2>
-        <p>{{ui.cta.text}}</p>
+        <h2 id="cta-title" class="cta__title">{{cta.title}}</h2>
+        <p>{{cta.text}}</p>
       </div>
       <div class="cta__actions">
-        <a class="btn btn--gold" href="{{root}}{{ui.cta.primary.href}}">{{ui.cta.primary.label}}</a>
+        <a class="btn btn--gold" href="{{root}}{{ui.cta.href}}">{{cta.label}}</a>
         <p class="cta__phone">{{ui.cta.phoneLabel}} <a class="ltr" href="tel:{{site.contact.phone.href}}">{{site.contact.phone.display}}</a></p>
       </div>
     </div>

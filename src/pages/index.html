@@ -15,7 +15,7 @@ css: pages/home
       <p class="lead hero__lead" data-reveal>{{home.hero.lead}}</p>
       <div class="hero__actions" data-reveal>
         <a class="btn btn--gold" href="{{root}}{{home.hero.primary.href}}">{{home.hero.primary.label}}</a>
-        <a class="btn btn--outline" href="{{root}}{{home.hero.secondary.href}}">{{home.hero.secondary.label}}</a>
+        <a class="btn btn--quiet" href="{{root}}{{home.hero.secondary.href}}">{{home.hero.secondary.label}}</a>
       </div>
     </div>
   </div>
@@ -98,4 +98,4 @@ css: pages/home
 
 {{> process-section source=home.process}}
 
-{{> cta-band}}
+{{> cta-band cta=ui.cta variant="card"}}

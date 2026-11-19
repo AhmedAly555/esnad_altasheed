@@ -32,12 +32,6 @@
   transform: translate3d(0, var(--py, 0px), 0) scale(var(--parallax-scale));
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .hero__image {
-    will-change: transform;
-  }
-}
-
 .hero__inner {
   position: relative;
   z-index: 2;

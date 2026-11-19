@@ -4,7 +4,7 @@
   inset-block-start: var(--header-h);
   z-index: var(--z-sticky);
   counter-reset: service;
-  background: var(--bg-alt);
+  background: var(--bg);
   border-block-end: 1px solid var(--line);
 }
 

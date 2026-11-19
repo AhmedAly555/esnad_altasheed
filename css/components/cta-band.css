@@ -1,3 +1,5 @@
+/* Default: copy beside the action. The start variant stacks them in a narrower card pinned to the reading start,
+   so pages that close with this band do not all end on the same centred block. */
 .cta__card {
   display: grid;
   gap: var(--space-8);
@@ -25,5 +27,22 @@
     grid-template-columns: 1.6fr 1fr;
     gap: var(--space-16);
     padding: var(--space-16);
+  }
+
+  .cta--start .cta__card {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    max-inline-size: 52rem;
+  }
+
+  .cta--start .cta__title {
+    font-size: var(--text-4xl);
+  }
+
+  .cta--start .cta__actions {
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: start;
+    gap: var(--space-8);
   }
 }

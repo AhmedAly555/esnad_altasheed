@@ -41,13 +41,16 @@
   gap: var(--space-10);
 }
 
+.service-list > .service-detail:nth-child(even) {
+  background: var(--bg-alt);
+}
+
 .service-detail__heading {
   margin-block-end: var(--space-4);
   color: var(--accent-text);
   font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-label);
 }
 
 .service-detail__scope {
@@ -70,12 +73,12 @@
 .service-detail__step {
   counter-increment: step;
   display: grid;
-  grid-template-columns: var(--space-8) 1fr;
+  grid-template-columns: var(--space-10) 1fr;
   gap: var(--space-1) var(--space-4);
 }
 
 .service-detail__step::before {
-  content: counter(step);
+  content: counter(step, decimal-leading-zero);
   grid-row: span 2;
   color: var(--accent-text);
   font-family: var(--font-heading);
@@ -104,5 +107,13 @@
     position: sticky;
     inset-block-start: calc(var(--header-h-compact) + var(--space-16));
     align-self: start;
+  }
+
+  .service-list > .service-detail:nth-child(even) .service-detail__grid {
+    grid-template-columns: 7fr 4fr;
+  }
+
+  .service-list > .service-detail:nth-child(even) .service-detail__intro {
+    order: 1;
   }
 }

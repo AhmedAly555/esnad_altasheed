@@ -3,7 +3,9 @@
   background: var(--bg);
 }
 
+/* Stone text is 4.2:1 on sand and fails AA, so muted copy on sand falls back to graphite */
 .section--sand {
+  --text-muted: var(--graphite);
   background: var(--bg-alt);
 }
 

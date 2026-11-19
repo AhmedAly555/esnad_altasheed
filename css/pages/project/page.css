@@ -1,21 +1,18 @@
+/* The main photo rises into the page head above it, so the head and the image read as one opening */
+/* flow-root stops the figure's negative margin from collapsing through and dragging the section over the head */
 .project {
-  padding-block: var(--space-12) var(--section-space);
-}
-
-.project__grid {
-  display: grid;
-  gap: var(--space-10);
-  align-items: start;
+  display: flow-root;
+  padding-block: 0 var(--section-space);
 }
 
 .project__figure {
-  aspect-ratio: 16 / 10;
-  border-radius: var(--radius-lg);
+  aspect-ratio: var(--ratio-wide);
+  margin-block: calc(var(--space-12) * -1) var(--space-8);
 }
 
-@media (min-width: 64em) {
-  .project__grid {
-    grid-template-columns: 4fr 8fr;
-    gap: var(--space-16);
+@media (min-width: 48em) {
+  .project__figure {
+    aspect-ratio: var(--ratio-lead);
+    margin-block-start: calc(var(--space-16) * -1);
   }
 }

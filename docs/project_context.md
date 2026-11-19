@@ -11,7 +11,7 @@ The repo started as a copy of an Egyptian project (Heaven Life). Its code was re
 
 - Arabic is primary: `lang="ar" dir="rtl"`. English comes later as an `/en/` mirror (`dir="ltr"`, Task 8).
 - The company has no real projects, clients or certificates yet, so all data is **realistic demo data** flagged `"demo": true` (images: `"imageDemo": true`). The owner replaces it later with real data, a data-only job.
-- Branch: `esnad-redesign` (main branch: `main`). Nothing from Task 5 is committed yet.
+- Branch: `esnad-redesign` (main branch: `main`). Task 6 (polish pass) is done and awaiting approval, not committed.
 
 ## 2. Tech stack
 
@@ -28,9 +28,10 @@ Static site, no framework, **zero runtime dependencies**.
 
 | Command | What it does |
 |---|---|
-| `npm run build` | Cleans `dist/`, renders every page, bundles CSS, copies `js/` and `assets/`, then validates the output |
-| `npm run dev` | Build plus watch plus static server (`PORT`, default 3000) |
-| `npm run check:demo` | Lists every record, image and config value still flagged demo; **exits 1 while any remain**. Must pass before any production deploy |
+| `npm run build` | **Production** build: cleans `dist/`, renders every page except the dev-only ones, bundles CSS, copies `js/` and `assets/`, then validates the output |
+| `npm run build:dev` | Same plus the dev-only pages (the styleguide) |
+| `npm run dev` | Dev build plus watch plus static server (`PORT`, default 3000) |
+| `npm run check:demo` | Lists every record, image and config value still flagged demo; **exits 1 while any remain**. Also exits 1 if `dist/` holds dev-only output (a dev build). Must pass before any production deploy |
 | `npm run format` / `format:check` | Prettier write / check |
 
 ## 3. Directory structure
@@ -58,6 +59,7 @@ haven-life/
 │   └── pages/                # page entry scripts: styleguide, project, contact
 ├── build/                    # build.mjs, dev.mjs, check-demo.mjs, lib/ (one module per step)
 ├── assets/                   # fonts/, logo/, favicon.svg, pic/ (legacy), id-1..id-13/ (legacy project photos)
+├── source/                   # originals that are not shipped (logo PNGs); see source/README.md
 ├── legacy/                   # old Heaven Life project, reference only, delete before launch
 └── dist/                     # build output (gitignored)
 ```
@@ -71,6 +73,7 @@ haven-life/
 | `lib/pages.mjs` | Renders `src/pages/**/*.html` through `base.html`. Supports **collection pages** (see below). Computes `root` (relative path prefix), canonical `path`, `nav` with `aria-current`, per-page CSS and script tags |
 | `lib/template.mjs` | Tiny template engine (below) |
 | `lib/css-bundle.mjs` | `dist/css/site.css` = tokens, base, layout, components (alphabetical); `dist/css/fonts.css`; one `dist/css/pages/<name>.css` per page folder |
+| `lib/dev-only.mjs` | The one list of dev-only pages (`DEV_ONLY_PAGES`, currently `styleguide`). Pages, CSS bundling and the static copy all skip them unless the build is a dev build; `check:demo` uses the same list to detect leftovers |
 | `lib/validate.mjs` | Fails the build on: duplicate ids, not exactly one `<h1>`, missing local files, **missing `#anchor` targets**, `<img>` without `alt`, missing CSS `url()` files |
 | `check-demo.mjs` | Demo-flag report (see section 2) |
 | `dev.mjs` | Dev server with rebuild on change |
@@ -94,12 +97,12 @@ All demo records carry `"demo": true`. Nothing in this folder is hard-coded in H
 | File | Shape and use |
 |---|---|
 | `site.config.json` | `company` (names, tagline, descriptions), `web` (url, themeColor, locale), `contact` (phone, whatsapp, email), `address`, `legal` (CR, VAT), `hours`, `social[]`, `stats[]` (home strip), `form.endpoint` (contact form action, fake Formspree URL, demo) |
-| `ui.json` | Shared UI strings: skip link, header, footer, `contactLabels`, the shared `cta` band, `lightbox` labels |
+| `ui.json` | Shared UI strings: skip link, header, footer, `contactLabels`, the shared `cta` (`title`, `text`, `label`, `href`, `phoneLabel`; home uses it as is), `lightbox` labels |
 | `nav.json` | Main navigation: key, label, href |
 | `home.json` | `meta` plus hero, about, services, projects, process, stats sections |
-| `about.json` | `meta`, hero, story, vision, mission, values, `approach` (same shape as home process, rendered by `process-section`), team (4 demo members) |
-| `services.json` | `{ meta, hero, labels, items[] }`. Each item: `id`, `slug`, `title`, `summary`, `lead`, `scope[]`, `steps[]`. Five services |
-| `projects.json` | `{ meta, hero, labels, items[] }`. 13 demo projects: `id`, `slug`, `title`, `sector`, `city`, `year`, `role`, `client`, `mainImage`, `imageWidth`, `imageHeight`, `imageAlt`, `gallery[{src,width,height,alt}]`, `description`, `featured`, `demo`, `imageDemo` |
+| `about.json` | `meta`, hero, story, vision, mission, values, `approach` (same shape as home process, rendered by `process-section`), team (4 demo members), `cta` |
+| `services.json` | `{ meta, hero, labels, cta, items[] }`. Each item: `id`, `slug`, `title`, `summary`, `lead`, `scope[]`, `steps[]`. Five services |
+| `projects.json` | `{ meta, hero, labels, cta, detailCta, items[] }`. 13 demo projects: `id`, `slug`, `title`, `sector`, `city`, `year`, `role`, `client`, `mainImage`, `imageWidth`, `imageHeight`, `imageAlt`, `gallery[{src,width,height,alt}]`, `description`, `featured`, `demo`, `imageDemo` |
 | `contact.json` | `meta`, hero, details, WhatsApp message and CTA, map block, form (field labels, hints, per-field error messages, honeypot label, sending/success/failure texts) |
 | `styleguide.json` | Arabic sample text for the temporary styleguide (not flagged demo; the page is removed before launch) |
 
@@ -110,18 +113,18 @@ Demo policy highlights: fake but realistic Saudi values (`+966 50 123 4567`, `in
 | URL | Source | Content |
 |---|---|---|
 | `/` | `pages/index.html` | Hero (overlay header), about teaser, services rows, stats strip, featured projects grid, process steps, CTA band |
-| `/about/` | `pages/about/index.html` | Page head, story with vision and mission, values list, approach (process steps), team (text-only roster), CTA |
+| `/about/` | `pages/about/index.html` | Page head, story with vision and mission, values (2 x 2), approach (process steps), team (ruled text-only roster), CTA |
 | `/services/` | `pages/services/index.html` | Page head, sticky jump bar, five anchored sections (`#<slug>`: scope, how we work, CTA to `contact/?type=<slug>`), CTA |
-| `/projects/` | `pages/projects/index.html` | Page head, grid of all 13 projects, CTA |
-| `/projects/<slug>/` | `pages/projects/detail.html` | 13 generated pages: head (sector, title, description), facts list, main image, gallery with lightbox, CTA |
+| `/projects/` | `pages/projects/index.html` | Page head (wide layout), grid of all 13 projects with the first as a full-row lead, CTA |
+| `/projects/<slug>/` | `pages/projects/detail.html` | 13 generated pages: head (sector, title, description), main image rising into the head, facts strip, gallery with lightbox, CTA |
 | `/contact/` | `pages/contact/index.html` | Page head, form card, contact facts, WhatsApp button, map placeholder |
-| `/styleguide/` | `pages/styleguide/index.html` | Temporary token and component review page, `noindex`, not linked from the nav. **Delete before launch** |
+| `/styleguide/` | `pages/styleguide/index.html` | **Dev builds only** (`npm run dev` / `build:dev`): token and component review page, `noindex`, not linked from the nav. Never emitted by `npm run build`. Delete before launch |
 
 Home project cards link to `projects/<slug>/`; home service rows link to `services/#<slug>`.
 
 ### Partials (`src/partials/`)
 
-`head`, `header`, `footer`, `brand`, `arrow`, `page-head` (args: eyebrow, title, lead), `cta-band` (reads `ui.cta`), `project-card`, `process-section` (arg `source`), `service-section`, `lightbox`, `contact-form`, plus styleguide helpers `sg-components`, `sg-row`, `sg-swatch`.
+`head`, `header`, `footer`, `brand`, `arrow`, `page-head` (args: eyebrow, title, lead, `tone` = dark | sand, `layout` = split | wide | compact | bridge), `cta-band` (args: `cta` = an object with title, text, label; `variant` = card | start), `project-card`, `process-section` (arg `source`), `service-section`, `lightbox`, `contact-form`, plus styleguide helpers `sg-components`, `sg-row`, `sg-swatch`.
 
 ## 7. CSS architecture
 
@@ -129,7 +132,11 @@ Home project cards link to `projects/<slug>/`; home service rows link to `servic
 - **Logical properties only** (no left/right). No hex outside `tokens.css`.
 - Dark scope: `.on-dark`, `.section--dark`, `.section--forest`, `.section--gradient` re-point semantic roles (`--heading`, `--link`, outline colors...), so components need no dark variants.
 - Reduced motion lives only in `tokens.css` (motion tokens collapse); components never add their own overrides.
-- Components: `brand`, `button` (`--gold`, `--outline`, `--sm`), `card`, `cta-band`, `eyebrow`, `facts`, `form`, `form-status`, `gold-line`, `lightbox`, `link-arrow`, `menu-toggle`, `page-head`, `photo`, `process`, `project-card`, `project-grid`, `reveal`, `section-head`, `site-footer`, `site-header`, `site-nav`, `skip-link`.
+- Muted text on sand re-points to graphite (`section--sand`): stone on sand is 4.2:1 and fails AA.
+- Arabic text is never letter-spaced (it breaks the cursive joins); tracking tokens are for Latin only.
+- Project cards have two hover effects only: slow image zoom and arrow shift. No lift.
+- Photo frames (`.photo`) carry a small radius; the 7 + 5 column rhythm of `project-grid` and the gallery shares `--ratio-wide` / `--ratio-narrow` / `--ratio-lead` from tokens. `project-grid--lead` gives the first card a full row.
+- Components: `brand`, `button` (`--gold` with its one-shot sheen, `--outline`, `--quiet` for a neutral secondary beside the gold one, `--sm`), `card`, `cta-band`, `eyebrow`, `facts`, `form`, `form-status`, `gold-line`, `lightbox`, `link-arrow`, `menu-toggle`, `page-head`, `photo`, `process`, `project-card`, `project-grid`, `reveal`, `section-head`, `site-footer`, `site-header`, `site-nav`, `skip-link`.
 - Page folders: `home` (hero, about, services, stats), `about` (story, values, team), `services` (jump, detail), `project` (page, gallery), `contact` (page), `styleguide` (page).
 - Header: fixed; transparent over the home hero, deep green with a thin gold line when scrolled or on pages without a hero. Header CTA is outline-gold.
 
@@ -150,9 +157,9 @@ Home project cards link to `projects/<slug>/`; home service rows link to `servic
 
 ## 9. Assets
 
-- `assets/logo/logo-badge.png` (square badge with dark green background): used in header and footer for now. **To swap in the reversed SVG later, change the `src` on line 2 of `src/partials/brand.html`.**
-- `assets/logo/logo-on-light.png`: green logo for light backgrounds; not used yet.
-- Both PNGs are about 1 MB; resize or convert in Task 7.
+- `assets/logo/logo-badge.webp` (192 px square badge with dark green background, 17 KB): used in header and footer for now. **To swap in the reversed SVG later, change the `src` on line 2 of `src/partials/brand.html`.**
+- `assets/logo/logo-on-light.webp` (640 px wide, with alpha): green logo for light backgrounds; not used yet. The source art has a faint red and gold fringe around the edges that will show on ivory; ask for a clean export before using it.
+- The original PNGs (about 1 MB each) live in `source/logo/` and are never copied to `dist/`.
 - `assets/id-1..id-13/` and `assets/pic/`: legacy Heaven Life photos kept as placeholders (flagged `imageDemo`); replace before launch.
 - `assets/fonts/`: Noto Kufi Arabic (arabic and latin 700), IBM Plex Sans Arabic (400, 500), Inter (400, 500).
 
@@ -165,8 +172,8 @@ Home project cards link to `projects/<slug>/`; home service rows link to `servic
 | 2 Foundation: tokens, base, components, styleguide | Done |
 | 3 Shared layout: header, footer, head, config | Done |
 | 4 Home page | Done |
-| 5 Inner pages: About, Services, Projects (plus detail), Contact | Built and verified, **awaiting approval and commit** |
-| 6 Polish pass | Not started |
+| 5 Inner pages: About, Services, Projects (plus detail), Contact | Done |
+| 6 Polish pass | Done, **awaiting approval and commit** |
 | 7 SEO, performance, accessibility | Not started (sitemap, robots.txt, JSON-LD, image optimisation, Lighthouse) |
 | 8 English version | Not started |
 
@@ -192,5 +199,6 @@ Home project cards link to `projects/<slug>/`; home service rows link to `servic
 - Set a real form endpoint in `site.config.json` (`form.endpoint`); the demo URL returns an error, which shows the failure panel.
 - Map block on the contact page is a neutral placeholder with a working "open in maps" link.
 - Projects page has no sector or city filter.
-- Delete `src/pages/styleguide/`, its partials, CSS, JS and `styleguide.json` before launch, and delete `legacy/`.
+- Delete `src/pages/styleguide/`, its partials, CSS, JS, `styleguide.json` and the `DEV_ONLY_PAGES` entry before launch, and delete `legacy/`.
+- The demo client names on projects 4 and 11 carry a visible "(اسم تجريبي)" suffix; it disappears when real clients replace them.
 - Add a sitemap, robots.txt, JSON-LD and Open Graph images (Task 7); `docs/` is not part of the build output.

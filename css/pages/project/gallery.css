@@ -6,8 +6,7 @@
 
 .project-gallery__link {
   display: block;
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius-lg);
+  aspect-ratio: var(--ratio-wide);
   cursor: zoom-in;
 }
 
@@ -19,29 +18,22 @@
   transform: scale(var(--zoom-hover));
 }
 
-/* Equal row heights: a 7-column and a 5-column thumbnail only match when the narrow one is squarer */
 @media (min-width: 48em) {
   .project-gallery__grid {
     grid-template-columns: repeat(12, 1fr);
   }
 
-  .project-gallery__item:nth-child(4n + 1) .project-gallery__link,
-  .project-gallery__item:nth-child(4n + 4) .project-gallery__link {
-    aspect-ratio: 16 / 10;
-  }
-
-  .project-gallery__item:nth-child(4n + 2) .project-gallery__link,
-  .project-gallery__item:nth-child(4n + 3) .project-gallery__link {
-    aspect-ratio: 8 / 7;
-  }
-
-  .project-gallery__item:nth-child(4n + 1),
-  .project-gallery__item:nth-child(4n + 4) {
+  .project-gallery__item {
     grid-column: span 7;
   }
 
   .project-gallery__item:nth-child(4n + 2),
   .project-gallery__item:nth-child(4n + 3) {
     grid-column: span 5;
+  }
+
+  .project-gallery__item:nth-child(4n + 2) .project-gallery__link,
+  .project-gallery__item:nth-child(4n + 3) .project-gallery__link {
+    aspect-ratio: var(--ratio-narrow);
   }
 }
