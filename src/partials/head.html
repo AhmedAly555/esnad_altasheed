@@ -4,8 +4,24 @@
   <meta name="description" content="{{description}}">
   <meta name="robots" content="{{robots}}">
   <meta name="theme-color" content="#013A1E">
+  <link rel="canonical" href="{{site.web.url}}{{path}}">
+  <link rel="alternate" hreflang="ar" href="{{site.web.url}}{{path}}">
+  <link rel="alternate" hreflang="x-default" href="{{site.web.url}}{{path}}">
+  <!-- hreflang="en" pair is added with the /en/ mirror -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{site.company.nameAr}}">
+  <meta property="og:locale" content="ar_SA">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{site.web.url}}{{path}}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{title}}">
+  <meta name="twitter:description" content="{{description}}">
+  <link rel="icon" href="{{root}}assets/favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add("js")</script>
   <link rel="stylesheet" href="{{root}}css/fonts.css">
   <link rel="stylesheet" href="{{root}}css/tokens.css">
   <link rel="stylesheet" href="{{root}}css/base.css">
   <link rel="stylesheet" href="{{root}}css/components.css">
+  <link rel="stylesheet" href="{{root}}css/layout.css">
   {{pageCss}}

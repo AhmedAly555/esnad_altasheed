@@ -49,8 +49,30 @@ async function loadPartial(name) {
 
 const lookup = (ctx, key) => key.split(".").reduce((o, k) => (o == null ? o : o[k]), ctx);
 
+const RAW_KEYS = new Set(["content", "pageCss", "pageScripts", "attrs"]);
+const escapeHtml = (v) =>
+  String(v).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const output = (key, value) => (RAW_KEYS.has(key.split(".").pop()) ? String(value) : escapeHtml(value));
+
+const readJson = async (file) => JSON.parse(await readText(path.join(ROOT, "content", file)));
+
 // {{> partial key="value"}} includes a partial with local args; {{ key }} is strict (missing = error)
+// {{#each list}}...{{/each}} repeats its body per item, exposed as {{ item.field }}
 async function render(template, ctx, from) {
+  template = template.replace(/\{\{#each\s+([\w.-]+)\s*\}\}([\s\S]*?)\{\{\/each\}\}/g, (_, key, inner) => {
+    const list = lookup(ctx, key);
+    if (!Array.isArray(list)) throw new Error(`#each "${key}" is not a list in ${from}`);
+    return list
+      .map((item) =>
+        inner.replace(/\{\{\s*item\.([\w.-]+)\s*\}\}/g, (__, field) => {
+          const value = lookup(item, field);
+          if (value === undefined) throw new Error(`Missing "item.${field}" in #each ${key} (${from})`);
+          return output(field, value);
+        }),
+      )
+      .join("");
+  });
+
   const includeRe = /\{\{>\s*([\w-]+)((?:\s+[\w-]+="[^"]*")*)\s*\}\}/g;
   let result = "";
   let last = 0;
@@ -67,7 +89,7 @@ async function render(template, ctx, from) {
   return result.replace(/\{\{\s*([\w.-]+)\s*\}\}/g, (_, key) => {
     const value = lookup(ctx, key);
     if (value === undefined) throw new Error(`Missing value "${key}" in ${from}`);
-    return value;
+    return output(key, value);
   });
 }
 
@@ -80,6 +102,8 @@ const tags = {
 const csv = (s) => (s ? s.split(",").map((x) => x.trim()).filter(Boolean) : []);
 
 async function buildPages() {
+  const site = await readJson("site.config.json");
+  const navItems = await readJson("nav.json");
   const layout = await readText(path.join(SRC, "templates", "base.html"));
   const pagesDir = path.join(SRC, "pages");
   const pages = (await walk(pagesDir)).filter((f) => f.endsWith(".html"));
@@ -95,7 +119,13 @@ async function buildPages() {
     const ctx = {
       ...DEFAULTS,
       ...meta,
+      site,
       root,
+      path: "/" + outRel.replace(/index\.html$/, ""),
+      year: new Date().getFullYear(),
+      header: meta.header || "solid",
+      description: meta.description || site.company.descriptionAr,
+      nav: navItems.map((n) => ({ ...n, attrs: n.key === meta.nav ? ' aria-current="page"' : "" })),
       pageCss: tags.css(root, csv(meta.css)),
       pageScripts: tags.scripts(root, csv(meta.scripts)),
     };

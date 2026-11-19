@@ -1,0 +1,39 @@
+{
+  "company": {
+    "nameAr": "إسناد التشييد",
+    "nameEn": "Esnad Al-Tasheed",
+    "nameLatin": "ESNAD ALTASHEED",
+    "taglineAr": "نبني .. ونسائد المستقبل",
+    "descriptionAr": "إسناد التشييد شركة سعودية للمقاولات العامة والبناء والتشطيب. نعمل بجدول واضح وسلامة صارمة وتواصل شفاف من التوقيع حتى التسليم."
+  },
+  "web": {
+    "url": "https://esnad-demo.sa",
+    "demo": true
+  },
+  "contact": {
+    "phone": { "display": "+966 50 123 4567", "href": "+966501234567" },
+    "whatsapp": { "display": "+966 50 123 4567", "href": "966501234567" },
+    "email": "info@esnad-demo.sa",
+    "demo": true
+  },
+  "address": {
+    "lineAr": "طريق الملك فهد، حي العليا",
+    "cityAr": "الرياض، المملكة العربية السعودية",
+    "postal": "12214",
+    "demo": true
+  },
+  "legal": {
+    "cr": "1010000000",
+    "vat": "300000000000003",
+    "demo": true
+  },
+  "hours": {
+    "ar": "الأحد – الخميس، 8:00 ص – 5:00 م",
+    "demo": true
+  },
+  "social": [
+    { "id": "linkedin", "label": "لينكدإن", "url": "https://www.linkedin.com/company/esnad-demo", "demo": true },
+    { "id": "instagram", "label": "إنستغرام", "url": "https://www.instagram.com/esnad.demo", "demo": true },
+    { "id": "x", "label": "إكس", "url": "https://x.com/esnad_demo", "demo": true }
+  ]
+}

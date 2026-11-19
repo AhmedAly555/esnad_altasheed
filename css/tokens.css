@@ -131,6 +131,7 @@
   --container-xl: 80rem;
   --gutter: clamp(var(--space-5), 4vw, var(--space-10));
   --measure: 62ch;
+  --header-h: 4.5rem;
 
   /* Z-index scale */
   --z-base: 0;

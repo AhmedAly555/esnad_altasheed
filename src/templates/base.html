@@ -3,10 +3,15 @@
 <head>
   {{> head}}
 </head>
-<body>
+<body class="header-{{header}}">
+  <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+  <div class="header-sentinel" data-header-sentinel aria-hidden="true"></div>
+  {{> header}}
   <main id="main">
 {{content}}
   </main>
+  {{> footer}}
+  <script src="{{root}}js/header.js" defer></script>
   {{pageScripts}}
 </body>
 </html>
